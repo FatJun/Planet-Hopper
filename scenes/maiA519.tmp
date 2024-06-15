@@ -17,6 +17,7 @@ position = Vector2(559, 216)
 [node name="PlayerCamera" type="Camera2D" parent="Player" node_paths=PackedStringArray("player")]
 process_callback = 0
 position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 script = ExtResource("2_teub5")
 player = NodePath("..")
 

@@ -63,6 +63,8 @@ func process_gravity() -> void:
 
 
 func apply_gravity():
+	if gravity_direction.is_zero_approx():
+		return
 	up_direction = -gravity_direction
 	rotation = gravity_direction.orthogonal().angle()
 	jump_velocity = jump_velocity.lerp(Vector2.ZERO, air_friction)

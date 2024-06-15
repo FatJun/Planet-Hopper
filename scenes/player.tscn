@@ -1,12 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://cma0cw2jdshwc"]
+[gd_scene load_steps=31 format=3 uid="uid://cma0cw2jdshwc"]
 
 [ext_resource type="Script" path="res://scripts/controllers/player.gd" id="1_kryjb"]
 [ext_resource type="Texture2D" uid="uid://sst6g1xdpab1" path="res://assets/sprites/player/idle.png" id="2_6mg5x"]
 [ext_resource type="Texture2D" uid="uid://cvqtv7efgjs4j" path="res://assets/sprites/player/run.png" id="2_lc5vi"]
+[ext_resource type="Texture2D" uid="uid://bemtnksgsrqjx" path="res://assets/sprites/player/jump.png" id="3_t6pp5"]
+[ext_resource type="Script" path="res://scripts/fsm/player/fsm.gd" id="4_ocfqr"]
+[ext_resource type="Script" path="res://scripts/fsm/player/idle_state.gd" id="5_1eu08"]
+[ext_resource type="Script" path="res://scripts/fsm/player/jump_state.gd" id="6_fvtck"]
+[ext_resource type="Script" path="res://scripts/fsm/player/run_state.gd" id="7_o4v2f"]
+[ext_resource type="Script" path="res://scripts/shared/gravity_zone.gd" id="9_ari4w"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kke04"]
-radius = 5.0
-height = 14.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlhuc"]
+size = Vector2(11, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oh55w"]
 atlas = ExtResource("2_6mg5x")
@@ -23,6 +28,30 @@ region = Rect2(160, 0, 80, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cbkk"]
 atlas = ExtResource("2_6mg5x")
 region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxdu0"]
+atlas = ExtResource("3_t6pp5")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nruf3"]
+atlas = ExtResource("3_t6pp5")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ueps"]
+atlas = ExtResource("3_t6pp5")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpnjs"]
+atlas = ExtResource("3_t6pp5")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pstm6"]
+atlas = ExtResource("3_t6pp5")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqowq"]
+atlas = ExtResource("3_t6pp5")
+region = Rect2(400, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yu8ct"]
 atlas = ExtResource("2_lc5vi")
@@ -75,7 +104,25 @@ animations = [{
 "name": &"idle",
 "speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxdu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nruf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ueps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpnjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pstm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqowq")
+}],
 "loop": false,
 "name": &"jump",
 "speed": 10.0
@@ -110,15 +157,41 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("collision", "sprite")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_e6ld6"]
+radius = 19.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_zone", "collision", "sprite")]
 script = ExtResource("1_kryjb")
+gravity_zone = NodePath("GravityZone")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_kke04")
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_dlhuc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cqtns")
-animation = &"idle"
+animation = &"jump"
 autoplay = "idle"
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("controller", "cur_state")]
+script = ExtResource("4_ocfqr")
+controller = NodePath("..")
+cur_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="FSM"]
+script = ExtResource("5_1eu08")
+
+[node name="JUMP" type="Node" parent="FSM"]
+script = ExtResource("6_fvtck")
+
+[node name="RUN" type="Node" parent="FSM"]
+script = ExtResource("7_o4v2f")
+
+[node name="GravityZone" type="Area2D" parent="."]
+script = ExtResource("9_ari4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityZone"]
+shape = SubResource("CircleShape2D_e6ld6")
+debug_color = Color(0.700003, 0.276725, 0.999281, 0.42)

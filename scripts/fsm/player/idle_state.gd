@@ -1,40 +1,23 @@
-class_name PlayerFSM
-extends FSM
+extends State
 
 
-@export var controller: PlayerController
-
-@onready var states := {
-	IDLE: $IDLE,
-	RUN: $RUN,
-	JUMP: $JUMP,
-}
-
-enum {
-	IDLE,
-	RUN,
-	JUMP,
-}
-
-const ANIMATIONS = {
-	IDLE: "idle",
-	RUN: "run",
-	JUMP: "jump",
-}
-
-var is_moving: bool:
-	get = get_is_moving
-var is_idle: bool:
-	get = get_is_idle
+@onready var fsm: PlayerFSM = get_parent()
 
 
-func play_animation(animation_name: String):
-	controller.sprite.play(animation_name)
+func enter() -> void:
+	fsm.controller.jumps_in_row = 0
+	fsm.play_anim(fsm.IDLE)
 
 
-func get_is_moving():
-	return controller.is_on_floor() and controller.x_axis != 0
+func pr_update(delta: float) -> void:
+	fsm.controller.update_x_axis()
 
 
-func get_is_idle():
-	return controller.is_on_floor() and controller.x_axis == 0
+func ph_update(delta: float) -> void:
+	if Input.is_action_just_pressed("jump") and fsm.controller.is_can_jump:
+		fsm.change_state(fsm.states[fsm.JUMP])
+	elif fsm.is_moving:
+		fsm.change_state(fsm.states[fsm.RUN])
+	fsm.controller.update_to_face_direction()
+	fsm.controller.update_all_physics()
+	fsm.controller.move_and_slide()

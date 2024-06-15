@@ -5,10 +5,12 @@ extends BaseController
 @export_category("Gravity Settings")
 @export var mass := 45.
 @export var air_friction := 0.25
+@export var gravity_zone: GravityZone
 
 @export_category("Jump Settings")
 @export var max_jumps_in_row := 1
 @export var jump_force := 1000
+
 
 
 var gravity_direction: Vector2:
@@ -27,6 +29,11 @@ var jump_velocity := Vector2.ZERO
 var jumps_in_row := 0
 
 
+func _ready():
+	gravity_zone.area_entered.connect(_on_area_entered)
+	gravity_zone.area_exited.connect(_on_area_exited)
+
+
 func update_direction(axis: float = 0.) -> void:
 	direction = Vector2.RIGHT.rotated(rotation) * axis
 
@@ -34,11 +41,15 @@ func update_direction(axis: float = 0.) -> void:
 func flip(axis: float = 0.) -> void:
 	if not axis:
 		return
-	scale.x = -scale.y if axis < 0 else scale.y
+	sprite.flip_h = axis < 0
 
 
 func get_is_can_jump() -> bool:
 	return is_on_floor() or max_jumps_in_row > jumps_in_row
+
+
+func get_normalized_vertical_velocity() -> float:
+	return up_direction.dot(velocity.normalized())
 
 
 func process_gravity() -> void:
@@ -66,8 +77,7 @@ func apply_movement() -> void:
 
 
 func apply_jump() -> void:
-	if not is_can_jump:
-		return
+	assert(is_can_jump)
 	jumps_in_row += 1
 	jump_velocity = up_direction * jump_force
 
@@ -95,11 +105,11 @@ func update_all_physics():
 	update_velocity()
 
 
-func _on_apply_gravity_zone_area_entered(area: Area2D):
+func _on_area_entered(area: Area2D):
 	if area.is_in_group(Gravity.GRAVITY_ZONE_GROUP):
 		gravity_objects.append(area.get_parent())
 
 
-func _on_apply_gravity_zone_area_exited(area: Area2D):
+func _on_area_exited(area: Area2D):
 	if area.is_in_group(Gravity.GRAVITY_ZONE_GROUP):
 		gravity_objects.erase(area.get_parent())

@@ -18,6 +18,7 @@ radius = 32.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_ahkv4")]
 position = Vector2(319, 115)
+_current_fuel_units = 2
 max_mission_progress = 1
 space_ship = NodePath("../SpaceShip")
 mass = 160.0
@@ -43,32 +44,32 @@ texture = ExtResource("5_lomnu")
 [node name="Fuel" parent="." instance=ExtResource("5_84m4w")]
 position = Vector2(273, 134)
 rotation = -0.716839
-lifetime = 10.0
+lifetime = 7.0
 
 [node name="Fuel2" parent="." instance=ExtResource("5_84m4w")]
 position = Vector2(266, 218)
 rotation = -2.21121
-lifetime = 10.0
+lifetime = 7.0
 
 [node name="Heart" parent="." instance=ExtResource("6_0lnni")]
 position = Vector2(365, 136)
 rotation = 0.772745
-lifetime = 10.0
+lifetime = 7.0
 
 [node name="Scientist" parent="." instance=ExtResource("7_nrcwy")]
 position = Vector2(372, 217)
 rotation = 2.28127
-lifetime = 60.0
+lifetime = 30.0
 
 [node name="Heart2" parent="." instance=ExtResource("6_0lnni")]
 position = Vector2(385, 226)
 rotation = 2.22266
 scale = Vector2(0.25, 0.25)
-lifetime = 70.0
+lifetime = 40.0
 
 [node name="FlyEye" parent="." instance=ExtResource("8_11vtr")]
 position = Vector2(403, 183)
-rotation = -1.54778
+rotation = 1.64934
 
 [node name="SpaceShip" parent="." instance=ExtResource("9_r4651")]
 position = Vector2(322, 251)

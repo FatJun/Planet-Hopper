@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="5_ma5cc"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="6_dx6ju"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="7_41rsl"]
-[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="8_hm5sq"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="8_hm5sq"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="9_gq70c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ibcw"]
@@ -18,6 +18,7 @@ radius = 32.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_xw0iv")]
 position = Vector2(319, 116)
+_current_fuel_units = 2
 max_mission_progress = 1
 space_ship = NodePath("../SpaceShip")
 mass = 160.0
@@ -42,31 +43,27 @@ texture = ExtResource("5_dq4jo")
 [node name="Fuel" parent="." instance=ExtResource("5_ma5cc")]
 position = Vector2(267, 139)
 rotation = -0.796613
-lifetime = 10.0
+lifetime = 7.0
 
 [node name="Heart" parent="." instance=ExtResource("7_41rsl")]
 position = Vector2(278, 228)
 rotation = -2.44697
-lifetime = 10.0
+lifetime = 7.0
 
 [node name="Scientist" parent="." instance=ExtResource("6_dx6ju")]
 position = Vector2(372, 216)
 rotation = 2.25829
-lifetime = 60.0
+lifetime = 30.0
 
 [node name="Fuel2" parent="." instance=ExtResource("5_ma5cc")]
 position = Vector2(386, 226)
 rotation = 2.26141
 scale = Vector2(0.25, 0.25)
-lifetime = 70.0
+lifetime = 40.0
 
 [node name="Slime3" parent="." instance=ExtResource("8_hm5sq")]
 position = Vector2(392, 181)
 rotation = 1.57134
-
-[node name="Slime2" parent="." instance=ExtResource("8_hm5sq")]
-position = Vector2(248, 179)
-rotation = 4.68081
 
 [node name="SpaceShip" parent="." instance=ExtResource("9_gq70c")]
 position = Vector2(319, 249)

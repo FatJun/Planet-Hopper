@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_m7qqw"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_0cwes"]
 [ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="9_4y2fw"]
-[ext_resource type="PackedScene" path="res://scenes/space_ship.tscn" id="10_ck7r5"]
+[ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="10_ck7r5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ej1vf"]
 radius = 32.0
@@ -71,13 +71,13 @@ rotation = 1.59437
 scale = Vector2(0.2, 0.2)
 lifetime = 100.0
 
-[node name="Mine" parent="." instance=ExtResource("9_4y2fw")]
+[node name="Mine4" parent="." instance=ExtResource("9_4y2fw")]
 position = Vector2(454, 222)
 
 [node name="Mine2" parent="." instance=ExtResource("9_4y2fw")]
 position = Vector2(457, 140)
 
-[node name="Mine3" parent="." instance=ExtResource("9_4y2fw")]
+[node name="Mine" parent="." instance=ExtResource("9_4y2fw")]
 position = Vector2(182, 139)
 
 [node name="SpaceShip" parent="." instance=ExtResource("10_ck7r5")]

@@ -2,7 +2,7 @@ class_name SpaceShip
 extends Node2D
 
 
-@onready var landing_zone: Area2D = $Area2D
+@export var landing_zone: Area2D
 
 
 func _ready():

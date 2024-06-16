@@ -218,8 +218,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_ub51g"]
 radius = 48.0937
 
-[node name="SpaceShip" type="Node2D"]
+[node name="SpaceShip" type="Node2D" node_paths=PackedStringArray("landing_zone")]
 script = ExtResource("1_n147v")
+landing_zone = NodePath("Area2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6bdgh")

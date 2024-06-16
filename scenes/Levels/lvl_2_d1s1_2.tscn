@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_0lnni"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_nrcwy"]
 [ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="8_11vtr"]
-[ext_resource type="PackedScene" path="res://scenes/space_ship.tscn" id="9_r4651"]
+[ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="9_r4651"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8b215"]
 radius = 32.0

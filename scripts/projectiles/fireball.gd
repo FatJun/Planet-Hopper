@@ -56,7 +56,7 @@ func _on_life_timer_timeout():
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		body.take_damage(self, damage, knockback_force)
-		call_deferred("destroy")
+	call_deferred("destroy")
 	
 
 

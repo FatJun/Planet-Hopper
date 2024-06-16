@@ -5,4 +5,5 @@ extends PickableItem
 
 
 func apply_effect(player: PlayerController):
-	player.current_fuel_units += fuel_units
+	player.current_mission_progress += mission_progress
+

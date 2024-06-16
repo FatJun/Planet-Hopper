@@ -7,14 +7,10 @@ extends AnimatedSprite2D
 
 
 func _ready():
-	player_ui.player.health_changed.connect(_on_health_changed)
+	player_ui.player.health_changed.connect(update)
 	update()
 
 
 func update():
 	frame = player_ui.player.current_health
 	anim_player.play("player_ui/pop")
-
-
-func _on_health_changed():
-	update()

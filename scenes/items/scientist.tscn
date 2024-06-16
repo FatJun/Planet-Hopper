@@ -39,28 +39,32 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qoko3"]
 size = Vector2(17, 19)
 
-[node name="Scientist" type="Node2D"]
+[node name="Scientist" type="Node2D" node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player")]
 script = ExtResource("1_02g7k")
-fuel_units = null
-lifetime = null
+lifetime_bar = NodePath("PrimaryBar")
+pickable_zone = NodePath("Area2D")
+collision = NodePath("Area2D/CollisionShape2D")
+anim_player = NodePath("AnimatedSprite2D/AnimationPlayer")
 
-[node name="PrimaryBar" parent="." instance=ExtResource("1_0ebvb")]
+[node name="PrimaryBar" parent="." node_paths=PackedStringArray("item") instance=ExtResource("1_0ebvb")]
 offset_left = -9.0
 offset_top = -14.0
 offset_right = 8.0
 offset_bottom = -13.0
 script = ExtResource("2_edhus")
+item = NodePath("..")
 min_life_time = 0.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hhn84")
-frame_progress = 0.0262906
+autoplay = "default"
+frame_progress = 0.629702
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {

@@ -12,6 +12,5 @@ func _ready():
 
 
 func update():
-	print(1)
 	mission_complete.update(player_ui.player.current_mission_progress)
 	mission_empty.update(player_ui.player.max_mission_progress)

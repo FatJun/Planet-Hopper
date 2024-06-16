@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxjrlfhf6xyej"]
+[gd_scene load_steps=11 format=3 uid="uid://cxjrlfhf6xyej"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_scqom"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_wsxr0"]
@@ -8,12 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_l0sti"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="7_0x1ns"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="8_4vhyj"]
+[ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="9_3so0x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sb5mk"]
+radius = 31.8841
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_scqom")]
 position = Vector2(724, 176)
-max_mission_progress = 1
+max_mission_progress = 2
 
 [node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("2_wsxr0")]
 player = NodePath("..")
@@ -30,6 +34,9 @@ position = Vector2(490, 256)
 scale = Vector2(5.52, 5.52)
 mass = 2e+06
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_sb5mk")
+
 [node name="Heart" parent="." instance=ExtResource("6_l0sti")]
 position = Vector2(403, 85)
 
@@ -39,3 +46,18 @@ position = Vector2(323, 114)
 [node name="Scientist" parent="." instance=ExtResource("8_4vhyj")]
 position = Vector2(323, 171)
 rotation = -1.08797
+lifetime = 10.0
+
+[node name="Scientist2" parent="." instance=ExtResource("8_4vhyj")]
+position = Vector2(638, 370)
+rotation = 2.23537
+
+[node name="Scientist3" parent="." instance=ExtResource("8_4vhyj")]
+position = Vector2(393, 416)
+rotation = -2.46153
+
+[node name="Lizard" parent="." instance=ExtResource("9_3so0x")]
+position = Vector2(364, 88)
+
+[node name="Lizard2" parent="." instance=ExtResource("9_3so0x")]
+position = Vector2(134, 281)

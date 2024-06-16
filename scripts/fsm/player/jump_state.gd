@@ -9,11 +9,11 @@ func enter() -> void:
 	fsm.play_anim(fsm.JUMP)
 
 
-func pr_update(delta: float) -> void:
+func pr_update(_delta: float) -> void:
 	fsm.controller.update_x_axis()
 
 
-func ph_update(delta: float) -> void:
+func ph_update(_delta: float) -> void:
 	if Input.is_action_just_released("jump"):
 		if not fsm.controller.jetpack_timer.is_stopped():
 			fsm.controller.cancel_jetpack()

@@ -14,7 +14,7 @@ func _ready():
 	pickable_zone.body_entered.connect(_on_entered_pickable_zone)
 
 
-func apply_effect(player: PlayerController):
+func apply_effect(_player: PlayerController):
 	pass
 
 
@@ -41,4 +41,4 @@ func pickup(player: PlayerController):
 
 func _on_entered_pickable_zone(body):
 	if body.is_in_group("player"):
-		pickup(body)
+		call_deferred("pickup", body)

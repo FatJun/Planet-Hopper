@@ -8,6 +8,7 @@ signal mission_progress_changed
 @export_category("JetPack Settings")
 @export var max_fuel_units := 4
 @export var min_fuel_units := 0
+@export var _current_fuel_units := 0
 @export var jetpack_force := 60
 @export var jetpack_accel := .2
 @export var jetpack_working_time := 1.5
@@ -25,7 +26,6 @@ signal mission_progress_changed
 var jetpack_timer: Timer
 var jetpack_is_reloading := false
 var jetpack_velocity := Vector2.ZERO
-var _current_fuel_units := 4
 var current_fuel_units: int:
 	get = get_current_fuel_units,
 	set = set_current_fuel_units
@@ -72,7 +72,7 @@ func get_current_health() -> int:
 func get_is_can_jump() -> bool:
 	var is_enough_jumps := max_jumps_in_row > jumps_in_row
 	var is_jetpack := current_fuel_units > 0 and not jetpack_is_reloading
-	return is_on_floor() or is_enough_jumps or is_jetpack
+	return is_enough_jumps or is_jetpack
 
 
 func reset_jumps():
@@ -122,6 +122,10 @@ func apply_jump() -> void:
 	else:
 		jumps_in_row += 1
 		jump_velocity += up_direction * jump_force
+
+
+func take_damage(value: int):
+	current_health -= value
 
 
 func update_x_axis():

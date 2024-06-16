@@ -32,7 +32,9 @@ var is_idle: bool:
 var is_attacking: bool:
 	get:
 		return controller.enemies_in_vision_zone.size() > 0
-
+var is_turning_around: bool:
+	get:
+		return controller.collision_ray.is_colliding()
 
 func play_anim(animation: int) -> void:
 	controller.sprite.play(ANIMATIONS[animation])

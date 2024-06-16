@@ -51,6 +51,12 @@ jump={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Players"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_14="AI Walls"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

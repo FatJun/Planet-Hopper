@@ -6,11 +6,13 @@ extends Area2D
 @export var damage := 3
 @export var speed := 200
 @export var sprite: AnimatedSprite2D
+@export var knockback_force := 800.
 
 var gravity_objects: Array[GravityObject] = []
 var gravity_direction_ := Vector2.ZERO
 var direction := Vector2.ZERO
 var life_timer: Timer
+var axis := 0.
 
 
 func _ready():
@@ -29,7 +31,7 @@ func _physics_process(delta):
 	process_gravity()
 	rotation = gravity_direction_.orthogonal().angle()
 	direction = Vector2.RIGHT.rotated(rotation)
-	position += direction * speed * delta
+	position += (direction * axis) * speed * delta
 
 
 func process_gravity() -> void:
@@ -53,7 +55,7 @@ func _on_life_timer_timeout():
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		body.take_damage(damage)
+		body.take_damage(self, damage, knockback_force)
 		call_deferred("destroy")
 	
 

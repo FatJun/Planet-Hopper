@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxjrlfhf6xyej"]
+[gd_scene load_steps=12 format=3 uid="uid://cxjrlfhf6xyej"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_scqom"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_wsxr0"]
@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_l0sti"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="7_0x1ns"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="8_4vhyj"]
-[ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="9_3so0x"]
+[ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="11_7s5qa"]
+[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="11_ctgex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sb5mk"]
 radius = 31.8841
@@ -56,8 +57,8 @@ rotation = 2.23537
 position = Vector2(393, 416)
 rotation = -2.46153
 
-[node name="Lizard" parent="." instance=ExtResource("9_3so0x")]
-position = Vector2(364, 88)
+[node name="FlyEye" parent="." instance=ExtResource("11_7s5qa")]
+position = Vector2(765, 453)
 
-[node name="Lizard2" parent="." instance=ExtResource("9_3so0x")]
-position = Vector2(134, 281)
+[node name="Mine" parent="." instance=ExtResource("11_ctgex")]
+position = Vector2(251, 306)

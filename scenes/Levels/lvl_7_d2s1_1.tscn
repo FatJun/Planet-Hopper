@@ -1,16 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://cevsrli6ltuld"]
+[gd_scene load_steps=14 format=3 uid="uid://cevsrli6ltuld"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_g53in"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_c06oj"]
 [ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_qxmub"]
 [ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="4_e5erw"]
+[ext_resource type="Texture2D" uid="uid://cmixu337rexls" path="res://assets/sprites/planets/lvl7.png" id="5_4fiqi"]
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="5_27pcl"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_d3dh4"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_cas8u"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_yxumn"]
 [ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="9_dm84w"]
 [ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="10_cyihi"]
-[ext_resource type="PackedScene" path="res://scenes/space_ship.tscn" id="11_ortj2"]
+[ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="11_ortj2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pk3gt"]
 radius = 32.0
@@ -19,6 +20,7 @@ radius = 32.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_g53in")]
 position = Vector2(319, 116)
+max_mission_progress = 1
 space_ship = NodePath("../SpaceShip")
 mass = 160.0
 jump_force = 1900
@@ -35,6 +37,10 @@ scale = Vector2(1.75, 1.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_pk3gt")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-0.571429, -0.571429)
+texture = ExtResource("5_4fiqi")
 
 [node name="Fuel" parent="." instance=ExtResource("5_27pcl")]
 position = Vector2(268, 138)

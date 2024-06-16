@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://2hpf35q181mo"]
+[gd_scene load_steps=13 format=3 uid="uid://2hpf35q181mo"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_t5ycn"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_gm5rg"]
 [ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_ls0oy"]
 [ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="4_ylmq1"]
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="5_1i56k"]
+[ext_resource type="Texture2D" uid="uid://c3ke6cjhh3rmn" path="res://assets/sprites/planets/3.png" id="5_3uhph"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_2vbc7"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_m7qqw"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_0cwes"]
@@ -18,6 +19,7 @@ radius = 32.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_t5ycn")]
 position = Vector2(320, 60)
+max_mission_progress = 1
 space_ship = NodePath("../SpaceShip")
 mass = 320.0
 jump_force = 1800
@@ -34,6 +36,10 @@ scale = Vector2(3.5, 3.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_ej1vf")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-0.571429, -0.571429)
+texture = ExtResource("5_3uhph")
 
 [node name="Fuel" parent="." instance=ExtResource("5_1i56k")]
 position = Vector2(373, 69)

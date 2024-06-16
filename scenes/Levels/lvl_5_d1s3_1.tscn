@@ -1,15 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqkeu1tf7yh7u"]
+[gd_scene load_steps=15 format=3 uid="uid://cpadw07kme1a"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_xytdg"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_y1uum"]
 [ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_6l204"]
 [ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="4_6nyt2"]
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="5_iu8v3"]
+[ext_resource type="Texture2D" uid="uid://bjbobhbkdixyj" path="res://assets/sprites/planets/lvl5_1.png" id="5_lwgvn"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_sa7sl"]
+[ext_resource type="Texture2D" uid="uid://dt2lvji23fygv" path="res://assets/sprites/planets/lvl3.png" id="6_vb7x1"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="7_2uy2g"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="8_ipomp"]
 [ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="9_4xpkw"]
-[ext_resource type="PackedScene" path="res://scenes/space_ship.tscn" id="10_pewu8"]
+[ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="10_pewu8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkquk"]
 radius = 32.0
@@ -21,6 +23,7 @@ radius = 32.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_xytdg")]
 position = Vector2(319, 123)
+max_mission_progress = 1
 space_ship = NodePath("../SpaceShip")
 mass = 480.0
 jump_force = 1600
@@ -38,6 +41,10 @@ scale = Vector2(5.25, 5.25)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_bkquk")
 
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-0.761905, -0.761905)
+texture = ExtResource("5_lwgvn")
+
 [node name="StaticBody2D2" parent="." instance=ExtResource("4_6nyt2")]
 position = Vector2(624, 4)
 scale = Vector2(1.75, 1.75)
@@ -45,6 +52,9 @@ mass = 50000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource("CircleShape2D_ryf0l")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+texture = ExtResource("6_vb7x1")
 
 [node name="Fuel" parent="." instance=ExtResource("5_iu8v3")]
 position = Vector2(394, 136)
@@ -101,29 +111,17 @@ lifetime = 130.0
 position = Vector2(164, 191)
 rotation = -0.946781
 
-[node name="Slime2" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("9_4xpkw")]
+[node name="Slime4" parent="." instance=ExtResource("9_4xpkw")]
 position = Vector2(451, 174)
 rotation = 0.794245
-collision_ray = NodePath("../Slime/RayCast2D")
-gravity_zone = NodePath("../Slime/GravityZone")
-collision = NodePath("../Slime/CollisionShape2D")
-sprite = NodePath("../Slime/AnimatedSprite2D")
 
-[node name="Slime3" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("9_4xpkw")]
+[node name="Slime2" parent="." instance=ExtResource("9_4xpkw")]
 position = Vector2(253, 476)
-rotation = 3.51403
-collision_ray = NodePath("../Slime/RayCast2D")
-gravity_zone = NodePath("../Slime/GravityZone")
-collision = NodePath("../Slime/CollisionShape2D")
-sprite = NodePath("../Slime/AnimatedSprite2D")
+rotation = -2.76916
 
-[node name="Slime4" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("9_4xpkw")]
+[node name="Slime5" parent="." instance=ExtResource("9_4xpkw")]
 position = Vector2(588, -60)
-rotation = 5.75371
-collision_ray = NodePath("../Slime/RayCast2D")
-gravity_zone = NodePath("../Slime/GravityZone")
-collision = NodePath("../Slime/CollisionShape2D")
-sprite = NodePath("../Slime/AnimatedSprite2D")
+rotation = -0.529476
 
 [node name="SpaceShip" parent="." instance=ExtResource("10_pewu8")]
 position = Vector2(328, 485)

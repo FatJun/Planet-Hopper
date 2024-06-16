@@ -40,6 +40,9 @@ var current_health: int:
 	get = get_current_health,
 	set = set_current_health
 
+
+var knockback_velocity := Vector2.ZERO
+
 var x_axis := 0.
 
 
@@ -96,6 +99,8 @@ func apply_gravity():
 func update_velocity():
 	super.update_velocity()
 	velocity += jetpack_velocity
+	velocity += knockback_velocity
+	knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, air_friction)
 
 
 func get_current_fuel_units() -> int:
@@ -124,7 +129,9 @@ func apply_jump() -> void:
 		jump_velocity += up_direction * jump_force
 
 
-func take_damage(value: int):
+func take_damage(obj: Node2D, value: int, knockback_force: float):
+	var knockback_direction = -global_position.direction_to(obj.global_position)
+	knockback_velocity = knockback_direction * knockback_force
 	current_health -= value
 
 

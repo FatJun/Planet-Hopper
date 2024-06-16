@@ -39,6 +39,7 @@ func ph_update(_delta: float) -> void:
 func _on_animation_finished():
 	fsm.play_anim(fsm.IDLE)
 	var projectile = Projectile.instantiate()
+	projectile.axis = prev_axis
 	add_child(projectile)
 	projectile.global_transform = muzzle.global_transform
 	attack_timer.start()

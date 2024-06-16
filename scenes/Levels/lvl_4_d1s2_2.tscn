@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_4waev"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_hctls"]
 [ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="8_c6udi"]
-[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="9_ps7qf"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="9_ps7qf"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="10_l2ngm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfsb2"]
@@ -19,6 +19,7 @@ size = Vector2(177.004, 154.568)
 
 [node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_38cww")]
 position = Vector2(321, 59)
+_current_fuel_units = 2
 max_mission_progress = 1
 space_ship = NodePath("../SpaceShip")
 mass = 320.0
@@ -44,33 +45,33 @@ texture = ExtResource("5_l3fbx")
 [node name="Fuel" parent="." instance=ExtResource("5_ai11k")]
 position = Vector2(372, 67)
 rotation = 0.473497
-lifetime = 15.0
+lifetime = 10.0
 
 [node name="Fuel2" parent="." instance=ExtResource("5_ai11k")]
 position = Vector2(242, 91)
 rotation = -0.646097
-lifetime = 15.0
+lifetime = 10.0
 
 [node name="Fuel3" parent="." instance=ExtResource("5_ai11k")]
 position = Vector2(255, 279)
 rotation = -2.45761
-lifetime = 15.0
+lifetime = 10.0
 
 [node name="Heart" parent="." instance=ExtResource("6_4waev")]
 position = Vector2(410, 274)
 rotation = 2.33682
-lifetime = 15.0
+lifetime = 10.0
 
 [node name="Scientist" parent="." instance=ExtResource("7_hctls")]
 position = Vector2(213, 222)
 rotation = -1.96414
-lifetime = 90.0
+lifetime = 30.0
 
 [node name="Heart2" parent="." instance=ExtResource("6_4waev")]
 position = Vector2(199, 229)
 rotation = -1.98094
 scale = Vector2(0.25, 0.25)
-lifetime = 100.0
+lifetime = 40.0
 
 [node name="FlyEye" parent="." instance=ExtResource("8_c6udi")]
 position = Vector2(180, 145)

@@ -87,7 +87,7 @@ animations = [{
 radius = 9.05539
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wn5o"]
-radius = 151.003
+radius = 85.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kulgn"]
 radius = 19.0263
@@ -128,6 +128,7 @@ shape = SubResource("CircleShape2D_kulgn")
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("controller", "cur_state")]
 script = ExtResource("3_d88vl")
+time_till_exposion = 3.0
 controller = NodePath("..")
 cur_state = NodePath("IDLE")
 

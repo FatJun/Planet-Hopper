@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcgkxymyvle3r"]
+[gd_scene load_steps=10 format=3 uid="uid://dcgkxymyvle3r"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_rpdf3"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_hnxy0"]
@@ -7,13 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="5_x4su0"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_1w17v"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_72dek"]
+[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="8_ol0oh"]
+[ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="9_b5ynv"]
 
 [node name="lvl_8_d2s2_1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_rpdf3")]
 position = Vector2(320, 60)
-_current_fuel_units = 4
-max_mission_progress = 1
 mass = 320.0
 jump_force = 1800
 
@@ -57,3 +57,21 @@ position = Vector2(199, 246)
 rotation = -2.12783
 scale = Vector2(0.25, 0.25)
 lifetime = 70.0
+
+[node name="Mine" parent="." instance=ExtResource("8_ol0oh")]
+position = Vector2(458, 176)
+
+[node name="Mine2" parent="." instance=ExtResource("8_ol0oh")]
+position = Vector2(239, 278)
+
+[node name="FlyEye" parent="." instance=ExtResource("9_b5ynv")]
+position = Vector2(150, 105)
+rotation = -0.594325
+
+[node name="FlyEye2" parent="." node_paths=PackedStringArray("collision_raycast", "gravity_zone", "collision", "sprite") instance=ExtResource("9_b5ynv")]
+position = Vector2(444, 289)
+rotation = 2.53984
+collision_raycast = NodePath("../FlyEye/RayCast2D")
+gravity_zone = NodePath("../FlyEye/GravityZone")
+collision = NodePath("../FlyEye/CollisionShape2D")
+sprite = NodePath("../FlyEye/AnimatedSprite2D")

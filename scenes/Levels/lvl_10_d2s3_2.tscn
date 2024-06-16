@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3d256pwoipm6"]
+[gd_scene load_steps=19 format=3 uid="uid://c3d256pwoipm6"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_vgjy7"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_nifnm"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_wh3cm"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="9_whf02"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="10_ktjv7"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="11_2ohvk"]
+[ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="12_srv03"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxdwd"]
 radius = 32.0
@@ -23,11 +25,16 @@ radius = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cuctu"]
 radius = 32.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwr61"]
+size = Vector2(60.3554, 70.5905)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35eoi"]
+size = Vector2(211.147, 123.879)
+
 [node name="lvl_10_d2s3_2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_vgjy7")]
 position = Vector2(320, 122)
-_current_fuel_units = 4
 mass = 480.0
 jump_force = 1600
 
@@ -155,3 +162,65 @@ lifetime = 80.0
 position = Vector2(-782, 614)
 scale = Vector2(0.25, 0.25)
 lifetime = 90.0
+
+[node name="Slime" parent="." instance=ExtResource("11_2ohvk")]
+position = Vector2(-741, 506)
+rotation = 0.457916
+
+[node name="Slime2" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_2ohvk")]
+position = Vector2(-424, 680)
+rotation = 0.457916
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Slime3" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_2ohvk")]
+position = Vector2(-564, 897)
+rotation = -2.43041
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Slime4" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_2ohvk")]
+position = Vector2(-200, 513)
+rotation = -0.933422
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Slime5" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_2ohvk")]
+position = Vector2(-16, 484)
+rotation = -5.62288
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Slime6" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_2ohvk")]
+position = Vector2(80, 793)
+rotation = -6.80831
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Lizard" parent="." instance=ExtResource("12_srv03")]
+position = Vector2(491, 366)
+rotation = 1.7669
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(258.175, 443.71)
+rotation = 0.338045
+shape = SubResource("RectangleShape2D_cwr61")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(104.707, 224.859)
+rotation = 0.338045
+shape = SubResource("RectangleShape2D_35eoi")

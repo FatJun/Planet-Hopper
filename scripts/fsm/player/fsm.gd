@@ -9,6 +9,7 @@ extends FSM
 	IDLE: $IDLE,
 	RUN: $RUN,
 	JUMP: $JUMP,
+	DEATH: $DEATH,
 	ENTER_IN_SPACESHIP: $ENTER_IN_SPACESHIP,
 }
 
@@ -16,6 +17,7 @@ enum {
 	IDLE,
 	RUN,
 	JUMP,
+	DEATH,
 	ENTER_IN_SPACESHIP,
 }
 
@@ -23,6 +25,7 @@ const ANIMATIONS = {
 	IDLE: "idle",
 	RUN: "run",
 	JUMP: "jump",
+	DEATH: "",
 	ENTER_IN_SPACESHIP: "",
 }
 
@@ -62,3 +65,13 @@ func get_is_jumping() -> bool:
 
 func get_is_falling() -> bool:
 	return controller.is_on_floor() and controller.get_normalized_vertical_velocity() < 0
+
+
+func _process(delta):
+	super._process(delta)
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
+
+
+func _on_player_dead():
+	change_state(states[DEATH])

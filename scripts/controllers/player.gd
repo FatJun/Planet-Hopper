@@ -4,6 +4,7 @@ extends PlatformerController
 signal fuel_units_changed
 signal health_changed
 signal mission_progress_changed
+signal dead
 
 @export_category("JetPack Settings")
 @export var max_fuel_units := 4
@@ -85,6 +86,8 @@ func get_current_mission_progress() -> int:
 func set_current_health(new_value: int) -> void:
 	_current_health = clamp(new_value, min_health, max_health)
 	health_changed.emit()
+	if current_health <= 0:
+		dead.emit()
 
 
 func get_current_health() -> int:

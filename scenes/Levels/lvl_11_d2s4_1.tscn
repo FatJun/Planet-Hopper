@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=3 uid="uid://ckrn2dqcmr7i1"]
+
+[ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_kvqik"]
+[ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_qrtt6"]
+[ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_u56dn"]
+[ext_resource type="PackedScene" uid="uid://mhgtmxrr11vw" path="res://scenes/Planet shapes/planet_s4_h1.tscn" id="4_ddgyk"]
+[ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="5_0qlox"]
+[ext_resource type="PackedScene" uid="uid://clspwvn404dek" path="res://scenes/Planet shapes/mountain.tscn" id="6_drq54"]
+[ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="7_27gtr"]
+[ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="8_cldtv"]
+[ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="9_2iedx"]
+[ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="10_5ccw7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8wm57"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a4moi"]
+radius = 32.0
+
+[node name="lvl_11_d2s4_1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_kvqik")]
+position = Vector2(321, 118)
+_current_fuel_units = 4
+max_mission_progress = 1
+mass = 640.0
+jump_force = 1500
+
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("2_qrtt6")]
+player = NodePath("..")
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_u56dn")]
+player = NodePath("../Player")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_ddgyk")]
+position = Vector2(320, 350)
+rotation = 1.91986
+mass = 250000.0
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("5_0qlox")]
+position = Vector2(-59, 101)
+scale = Vector2(1.75, 1.75)
+mass = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_8wm57")
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("5_0qlox")]
+position = Vector2(757, 472)
+scale = Vector2(1.75, 1.75)
+mass = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("CircleShape2D_a4moi")
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("6_drq54")]
+position = Vector2(249, 467)
+rotation = 2.18761
+
+[node name="Fuel" parent="." instance=ExtResource("7_27gtr")]
+position = Vector2(120, 227)
+rotation = -1.06785
+lifetime = 26.0
+
+[node name="Fuel2" parent="." instance=ExtResource("7_27gtr")]
+position = Vector2(511, 211)
+rotation = 1.00017
+lifetime = 26.0
+
+[node name="Fuel3" parent="." instance=ExtResource("7_27gtr")]
+position = Vector2(545, 420)
+rotation = 1.9146
+lifetime = 26.0
+
+[node name="Fuel4" parent="." instance=ExtResource("7_27gtr")]
+position = Vector2(-17, 49)
+rotation = 0.607028
+lifetime = 26.0
+
+[node name="Fuel5" parent="." instance=ExtResource("7_27gtr")]
+position = Vector2(813, 431)
+rotation = 0.93363
+lifetime = 26.0
+
+[node name="Heart" parent="." instance=ExtResource("8_cldtv")]
+position = Vector2(96, 420)
+rotation = -1.84931
+lifetime = 26.0
+
+[node name="Heart2" parent="." instance=ExtResource("8_cldtv")]
+position = Vector2(271, 581)
+rotation = -2.9381
+lifetime = 26.0
+
+[node name="Timer" parent="." instance=ExtResource("9_2iedx")]
+position = Vector2(451, 542)
+rotation = 2.5079
+lifetime = 26.0
+
+[node name="Timer2" parent="." instance=ExtResource("9_2iedx")]
+position = Vector2(720, 527)
+rotation = -2.46349
+lifetime = 26.0
+
+[node name="Scientist" parent="." instance=ExtResource("10_5ccw7")]
+position = Vector2(-123, 103)
+rotation = -1.53227
+lifetime = 100.0
+
+[node name="Heart3" parent="." instance=ExtResource("8_cldtv")]
+position = Vector2(-140, 104)
+rotation = -1.53227
+scale = Vector2(0.25, 0.25)
+lifetime = 110.0

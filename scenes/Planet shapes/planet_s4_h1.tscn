@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://mhgtmxrr11vw"]
+
+[ext_resource type="Script" path="res://scripts/shared/gravity_object.gd" id="1_y2qiv"]
+[ext_resource type="Script" path="res://scripts/shared/gravity_zone.gd" id="2_lm7kd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlp1t"]
+radius = 1024.0
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_y2qiv")
+mass = 200000.0
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_lm7kd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_jlp1t")
+debug_color = Color(0.776223, 0.152811, 0.99117, 0.42)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(1, 225, 58, 217, 112, 195, 159, 159, 195, 112, 217, 58, 225, 1, 217, -58, 196, -110, 160, -158, 112, -195, 57, -217, 0, -224, -58, -217, -113, -195, -159, -159, -196, -112, -158, -68, -164, -54, -218, -58, -225, 0, -218, 57, -195, 112, -160, 159, -113, 195, -59, 217)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(225, 0, 218, -56, 196, -110, 160, -158, 112, -195, 58, -217, 0, -224, -58, -217, -114, -195, -159, -159, -196, -112, -158, -69, -164, -54, -219, -59, -225, 0, -219, 57, -194, 113, -161, 159, -113, 195, -59, 217, 0, 225, 55, 218, 113, 195, 159, 159, 196, 111, 218, 55)

@@ -28,6 +28,7 @@ radius = 32.0
 [node name="Player" parent="." instance=ExtResource("1_vgjy7")]
 position = Vector2(320, 122)
 _current_fuel_units = 4
+max_mission_progress = 4
 mass = 480.0
 jump_force = 1600
 
@@ -93,65 +94,77 @@ rotation = -1.98631
 lifetime = 26.0
 
 [node name="Fuel4" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(138, 810)
+position = Vector2(180, 874)
+rotation = 1.97456
 lifetime = 26.0
 
 [node name="Fuel5" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(-91, 474)
+position = Vector2(-185, 672)
+rotation = -2.28945
 lifetime = 26.0
 
 [node name="Fuel6" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(-91, 474)
+position = Vector2(26, 617)
+rotation = 1.91004
 lifetime = 26.0
 
 [node name="Fuel7" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(-485, 710)
+position = Vector2(-606, 775)
+rotation = -1.37662
 lifetime = 26.0
 
 [node name="Fuel8" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(-485, 710)
+position = Vector2(-363, 821)
+rotation = 1.89056
 lifetime = 26.0
 
 [node name="Fuel9" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(-774, 500)
+position = Vector2(-779, 638)
+rotation = -3.11369
 lifetime = 26.0
 
 [node name="Timer" parent="." instance=ExtResource("8_wh3cm")]
-position = Vector2(-485, 710)
+position = Vector2(-486, 671)
 lifetime = 26.0
 
 [node name="Scientist" parent="." instance=ExtResource("9_whf02")]
-position = Vector2(147, 891)
+position = Vector2(104, 923)
+rotation = -2.92033
 lifetime = 80.0
 
 [node name="Heart" parent="." instance=ExtResource("10_ktjv7")]
-position = Vector2(147, 891)
+position = Vector2(100, 939)
+rotation = -2.92033
 scale = Vector2(0.25, 0.25)
 lifetime = 90.0
 
 [node name="Scientist2" parent="." instance=ExtResource("9_whf02")]
-position = Vector2(-168, 563)
+position = Vector2(-91, 467)
 lifetime = 80.0
 
 [node name="Heart2" parent="." instance=ExtResource("10_ktjv7")]
-position = Vector2(-168, 563)
+position = Vector2(-91, 451)
 scale = Vector2(0.25, 0.25)
 lifetime = 90.0
 
 [node name="Scientist3" parent="." instance=ExtResource("9_whf02")]
-position = Vector2(-423, 840)
+position = Vector2(-517, 910)
+rotation = -2.86173
 lifetime = 80.0
 
 [node name="Heart3" parent="." instance=ExtResource("10_ktjv7")]
-position = Vector2(-423, 840)
+position = Vector2(-522, 927)
+rotation = -2.86173
 scale = Vector2(0.25, 0.25)
 lifetime = 90.0
 
 [node name="Scientist4" parent="." instance=ExtResource("9_whf02")]
-position = Vector2(-782, 614)
+position = Vector2(-842, 570)
+rotation = -1.55735
 lifetime = 80.0
 
 [node name="Heart4" parent="." instance=ExtResource("10_ktjv7")]
-position = Vector2(-782, 614)
+position = Vector2(-860, 571)
+rotation = -1.55735
 scale = Vector2(0.25, 0.25)
 lifetime = 90.0

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfe48i4yicrim"]
+
+[ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_fp6dy"]
+[ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_20jnd"]
+[ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_af8np"]
+[ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="4_ms35c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p8jjv"]
+radius = 32.0
+
+[node name="lvl_16_d3s3_3" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_fp6dy")]
+position = Vector2(321, 124)
+_current_fuel_units = 4
+max_mission_progress = 3
+mass = 480.0
+jump_force = 1600
+
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("2_20jnd")]
+player = NodePath("..")
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_af8np")]
+player = NodePath("../Player")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_ms35c")]
+position = Vector2(320, 300)
+scale = Vector2(5.25, 5.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_p8jjv")

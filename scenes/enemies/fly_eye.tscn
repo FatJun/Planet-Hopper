@@ -92,10 +92,9 @@ radius = 151.003
 [sub_resource type="CircleShape2D" id="CircleShape2D_kulgn"]
 radius = 19.0263
 
-[node name="FlyEye" type="CharacterBody2D" node_paths=PackedStringArray("collision_raycast", "gravity_zone", "collision", "sprite")]
+[node name="FlyEye" type="CharacterBody2D" node_paths=PackedStringArray("gravity_zone", "collision", "sprite")]
 collision_layer = 2
 script = ExtResource("1_1idfd")
-collision_raycast = NodePath("RayCast2D")
 gravity_zone = NodePath("GravityZone")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("AnimatedSprite2D")

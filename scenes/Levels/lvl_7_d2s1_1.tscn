@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=10 format=3 uid="uid://d05g6efvw2nle"]
-=======
 [gd_scene load_steps=12 format=3 uid="uid://cevsrli6ltuld"]
->>>>>>> 35a98307bf13333c1466cacfdb35dc7d59d4e05b
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_g53in"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_c06oj"]

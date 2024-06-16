@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://m4l6q7djtdkm"]
+[gd_scene load_steps=7 format=3 uid="uid://m4l6q7djtdkm"]
 
 [ext_resource type="Texture2D" uid="uid://di5e1pwfyeip3" path="res://assets/sprites/planet.png" id="1_0ygqg"]
 [ext_resource type="Script" path="res://scripts/shared/gravity_object.gd" id="1_4v60y"]
@@ -19,9 +19,6 @@ animations = [{
 "speed": 30.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8c0if"]
-radius = 32.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlp1t"]
 radius = 147.411
 
@@ -32,9 +29,6 @@ mass = 200000.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_whdst")
 autoplay = "default"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_8c0if")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("3_brjqb")

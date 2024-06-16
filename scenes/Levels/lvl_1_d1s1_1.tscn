@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3ijawvvwowjc"]
+
+[ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_xw0iv"]
+[ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_sxghj"]
+[ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_244cn"]
+[ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="4_u04vx"]
+[ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="5_ma5cc"]
+[ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="6_dx6ju"]
+[ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="7_41rsl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ibcw"]
+radius = 32.0
+
+[node name="Lvl 1_D1S1_1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_xw0iv")]
+position = Vector2(319, 116)
+max_mission_progress = 1
+mass = 160.0
+jump_force = 1900
+
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("2_sxghj")]
+player = NodePath("..")
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_244cn")]
+player = NodePath("../Player")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_u04vx")]
+position = Vector2(320, 180)
+scale = Vector2(1.75, 1.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_1ibcw")
+
+[node name="Fuel" parent="." instance=ExtResource("5_ma5cc")]
+position = Vector2(266, 141)
+rotation = -0.850947
+scale = Vector2(0.5, 0.5)
+lifetime = 10.0
+
+[node name="Heart2" parent="." instance=ExtResource("7_41rsl")]
+position = Vector2(290, 238)
+rotation = -2.65198
+scale = Vector2(0.5, 0.5)
+lifetime = 10.0
+
+[node name="Scientist" parent="." instance=ExtResource("6_dx6ju")]
+position = Vector2(371, 220)
+rotation = 2.20172
+scale = Vector2(0.75, 0.75)
+lifetime = 60.0
+
+[node name="Fuel2" parent="." node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player") instance=ExtResource("5_ma5cc")]
+position = Vector2(386, 229)
+rotation = 2.18839
+scale = Vector2(0.25, 0.25)
+lifetime = 70.0
+lifetime_bar = NodePath("../Fuel/PrimaryBar")
+pickable_zone = NodePath("../Fuel/Area2D")
+collision = NodePath("../Fuel/Area2D/CollisionShape2D")
+anim_player = NodePath("../Fuel/AnimatedSprite2D/AnimationPlayer")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2hpf35q181mo"]
+[gd_scene load_steps=10 format=3 uid="uid://2hpf35q181mo"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_t5ycn"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_gm5rg"]
@@ -9,10 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_m7qqw"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_0cwes"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ej1vf"]
+radius = 32.0
+
 [node name="lvl 3_D1S2_1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_t5ycn")]
 position = Vector2(320, 60)
+_current_fuel_units = 4
 max_mission_progress = 1
 mass = 320.0
 jump_force = 1800
@@ -27,44 +31,41 @@ player = NodePath("../Player")
 position = Vector2(320, 180)
 scale = Vector2(3.5, 3.5)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_ej1vf")
+
 [node name="Fuel" parent="." instance=ExtResource("5_1i56k")]
-position = Vector2(378, 72)
-rotation = 0.485525
-scale = Vector2(0.5, 0.5)
+position = Vector2(373, 69)
+rotation = 0.464775
 lifetime = 15.0
 
 [node name="Fuel2" parent="." instance=ExtResource("5_1i56k")]
-position = Vector2(226, 99)
-rotation = -0.838053
-scale = Vector2(0.5, 0.5)
+position = Vector2(239, 87)
+rotation = -0.665293
 lifetime = 15.0
 
 [node name="Fuel3" parent="." instance=ExtResource("5_1i56k")]
-position = Vector2(257, 286)
-rotation = -2.50679
-scale = Vector2(0.5, 0.5)
+position = Vector2(271, 294)
+rotation = -2.66896
 lifetime = 15.0
 
 [node name="Heart" parent="." instance=ExtResource("6_2vbc7")]
-position = Vector2(409, 262)
-rotation = 2.28742
-scale = Vector2(0.5, 0.5)
+position = Vector2(213, 238)
+rotation = -2.03169
 lifetime = 15.0
 
 [node name="Heart2" parent="." instance=ExtResource("6_2vbc7")]
-position = Vector2(207, 219)
-rotation = -1.90753
-scale = Vector2(0.5, 0.5)
+position = Vector2(384, 283)
+rotation = 2.54984
 lifetime = 15.0
 
 [node name="Scientist" parent="." instance=ExtResource("7_m7qqw")]
-position = Vector2(438, 156)
-rotation = 1.34293
-scale = Vector2(0.75, 0.75)
+position = Vector2(441, 181)
+rotation = 1.59655
 lifetime = 90.0
 
 [node name="Timer" parent="." instance=ExtResource("8_0cwes")]
-position = Vector2(453, 151)
-rotation = 1.32528
+position = Vector2(457, 181)
+rotation = 1.59437
 scale = Vector2(0.2, 0.2)
 lifetime = 100.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5ehbok4s1knu"]
+[gd_scene load_steps=9 format=3 uid="uid://b5ehbok4s1knu"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_ahkv4"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_i2i33"]
@@ -8,10 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_0lnni"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_nrcwy"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8b215"]
+radius = 32.0
+
 [node name="lvl 2_D1S1_2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ahkv4")]
 position = Vector2(319, 115)
+_current_fuel_units = 4
 max_mission_progress = 1
 mass = 160.0
 jump_force = 1900
@@ -26,36 +30,31 @@ player = NodePath("../Player")
 position = Vector2(320, 180)
 scale = Vector2(1.75, 1.75)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_8b215")
+
 [node name="Fuel" parent="." instance=ExtResource("5_84m4w")]
-position = Vector2(268, 137)
-rotation = -0.778392
-scale = Vector2(0.5, 0.5)
+position = Vector2(273, 134)
+rotation = -0.716839
 lifetime = 10.0
 
 [node name="Fuel2" parent="." instance=ExtResource("5_84m4w")]
-position = Vector2(264, 214)
-rotation = -2.13783
-scale = Vector2(0.5, 0.5)
+position = Vector2(266, 218)
+rotation = -2.21121
 lifetime = 10.0
 
 [node name="Heart" parent="." instance=ExtResource("6_0lnni")]
-position = Vector2(368, 224)
-rotation = 2.29249
-scale = Vector2(0.5, 0.5)
+position = Vector2(365, 136)
+rotation = 0.772745
 lifetime = 10.0
 
 [node name="Scientist" parent="." instance=ExtResource("7_nrcwy")]
-position = Vector2(377, 152)
-rotation = 1.07294
-scale = Vector2(0.75, 0.75)
+position = Vector2(372, 217)
+rotation = 2.28127
 lifetime = 60.0
 
-[node name="Heart2" parent="." node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player") instance=ExtResource("6_0lnni")]
-position = Vector2(391, 144)
-rotation = 1.07294
+[node name="Heart2" parent="." instance=ExtResource("6_0lnni")]
+position = Vector2(385, 226)
+rotation = 2.22266
 scale = Vector2(0.25, 0.25)
 lifetime = 70.0
-lifetime_bar = NodePath("../Heart/PrimaryBar")
-pickable_zone = NodePath("../Heart/Area2D")
-collision = NodePath("../Heart/Area2D/CollisionShape2D")
-anim_player = NodePath("../Heart/Sprite2D/AnimationPlayer")

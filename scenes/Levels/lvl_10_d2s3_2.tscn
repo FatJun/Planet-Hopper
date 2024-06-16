@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3d256pwoipm6"]
+
+[ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_vgjy7"]
+[ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_nifnm"]
+[ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_j8uhu"]
+[ext_resource type="PackedScene" uid="uid://pfxbimlfymuc" path="res://scenes/Planet shapes/planet_s3_h1.tscn" id="4_i18ue"]
+[ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="5_j8q5s"]
+[ext_resource type="PackedScene" uid="uid://clspwvn404dek" path="res://scenes/Planet shapes/mountain.tscn" id="6_h4b7g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxdwd"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_usg8g"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqc06"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cuctu"]
+radius = 32.0
+
+[node name="lvl_10_d2s3_2" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_vgjy7")]
+position = Vector2(320, 122)
+_current_fuel_units = 4
+mass = 480.0
+jump_force = 1600
+
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("2_nifnm")]
+player = NodePath("..")
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_j8uhu")]
+player = NodePath("../Player")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_i18ue")]
+position = Vector2(320, 300)
+rotation = -1.5708
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("5_j8q5s")]
+position = Vector2(-94, 589)
+scale = Vector2(3.5, 3.5)
+mass = 100000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_oxdwd")
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("5_j8q5s")]
+position = Vector2(-483, 794)
+scale = Vector2(3.5, 3.5)
+mass = 100000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("CircleShape2D_usg8g")
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("5_j8q5s")]
+position = Vector2(115, 858)
+scale = Vector2(1.75, 1.75)
+mass = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource("CircleShape2D_rqc06")
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("5_j8q5s")]
+position = Vector2(-777, 571)
+scale = Vector2(1.75, 1.75)
+mass = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+shape = SubResource("CircleShape2D_cuctu")
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("6_h4b7g")]
+position = Vector2(247, 275)
+rotation = -2.8019

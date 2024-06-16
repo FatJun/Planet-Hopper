@@ -25,6 +25,7 @@ animations = [{
 size = Vector2(32, 34)
 
 [node name="Fuel" type="Node2D" node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player")]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_vfiew")
 lifetime_bar = NodePath("PrimaryBar")
 pickable_zone = NodePath("Area2D")

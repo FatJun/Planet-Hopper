@@ -15,6 +15,7 @@ radius = 32.0
 
 [node name="Player" parent="." instance=ExtResource("1_xw0iv")]
 position = Vector2(319, 116)
+_current_fuel_units = 4
 max_mission_progress = 1
 mass = 160.0
 jump_force = 1900
@@ -33,29 +34,22 @@ scale = Vector2(1.75, 1.75)
 shape = SubResource("CircleShape2D_1ibcw")
 
 [node name="Fuel" parent="." instance=ExtResource("5_ma5cc")]
-position = Vector2(266, 141)
-rotation = -0.850947
-scale = Vector2(0.5, 0.5)
+position = Vector2(267, 139)
+rotation = -0.796613
 lifetime = 10.0
 
-[node name="Heart2" parent="." instance=ExtResource("7_41rsl")]
-position = Vector2(290, 238)
-rotation = -2.65198
-scale = Vector2(0.5, 0.5)
+[node name="Heart" parent="." instance=ExtResource("7_41rsl")]
+position = Vector2(278, 228)
+rotation = -2.44697
 lifetime = 10.0
 
 [node name="Scientist" parent="." instance=ExtResource("6_dx6ju")]
-position = Vector2(371, 220)
-rotation = 2.20172
-scale = Vector2(0.75, 0.75)
+position = Vector2(372, 216)
+rotation = 2.25829
 lifetime = 60.0
 
-[node name="Fuel2" parent="." node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player") instance=ExtResource("5_ma5cc")]
-position = Vector2(386, 229)
-rotation = 2.18839
+[node name="Fuel2" parent="." instance=ExtResource("5_ma5cc")]
+position = Vector2(386, 226)
+rotation = 2.26141
 scale = Vector2(0.25, 0.25)
 lifetime = 70.0
-lifetime_bar = NodePath("../Fuel/PrimaryBar")
-pickable_zone = NodePath("../Fuel/Area2D")
-collision = NodePath("../Fuel/Area2D/CollisionShape2D")
-anim_player = NodePath("../Fuel/AnimatedSprite2D/AnimationPlayer")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bov81i20t1trb"
-path="res://.godot/imported/fire_column_medium_1.png-783f483bfad7df1962688ad1fdf565da.ctex"
+uid="uid://6mv8acbwh8go"
+path="res://.godot/imported/keyboard_letters.png-1fff36b241433237b10b20ec5356894e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/test/fire_column_medium_1.png"
-dest_files=["res://.godot/imported/fire_column_medium_1.png-783f483bfad7df1962688ad1fdf565da.ctex"]
+source_file="res://assets/sprites/ui/keyboard_letters.png"
+dest_files=["res://.godot/imported/keyboard_letters.png-1fff36b241433237b10b20ec5356894e.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8ftjk5axjcrx"]
+[gd_scene load_steps=12 format=3 uid="uid://c8ftjk5axjcrx"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_38cww"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_4euhq"]
@@ -7,13 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="5_ai11k"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_4waev"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_hctls"]
+[ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="8_c6udi"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="9_ps7qf"]
+[ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="10_l2ngm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfsb2"]
+size = Vector2(182, 118)
 
 [node name="lvl_4_d1s2_2" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_38cww")]
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_38cww")]
 position = Vector2(321, 59)
-_current_fuel_units = 2
-max_mission_progress = 1
+space_ship = NodePath("../SpaceShip")
 mass = 320.0
 jump_force = 1800
 
@@ -63,3 +68,23 @@ position = Vector2(191, 230)
 rotation = -1.98094
 scale = Vector2(0.25, 0.25)
 lifetime = 100.0
+
+[node name="FlyEye" parent="." instance=ExtResource("8_c6udi")]
+position = Vector2(180, 145)
+rotation = -1.04974
+
+[node name="Slime" parent="." instance=ExtResource("9_ps7qf")]
+position = Vector2(411, 90)
+rotation = 0.838278
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(500, 178)
+shape = SubResource("RectangleShape2D_qfsb2")
+
+[node name="SpaceShip" parent="." instance=ExtResource("10_l2ngm")]
+position = Vector2(327, 308)
+rotation = -3.12712

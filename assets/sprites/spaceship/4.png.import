@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c07etk3ctb32v"
-path="res://.godot/imported/fire_column_medium_7.png-4fef9ccd31549dd2b1a4559d7df06750.ctex"
+uid="uid://bag1ogxoujdxq"
+path="res://.godot/imported/4.png-f516311c87368834581cf436cc43c145.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/test/fire_column_medium_7.png"
-dest_files=["res://.godot/imported/fire_column_medium_7.png-4fef9ccd31549dd2b1a4559d7df06750.ctex"]
+source_file="res://assets/sprites/spaceship/4.png"
+dest_files=["res://.godot/imported/4.png-f516311c87368834581cf436cc43c145.ctex"]
 
 [params]
 

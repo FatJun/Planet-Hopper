@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3d256pwoipm6"]
+[gd_scene load_steps=20 format=3 uid="uid://c3d256pwoipm6"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_vgjy7"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_nifnm"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_wh3cm"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="9_whf02"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="10_ktjv7"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="11_2ohvk"]
+[ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="12_srv03"]
+[ext_resource type="PackedScene" path="res://scenes/space_ship.tscn" id="13_xuet1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxdwd"]
 radius = 32.0
@@ -23,12 +26,17 @@ radius = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cuctu"]
 radius = 32.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwr61"]
+size = Vector2(60.3554, 70.5905)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35eoi"]
+size = Vector2(211.147, 123.879)
+
 [node name="lvl_10_d2s3_2" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_vgjy7")]
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_vgjy7")]
 position = Vector2(320, 122)
-_current_fuel_units = 4
-max_mission_progress = 4
+space_ship = NodePath("../SpaceShip")
 mass = 480.0
 jump_force = 1600
 
@@ -94,77 +102,131 @@ rotation = -1.98631
 lifetime = 26.0
 
 [node name="Fuel4" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(180, 874)
-rotation = 1.97456
+position = Vector2(138, 810)
 lifetime = 26.0
 
 [node name="Fuel5" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(-185, 672)
-rotation = -2.28945
+position = Vector2(-91, 474)
 lifetime = 26.0
 
 [node name="Fuel6" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(26, 617)
-rotation = 1.91004
+position = Vector2(-91, 474)
 lifetime = 26.0
 
 [node name="Fuel7" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(-606, 775)
-rotation = -1.37662
+position = Vector2(-485, 710)
 lifetime = 26.0
 
 [node name="Fuel8" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(-363, 821)
-rotation = 1.89056
+position = Vector2(-485, 710)
 lifetime = 26.0
 
 [node name="Fuel9" parent="." instance=ExtResource("7_nl78v")]
-position = Vector2(-779, 638)
-rotation = -3.11369
+position = Vector2(-774, 500)
 lifetime = 26.0
 
 [node name="Timer" parent="." instance=ExtResource("8_wh3cm")]
-position = Vector2(-486, 671)
+position = Vector2(-485, 710)
 lifetime = 26.0
 
 [node name="Scientist" parent="." instance=ExtResource("9_whf02")]
-position = Vector2(104, 923)
-rotation = -2.92033
+position = Vector2(147, 891)
 lifetime = 80.0
 
 [node name="Heart" parent="." instance=ExtResource("10_ktjv7")]
-position = Vector2(100, 939)
-rotation = -2.92033
+position = Vector2(147, 891)
 scale = Vector2(0.25, 0.25)
 lifetime = 90.0
 
 [node name="Scientist2" parent="." instance=ExtResource("9_whf02")]
-position = Vector2(-91, 467)
+position = Vector2(-168, 563)
 lifetime = 80.0
 
 [node name="Heart2" parent="." instance=ExtResource("10_ktjv7")]
-position = Vector2(-91, 451)
+position = Vector2(-168, 563)
 scale = Vector2(0.25, 0.25)
 lifetime = 90.0
 
 [node name="Scientist3" parent="." instance=ExtResource("9_whf02")]
-position = Vector2(-517, 910)
-rotation = -2.86173
+position = Vector2(-423, 840)
 lifetime = 80.0
 
 [node name="Heart3" parent="." instance=ExtResource("10_ktjv7")]
-position = Vector2(-522, 927)
-rotation = -2.86173
+position = Vector2(-423, 840)
 scale = Vector2(0.25, 0.25)
 lifetime = 90.0
 
 [node name="Scientist4" parent="." instance=ExtResource("9_whf02")]
-position = Vector2(-842, 570)
-rotation = -1.55735
+position = Vector2(-782, 614)
 lifetime = 80.0
 
 [node name="Heart4" parent="." instance=ExtResource("10_ktjv7")]
-position = Vector2(-860, 571)
-rotation = -1.55735
+position = Vector2(-782, 614)
 scale = Vector2(0.25, 0.25)
 lifetime = 90.0
+
+[node name="Slime" parent="." instance=ExtResource("11_2ohvk")]
+position = Vector2(-741, 506)
+rotation = 0.457916
+
+[node name="Slime2" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_2ohvk")]
+position = Vector2(-424, 680)
+rotation = 0.457916
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Slime3" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_2ohvk")]
+position = Vector2(-564, 897)
+rotation = -2.43041
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Slime4" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_2ohvk")]
+position = Vector2(-200, 513)
+rotation = -0.933422
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Slime5" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_2ohvk")]
+position = Vector2(-16, 484)
+rotation = -5.62288
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Slime6" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_2ohvk")]
+position = Vector2(80, 793)
+rotation = -6.80831
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Lizard" parent="." instance=ExtResource("12_srv03")]
+position = Vector2(491, 366)
+rotation = 1.7669
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(258.175, 443.71)
+rotation = 0.338045
+shape = SubResource("RectangleShape2D_cwr61")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(104.707, 224.859)
+rotation = 0.338045
+shape = SubResource("RectangleShape2D_35eoi")
+
+[node name="SpaceShip" parent="." instance=ExtResource("13_xuet1")]
+position = Vector2(311, 482)
+rotation = -3.04122

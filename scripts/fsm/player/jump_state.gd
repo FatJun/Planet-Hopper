@@ -19,6 +19,8 @@ func ph_update(_delta: float) -> void:
 			fsm.controller.cancel_jetpack()
 	if Input.is_action_just_pressed("jump") and fsm.controller.is_can_jump:
 		fsm.change_state(fsm.states[fsm.JUMP])
+	elif fsm.is_entering_in_spaceship:
+		fsm.change_state(fsm.states[fsm.ENTER_IN_SPACESHIP])
 	elif fsm.is_moving:
 		fsm.change_state(fsm.states[fsm.RUN])
 	elif fsm.is_idle:

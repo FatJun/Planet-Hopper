@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3ijawvvwowjc"]
+[gd_scene load_steps=10 format=3 uid="uid://c3ijawvvwowjc"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_xw0iv"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_sxghj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="5_ma5cc"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="6_dx6ju"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="7_41rsl"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="8_hm5sq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ibcw"]
 radius = 32.0
@@ -15,8 +16,6 @@ radius = 32.0
 
 [node name="Player" parent="." instance=ExtResource("1_xw0iv")]
 position = Vector2(319, 116)
-_current_fuel_units = 4
-max_mission_progress = 1
 mass = 160.0
 jump_force = 1900
 
@@ -53,3 +52,15 @@ position = Vector2(386, 226)
 rotation = 2.26141
 scale = Vector2(0.25, 0.25)
 lifetime = 70.0
+
+[node name="Slime" parent="." instance=ExtResource("8_hm5sq")]
+position = Vector2(392, 181)
+rotation = 1.57134
+
+[node name="Slime2" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("8_hm5sq")]
+position = Vector2(248, 179)
+rotation = 4.68081
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")

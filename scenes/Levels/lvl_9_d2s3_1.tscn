@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cafv56i68ilr8"]
+[gd_scene load_steps=18 format=3 uid="uid://b2vyameplepav"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_42n2e"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_4o0au"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="7_4i7vh"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_1g7d0"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="9_es3dr"]
+[ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="10_fp7ul"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="11_y5u8o"]
+[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="12_75k5s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ewud"]
 radius = 32.0
@@ -22,12 +25,13 @@ radius = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_uh43n"]
 radius = 32.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1vv"]
+size = Vector2(48.3163, 236.493)
+
 [node name="lvl9_d2s3_1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_42n2e")]
 position = Vector2(320, 121)
-_current_fuel_units = 4
-max_mission_progress = 2
 mass = 480.0
 jump_force = 1600
 
@@ -153,3 +157,67 @@ position = Vector2(-185, 458)
 rotation = 2.32912
 scale = Vector2(0.25, 0.25)
 lifetime = 90.0
+
+[node name="FlyEye" parent="." instance=ExtResource("10_fp7ul")]
+position = Vector2(-228, 235)
+rotation = -1.88301
+
+[node name="FlyEye2" parent="." node_paths=PackedStringArray("collision_raycast", "gravity_zone", "collision", "sprite") instance=ExtResource("10_fp7ul")]
+position = Vector2(166, 435)
+rotation = -2.28095
+collision_raycast = NodePath("../FlyEye/RayCast2D")
+gravity_zone = NodePath("../FlyEye/GravityZone")
+collision = NodePath("../FlyEye/CollisionShape2D")
+sprite = NodePath("../FlyEye/AnimatedSprite2D")
+
+[node name="Slime" parent="." instance=ExtResource("11_y5u8o")]
+position = Vector2(-88, 144)
+rotation = 0.902717
+
+[node name="Slime2" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_y5u8o")]
+position = Vector2(267, 479)
+rotation = 3.41327
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Slime3" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_y5u8o")]
+position = Vector2(132, 300)
+rotation = 4.47231
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Slime4" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_y5u8o")]
+position = Vector2(460, 180)
+rotation = 7.25245
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Slime5" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("11_y5u8o")]
+position = Vector2(672, 232)
+rotation = 5.8653
+collision_ray = NodePath("../Slime/RayCast2D")
+gravity_zone = NodePath("../Slime/GravityZone")
+collision = NodePath("../Slime/CollisionShape2D")
+sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="Mine" parent="." instance=ExtResource("12_75k5s")]
+position = Vector2(517, 281)
+
+[node name="Mine2" parent="." instance=ExtResource("12_75k5s")]
+position = Vector2(133, 236)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(518.02, 428.778)
+rotation = 0.566602
+scale = Vector2(3.67107, 0.488723)
+shape = SubResource("RectangleShape2D_yy1vv")

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=10 format=3 uid="uid://d05g6efvw2nle"]
+=======
+[gd_scene load_steps=12 format=3 uid="uid://cevsrli6ltuld"]
+>>>>>>> 35a98307bf13333c1466cacfdb35dc7d59d4e05b
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_g53in"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_c06oj"]
@@ -8,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_d3dh4"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_cas8u"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_yxumn"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="9_dm84w"]
+[ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="10_cyihi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pk3gt"]
 radius = 32.0
@@ -16,8 +22,6 @@ radius = 32.0
 
 [node name="Player" parent="." instance=ExtResource("1_g53in")]
 position = Vector2(319, 116)
-_current_fuel_units = 4
-max_mission_progress = 1
 mass = 160.0
 jump_force = 1900
 
@@ -59,3 +63,11 @@ position = Vector2(402, 179)
 rotation = 1.57907
 scale = Vector2(0.2, 0.2)
 lifetime = 50.0
+
+[node name="Slime" parent="." instance=ExtResource("9_dm84w")]
+position = Vector2(352, 247)
+rotation = 2.7261
+
+[node name="Lizard" parent="." instance=ExtResource("10_cyihi")]
+position = Vector2(370, 128)
+rotation = 0.786357

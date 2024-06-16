@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5ehbok4s1knu"]
+[gd_scene load_steps=10 format=3 uid="uid://b5ehbok4s1knu"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_ahkv4"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_i2i33"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="5_84m4w"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_0lnni"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_nrcwy"]
+[ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="8_11vtr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8b215"]
 radius = 32.0
@@ -15,8 +16,6 @@ radius = 32.0
 
 [node name="Player" parent="." instance=ExtResource("1_ahkv4")]
 position = Vector2(319, 115)
-_current_fuel_units = 4
-max_mission_progress = 1
 mass = 160.0
 jump_force = 1900
 
@@ -58,3 +57,7 @@ position = Vector2(385, 226)
 rotation = 2.22266
 scale = Vector2(0.25, 0.25)
 lifetime = 70.0
+
+[node name="FlyEye" parent="." instance=ExtResource("8_11vtr")]
+position = Vector2(403, 183)
+rotation = -1.54778

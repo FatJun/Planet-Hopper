@@ -12,4 +12,4 @@ func update(value: int):
 		visible = false
 	else:
 		visible = true
-	size.x = value * one_stack_size
+	set_deferred("size", Vector2(value * one_stack_size, size.y))

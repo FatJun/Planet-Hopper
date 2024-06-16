@@ -293,3 +293,5 @@ scale = Vector2(-1, 1)
 texture = SubResource("AnimatedTexture_4aapv")
 stretch_mode = 1
 script = ExtResource("11_m4lmp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mission"]

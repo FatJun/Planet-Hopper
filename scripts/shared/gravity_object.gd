@@ -7,5 +7,5 @@ extends StaticBody2D
 @export var mass := 1.
 
 
-func get_direction_to_center_of_mass(obj: BaseController) -> Vector2:
+func get_direction_to_center_of_mass(obj: Node2D) -> Vector2:
 	return obj.global_position.direction_to(global_position)

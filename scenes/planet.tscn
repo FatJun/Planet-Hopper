@@ -23,6 +23,8 @@ animations = [{
 radius = 147.411
 
 [node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_4v60y")
 mass = 200000.0
 

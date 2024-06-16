@@ -22,4 +22,3 @@ func freeze_time(duration: float):
 
 func _on_freeze_timer_timeout():
 	time_unfreezed.emit()
-	freeze_timer.wait_time = 0

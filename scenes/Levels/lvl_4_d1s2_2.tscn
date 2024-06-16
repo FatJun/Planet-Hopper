@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8ftjk5axjcrx"]
+[gd_scene load_steps=12 format=3 uid="uid://c8ftjk5axjcrx"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_38cww"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_4euhq"]
@@ -9,14 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_hctls"]
 [ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="8_c6udi"]
 [ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="9_ps7qf"]
+[ext_resource type="PackedScene" path="res://scenes/space_ship.tscn" id="10_l2ngm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfsb2"]
 size = Vector2(182, 118)
 
 [node name="lvl_4_d1s2_2" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_38cww")]
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_38cww")]
 position = Vector2(321, 59)
+space_ship = NodePath("../SpaceShip")
 mass = 320.0
 jump_force = 1800
 
@@ -82,3 +84,7 @@ collision_mask = 8192
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(500, 178)
 shape = SubResource("RectangleShape2D_qfsb2")
+
+[node name="SpaceShip" parent="." instance=ExtResource("10_l2ngm")]
+position = Vector2(327, 308)
+rotation = -3.12712

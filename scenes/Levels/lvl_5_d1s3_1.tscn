@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqkeu1tf7yh7u"]
+[gd_scene load_steps=13 format=3 uid="uid://cqkeu1tf7yh7u"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_xytdg"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_y1uum"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="7_2uy2g"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="8_ipomp"]
 [ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="9_4xpkw"]
+[ext_resource type="PackedScene" path="res://scenes/space_ship.tscn" id="10_pewu8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkquk"]
 radius = 32.0
@@ -18,8 +19,9 @@ radius = 32.0
 
 [node name="lvl_5_d1s3_1" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_xytdg")]
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_xytdg")]
 position = Vector2(319, 123)
+space_ship = NodePath("../SpaceShip")
 mass = 480.0
 jump_force = 1600
 
@@ -108,8 +110,8 @@ collision = NodePath("../Slime/CollisionShape2D")
 sprite = NodePath("../Slime/AnimatedSprite2D")
 
 [node name="Slime3" parent="." node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite") instance=ExtResource("9_4xpkw")]
-position = Vector2(321, 488)
-rotation = 3.16874
+position = Vector2(253, 476)
+rotation = 3.51403
 collision_ray = NodePath("../Slime/RayCast2D")
 gravity_zone = NodePath("../Slime/GravityZone")
 collision = NodePath("../Slime/CollisionShape2D")
@@ -122,3 +124,7 @@ collision_ray = NodePath("../Slime/RayCast2D")
 gravity_zone = NodePath("../Slime/GravityZone")
 collision = NodePath("../Slime/CollisionShape2D")
 sprite = NodePath("../Slime/AnimatedSprite2D")
+
+[node name="SpaceShip" parent="." instance=ExtResource("10_pewu8")]
+position = Vector2(328, 485)
+rotation = -3.07734

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c3d256pwoipm6"]
+[gd_scene load_steps=20 format=3 uid="uid://c3d256pwoipm6"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_vgjy7"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_nifnm"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="10_ktjv7"]
 [ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="11_2ohvk"]
 [ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="12_srv03"]
+[ext_resource type="PackedScene" path="res://scenes/space_ship.tscn" id="13_xuet1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxdwd"]
 radius = 32.0
@@ -33,8 +34,9 @@ size = Vector2(211.147, 123.879)
 
 [node name="lvl_10_d2s3_2" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_vgjy7")]
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_vgjy7")]
 position = Vector2(320, 122)
+space_ship = NodePath("../SpaceShip")
 mass = 480.0
 jump_force = 1600
 
@@ -224,3 +226,7 @@ shape = SubResource("RectangleShape2D_cwr61")
 position = Vector2(104.707, 224.859)
 rotation = 0.338045
 shape = SubResource("RectangleShape2D_35eoi")
+
+[node name="SpaceShip" parent="." instance=ExtResource("13_xuet1")]
+position = Vector2(311, 482)
+rotation = -3.04122

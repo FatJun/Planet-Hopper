@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcgkxymyvle3r"]
+[gd_scene load_steps=11 format=3 uid="uid://dcgkxymyvle3r"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_rpdf3"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_hnxy0"]
@@ -9,11 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_72dek"]
 [ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="8_ol0oh"]
 [ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="9_b5ynv"]
+[ext_resource type="PackedScene" path="res://scenes/space_ship.tscn" id="10_s1wnj"]
 
 [node name="lvl_8_d2s2_1" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_rpdf3")]
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_rpdf3")]
 position = Vector2(320, 60)
+space_ship = NodePath("../SpaceShip")
 mass = 320.0
 jump_force = 1800
 
@@ -75,3 +77,7 @@ collision_raycast = NodePath("../FlyEye/RayCast2D")
 gravity_zone = NodePath("../FlyEye/GravityZone")
 collision = NodePath("../FlyEye/CollisionShape2D")
 sprite = NodePath("../FlyEye/AnimatedSprite2D")
+
+[node name="SpaceShip" parent="." instance=ExtResource("10_s1wnj")]
+position = Vector2(314, 304)
+rotation = -3.08317

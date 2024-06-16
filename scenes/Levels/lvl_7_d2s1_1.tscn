@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cevsrli6ltuld"]
+[gd_scene load_steps=13 format=3 uid="uid://cevsrli6ltuld"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_g53in"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_c06oj"]
@@ -10,14 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_yxumn"]
 [ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="9_dm84w"]
 [ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="10_cyihi"]
+[ext_resource type="PackedScene" path="res://scenes/space_ship.tscn" id="11_ortj2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pk3gt"]
 radius = 32.0
 
 [node name="lvl_7_d2s1_1" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_g53in")]
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_g53in")]
 position = Vector2(319, 116)
+space_ship = NodePath("../SpaceShip")
 mass = 160.0
 jump_force = 1900
 
@@ -61,9 +63,13 @@ scale = Vector2(0.2, 0.2)
 lifetime = 50.0
 
 [node name="Slime" parent="." instance=ExtResource("9_dm84w")]
-position = Vector2(352, 247)
-rotation = 2.7261
+position = Vector2(256, 215)
+rotation = 4.17496
 
 [node name="Lizard" parent="." instance=ExtResource("10_cyihi")]
 position = Vector2(370, 128)
 rotation = 0.786357
+
+[node name="SpaceShip" parent="." instance=ExtResource("11_ortj2")]
+position = Vector2(321, 250)
+rotation = -3.08539

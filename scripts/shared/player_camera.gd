@@ -7,6 +7,7 @@ extends Camera2D
 
 @export_category("Shared Settings")
 @export var player: PlayerController
+@export var anim_player: AnimationPlayer
 
 
 func lock_to_targets(targets: Array[Variant]):
@@ -18,7 +19,6 @@ func lock_to_targets(targets: Array[Variant]):
 	if new_offset.length() > max_camera_offset:
 		new_offset = new_offset.normalized() * max_camera_offset
 	offset = offset.lerp(new_offset, camera_offset_delay)
-
 
 
 func _physics_process(_delta):

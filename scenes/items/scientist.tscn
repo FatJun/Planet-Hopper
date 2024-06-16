@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4j7e6i6ik6bi"]
+
+[ext_resource type="PackedScene" uid="uid://chlmp0soupngd" path="res://scenes/ui/bar.tscn" id="1_0ebvb"]
+[ext_resource type="Script" path="res://scripts/items/scientist.gd" id="1_02g7k"]
+[ext_resource type="Script" path="res://scripts/ui/expire_time_bar.gd" id="2_edhus"]
+[ext_resource type="Texture2D" uid="uid://ddl0bepdyiyw0" path="res://assets/sprites/items/scientist.png" id="3_fd2py"]
+[ext_resource type="AnimationLibrary" uid="uid://bew00b36810k1" path="res://assets/animations/item.res" id="3_mvtap"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ev0x"]
+atlas = ExtResource("3_fd2py")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgq6h"]
+atlas = ExtResource("3_fd2py")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l16xn"]
+atlas = ExtResource("3_fd2py")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p33sn"]
+atlas = ExtResource("3_fd2py")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hhn84"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ev0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgq6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l16xn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p33sn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qoko3"]
+size = Vector2(17, 19)
+
+[node name="Scientist" type="Node2D"]
+script = ExtResource("1_02g7k")
+fuel_units = null
+lifetime = null
+
+[node name="PrimaryBar" parent="." instance=ExtResource("1_0ebvb")]
+offset_left = -9.0
+offset_top = -14.0
+offset_right = 8.0
+offset_bottom = -13.0
+script = ExtResource("2_edhus")
+min_life_time = 0.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hhn84")
+frame_progress = 0.0262906
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"item": ExtResource("3_mvtap")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_qoko3")

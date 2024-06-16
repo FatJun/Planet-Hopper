@@ -34,6 +34,10 @@ func _ready():
 	gravity_zone.area_exited.connect(_on_area_exited)
 
 
+func reset_jumps():
+	jumps_in_row = 0
+
+
 func update_direction(axis: float = 0.) -> void:
 	direction = Vector2.RIGHT.rotated(rotation) * axis
 

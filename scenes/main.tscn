@@ -1,36 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxjrlfhf6xyej"]
+[gd_scene load_steps=8 format=3 uid="uid://cxjrlfhf6xyej"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_scqom"]
-[ext_resource type="Script" path="res://scripts/shared/player_camera.gd" id="2_teub5"]
+[ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_wsxr0"]
 [ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="3_d6mjg"]
+[ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="4_d2iou"]
+[ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="5_umqov"]
+[ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_l0sti"]
+[ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="7_0x1ns"]
 
 [node name="Main" type="Node2D"]
 
-[node name="StaticBody2D" parent="." instance=ExtResource("3_d6mjg")]
-position = Vector2(162, 411)
-scale = Vector2(12.12, 12.12)
-mass = 5e+06
-
 [node name="Player" parent="." instance=ExtResource("1_scqom")]
-position = Vector2(559, 216)
+position = Vector2(724, 176)
 
-[node name="PlayerCamera" type="Camera2D" parent="Player" node_paths=PackedStringArray("player")]
-process_callback = 0
-position_smoothing_enabled = true
-script = ExtResource("2_teub5")
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("2_wsxr0")]
 player = NodePath("..")
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("3_d6mjg")]
-position = Vector2(-335, -105)
-scale = Vector2(5.4, 5.4)
+[node name="Fuel" parent="." instance=ExtResource("4_d2iou")]
+position = Vector2(502, 64)
+rotation = 0.915932
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_umqov")]
+player = NodePath("../Player")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_d6mjg")]
+position = Vector2(490, 256)
+scale = Vector2(5.52, 5.52)
 mass = 2e+06
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("3_d6mjg")]
-position = Vector2(-610, 769)
-scale = Vector2(4.92, 4.92)
-mass = 4e+06
+[node name="Heart" parent="." instance=ExtResource("6_l0sti")]
+position = Vector2(403, 85)
 
-[node name="StaticBody2D4" parent="." instance=ExtResource("3_d6mjg")]
-position = Vector2(597, 1057)
-scale = Vector2(2.44643, 2.44643)
-mass = 2e+06
+[node name="Timer" parent="." instance=ExtResource("7_0x1ns")]
+position = Vector2(323, 114)

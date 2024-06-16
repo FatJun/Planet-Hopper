@@ -1,8 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://cma0cw2jdshwc"]
+[gd_scene load_steps=33 format=3 uid="uid://cma0cw2jdshwc"]
 
 [ext_resource type="Script" path="res://scripts/controllers/player.gd" id="1_kryjb"]
+[ext_resource type="PackedScene" uid="uid://dqgk6vt1w3022" path="res://scenes/particles/burst.tscn" id="2_2rxey"]
 [ext_resource type="Texture2D" uid="uid://sst6g1xdpab1" path="res://assets/sprites/player/idle.png" id="2_6mg5x"]
 [ext_resource type="Texture2D" uid="uid://cvqtv7efgjs4j" path="res://assets/sprites/player/run.png" id="2_lc5vi"]
+[ext_resource type="Script" path="res://scripts/particles/jetpack_burst.gd" id="3_olura"]
 [ext_resource type="Texture2D" uid="uid://bemtnksgsrqjx" path="res://assets/sprites/player/jump.png" id="3_t6pp5"]
 [ext_resource type="Script" path="res://scripts/fsm/player/fsm.gd" id="4_ocfqr"]
 [ext_resource type="Script" path="res://scripts/fsm/player/idle_state.gd" id="5_1eu08"]
@@ -12,6 +14,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlhuc"]
 size = Vector2(11, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e6ld6"]
+radius = 19.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oh55w"]
 atlas = ExtResource("2_6mg5x")
@@ -157,18 +162,28 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e6ld6"]
-radius = 19.0
-
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_zone", "collision", "sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jetpack_particles", "gravity_zone", "collision", "sprite") groups=["player"]]
 script = ExtResource("1_kryjb")
+jetpack_particles = NodePath("GPUParticles2D")
+mass = 35.0
 gravity_zone = NodePath("GravityZone")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("AnimatedSprite2D")
 
+[node name="GPUParticles2D" parent="." instance=ExtResource("2_2rxey")]
+emitting = false
+script = ExtResource("3_olura")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_dlhuc")
+
+[node name="GravityZone" type="Area2D" parent="."]
+script = ExtResource("9_ari4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityZone"]
+shape = SubResource("CircleShape2D_e6ld6")
+debug_color = Color(0.700003, 0.276725, 0.999281, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cqtns")
@@ -188,10 +203,3 @@ script = ExtResource("6_fvtck")
 
 [node name="RUN" type="Node" parent="FSM"]
 script = ExtResource("7_o4v2f")
-
-[node name="GravityZone" type="Area2D" parent="."]
-script = ExtResource("9_ari4w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityZone"]
-shape = SubResource("CircleShape2D_e6ld6")
-debug_color = Color(0.700003, 0.276725, 0.999281, 0.42)

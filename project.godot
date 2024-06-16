@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 Gravity="*res://scripts/globals/gravity.gd"
+EventBus="*res://scripts/globals/event_bus.gd"
 
 [display]
 

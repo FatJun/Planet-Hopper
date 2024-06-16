@@ -5,7 +5,7 @@ extends State
 
 
 func enter() -> void:
-	fsm.controller.jumps_in_row = 0
+	fsm.controller.reset_jumps()
 	fsm.play_anim(fsm.IDLE)
 
 

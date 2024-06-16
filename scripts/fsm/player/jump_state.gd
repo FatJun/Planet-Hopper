@@ -14,6 +14,9 @@ func pr_update(delta: float) -> void:
 
 
 func ph_update(delta: float) -> void:
+	if Input.is_action_just_released("jump"):
+		if not fsm.controller.jetpack_timer.is_stopped():
+			fsm.controller.cancel_jetpack()
 	if Input.is_action_just_pressed("jump") and fsm.controller.is_can_jump:
 		fsm.change_state(fsm.states[fsm.JUMP])
 	elif fsm.is_moving:

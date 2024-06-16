@@ -4,6 +4,7 @@ extends FSM
 
 @export var controller: PlayerController
 
+
 @onready var states := {
 	IDLE: $IDLE,
 	RUN: $RUN,

@@ -16,6 +16,8 @@ func pr_update(_delta: float) -> void:
 func ph_update(_delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and fsm.controller.is_can_jump:
 		fsm.change_state(fsm.states[fsm.JUMP])
+	elif fsm.is_entering_in_spaceship:
+		fsm.change_state(fsm.states[fsm.ENTER_IN_SPACESHIP])
 	elif fsm.is_moving:
 		fsm.change_state(fsm.states[fsm.RUN])
 	fsm.controller.update_to_face_direction()

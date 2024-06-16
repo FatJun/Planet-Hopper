@@ -9,18 +9,21 @@ extends FSM
 	IDLE: $IDLE,
 	RUN: $RUN,
 	JUMP: $JUMP,
+	ENTER_IN_SPACESHIP: $ENTER_IN_SPACESHIP,
 }
 
 enum {
 	IDLE,
 	RUN,
 	JUMP,
+	ENTER_IN_SPACESHIP,
 }
 
 const ANIMATIONS = {
 	IDLE: "idle",
 	RUN: "run",
 	JUMP: "jump",
+	ENTER_IN_SPACESHIP: "",
 }
 
 var is_moving: bool:
@@ -31,6 +34,13 @@ var is_jumping: bool:
 	get = get_is_jumping
 var is_falling: bool:
 	get = get_is_falling
+var is_entering_in_spaceship: bool:
+	get:
+		return (
+			controller.in_landing_zone 
+			and controller.current_mission_progress >= controller.max_mission_progress 
+			and Input.is_action_just_pressed("enter_in_spaceship")
+		)
 
 
 func play_anim(animation: int) -> void:
@@ -43,6 +53,7 @@ func get_is_moving() -> bool:
 
 func get_is_idle() -> bool:
 	return controller.is_on_floor() and controller.x_axis == 0
+
 
 
 func get_is_jumping() -> bool:

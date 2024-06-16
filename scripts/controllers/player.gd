@@ -17,12 +17,14 @@ signal mission_progress_changed
 @export_category("Mission Progress")
 @export var max_mission_progress := 0
 @export var min_mission_progress := 0
+@export var space_ship: SpaceShip
 
 
 @export_category("Health Settings")
 @export var max_health := 5
 @export var min_health := 0
 
+var in_landing_zone := true
 var jetpack_timer: Timer
 var jetpack_is_reloading := false
 var jetpack_velocity := Vector2.ZERO
@@ -51,11 +53,28 @@ func _ready():
 	jetpack_timer = Timer.new()
 	jetpack_timer.one_shot = true
 	add_child(jetpack_timer)
+	space_ship.landing_zone.body_entered.connect(_on_landing_zone_entered)
+	space_ship.landing_zone.body_exited.connect(_on_landing_zone_exited)
 	jetpack_timer.timeout.connect(cancel_jetpack)
+	if _current_mission_progress >= max_mission_progress:
+		space_ship.activate()
+
+
+
+func _on_landing_zone_entered(body):
+	if body == self:
+		in_landing_zone = true
+
+
+func _on_landing_zone_exited(body):
+	if body == self:
+		in_landing_zone = false
 
 
 func set_current_mission_progress(new_value: int) -> void:
 	_current_mission_progress = clamp(new_value, min_mission_progress, max_mission_progress)
+	if _current_mission_progress >= max_mission_progress:
+		space_ship.activate()
 	mission_progress_changed.emit()
 
 

@@ -20,7 +20,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlp1t"]
-radius = 1024.0
+radius = 147.411
 
 [node name="StaticBody2D" type="StaticBody2D"]
 collision_layer = 3

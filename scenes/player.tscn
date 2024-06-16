@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cma0cw2jdshwc"]
+[gd_scene load_steps=34 format=3 uid="uid://cma0cw2jdshwc"]
 
 [ext_resource type="Script" path="res://scripts/controllers/player.gd" id="1_kryjb"]
 [ext_resource type="PackedScene" uid="uid://dqgk6vt1w3022" path="res://scenes/particles/burst.tscn" id="2_2rxey"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/fsm/player/jump_state.gd" id="6_fvtck"]
 [ext_resource type="Script" path="res://scripts/fsm/player/run_state.gd" id="7_o4v2f"]
 [ext_resource type="Script" path="res://scripts/shared/gravity_zone.gd" id="9_ari4w"]
+[ext_resource type="Script" path="res://scripts/fsm/player/enter_in_spaceshape_state.gd" id="12_qmxtl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlhuc"]
 size = Vector2(11, 14)
@@ -204,3 +205,6 @@ script = ExtResource("6_fvtck")
 
 [node name="RUN" type="Node" parent="FSM"]
 script = ExtResource("7_o4v2f")
+
+[node name="ENTER_IN_SPACESHIP" type="Node" parent="FSM"]
+script = ExtResource("12_qmxtl")

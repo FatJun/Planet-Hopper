@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_wh3cm"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="9_whf02"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="10_ktjv7"]
-[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="11_2ohvk"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="11_2ohvk"]
 [ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="12_srv03"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="13_xuet1"]
 
@@ -39,6 +39,7 @@ radius = 32.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_vgjy7")]
 position = Vector2(320, 122)
+_current_fuel_units = 2
 max_mission_progress = 4
 space_ship = NodePath("../SpaceShip")
 mass = 480.0
@@ -128,81 +129,81 @@ texture = ExtResource("7_vqmqy")
 [node name="Fuel" parent="." instance=ExtResource("7_nl78v")]
 position = Vector2(238, 141)
 rotation = -0.490558
-lifetime = 26.0
+lifetime = 20.0
 
 [node name="Fuel2" parent="." instance=ExtResource("7_nl78v")]
 position = Vector2(526, 245)
 rotation = 1.09051
-lifetime = 26.0
+lifetime = 20.0
 
 [node name="Fuel3" parent="." instance=ExtResource("7_nl78v")]
 position = Vector2(111, 463)
 rotation = -1.98631
-lifetime = 26.0
+lifetime = 20.0
 
 [node name="Fuel4" parent="." instance=ExtResource("7_nl78v")]
 position = Vector2(148, 803)
 rotation = 0.664774
-lifetime = 26.0
+lifetime = 20.0
 
 [node name="Fuel5" parent="." instance=ExtResource("7_nl78v")]
 position = Vector2(-11, 677)
 rotation = 2.39184
-lifetime = 26.0
+lifetime = 20.0
 
 [node name="Fuel6" parent="." instance=ExtResource("7_nl78v")]
 position = Vector2(-116, 471)
 rotation = -0.159298
-lifetime = 26.0
+lifetime = 20.0
 
 [node name="Fuel7" parent="." instance=ExtResource("7_nl78v")]
 position = Vector2(-457, 910)
 rotation = 2.92021
-lifetime = 26.0
+lifetime = 20.0
 
 [node name="Fuel8" parent="." instance=ExtResource("7_nl78v")]
 position = Vector2(-494, 675)
 rotation = -0.0481753
-lifetime = 26.0
+lifetime = 20.0
 
 [node name="Fuel9" parent="." instance=ExtResource("7_nl78v")]
 position = Vector2(-784, 508)
-lifetime = 26.0
+lifetime = 20.0
 
 [node name="Timer" parent="." instance=ExtResource("8_wh3cm")]
 position = Vector2(-561, 700)
 rotation = -0.668422
-lifetime = 26.0
+lifetime = 20.0
 
 [node name="Scientist" parent="." instance=ExtResource("9_whf02")]
 position = Vector2(163, 900)
 rotation = 2.20506
-lifetime = 80.0
+lifetime = 60.0
 
 [node name="Heart" parent="Scientist" instance=ExtResource("10_ktjv7")]
 position = Vector2(-1.17316, -17.3449)
 scale = Vector2(0.333333, 0.333333)
-lifetime = 90.0
+lifetime = 70.0
 
 [node name="Scientist2" parent="." instance=ExtResource("9_whf02")]
 position = Vector2(-211, 616)
 rotation = -1.98419
-lifetime = 80.0
+lifetime = 60.0
 
 [node name="Heart2" parent="Scientist2" instance=ExtResource("10_ktjv7")]
 position = Vector2(-1.33334, -16)
 scale = Vector2(0.333333, 0.333333)
-lifetime = 90.0
+lifetime = 70.0
 
 [node name="Scientist3" parent="." instance=ExtResource("9_whf02")]
 position = Vector2(-383, 859)
 rotation = 2.22294
-lifetime = 80.0
+lifetime = 60.0
 
 [node name="Heart3" parent="Scientist3" instance=ExtResource("10_ktjv7")]
 position = Vector2(-0.981904, -21.059)
 scale = Vector2(0.333333, 0.333333)
-lifetime = 90.0
+lifetime = 70.0
 
 [node name="Scientist4" parent="." instance=ExtResource("9_whf02")]
 position = Vector2(-780, 633)

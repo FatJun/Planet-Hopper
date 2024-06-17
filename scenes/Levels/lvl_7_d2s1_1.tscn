@@ -46,28 +46,25 @@ texture = ExtResource("5_4fiqi")
 [node name="Fuel" parent="." instance=ExtResource("5_27pcl")]
 position = Vector2(268, 138)
 rotation = -0.8811
-lifetime = 8.0
 
 [node name="Fuel2" parent="." instance=ExtResource("5_27pcl")]
 position = Vector2(369, 226)
 rotation = 2.29657
-lifetime = 8.0
 
 [node name="Heart" parent="." instance=ExtResource("6_d3dh4")]
 position = Vector2(281, 232)
 rotation = -2.45981
-lifetime = 8.0
 
 [node name="Scientist" parent="." instance=ExtResource("7_cas8u")]
 position = Vector2(385, 180)
 rotation = 1.56557
-lifetime = 40.0
+lifetime = 25.0
 
 [node name="Timer" parent="." instance=ExtResource("8_yxumn")]
 position = Vector2(402, 179)
 rotation = 1.57907
 scale = Vector2(0.2, 0.2)
-lifetime = 50.0
+lifetime = 35.0
 
 [node name="Slime" parent="." instance=ExtResource("9_dm84w")]
 position = Vector2(388, 207)

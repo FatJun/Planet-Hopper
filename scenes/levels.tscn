@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0r7qcpfxbg8c"]
+
+[ext_resource type="PackedScene" uid="uid://d2eibehh1cd3j" path="res://scenes/ui/parallax/cosmic.tscn" id="1_386gf"]
+[ext_resource type="Script" path="res://scripts/shared/mouse_camera.gd" id="2_ujcle"]
+[ext_resource type="PackedScene" uid="uid://clb3iqfq7uyry" path="res://scenes/ui/levels/level_1.tscn" id="3_sfeyp"]
+[ext_resource type="Shader" path="res://shaders/levels.gdshader" id="4_ijk0p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t38ek"]
+shader = ExtResource("4_ijk0p")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 5.211
+
+[node name="Levels" type="Node2D"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_386gf")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 2000
+limit_bottom = 2000
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+script = ExtResource("2_ujcle")
+
+[node name="Level1" parent="." instance=ExtResource("3_sfeyp")]
+material = SubResource("ShaderMaterial_t38ek")
+position = Vector2(508, 271)

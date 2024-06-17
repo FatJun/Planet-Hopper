@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_wdg7s"]
 [ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="8_8vhoe"]
 [ext_resource type="PackedScene" uid="uid://dygn61qy17tgh" path="res://scenes/planet_s3_h2.tscn" id="8_o4i0w"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/mine.tscn" id="9_4g6ux"]
+[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="9_4g6ux"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="10_07y7n"]
 
 [node name="lvl_6_d1s3_2" type="Node2D"]

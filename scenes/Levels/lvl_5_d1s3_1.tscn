@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dt2lvji23fygv" path="res://assets/sprites/planets/lvl3.png" id="6_vb7x1"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="7_2uy2g"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="8_ipomp"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="9_4xpkw"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="9_4xpkw"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="10_pewu8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkquk"]

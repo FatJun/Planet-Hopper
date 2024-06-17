@@ -56,7 +56,6 @@ scale = Vector2(7, 7)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D6"]
 position = Vector2(-11.5857, 0.0714198)
-scale = Vector2(1, 1)
 polygon = PackedVector2Array(-41.5714, -13.2857, -15.5714, -19, -0.42857, -29, 6.28571, -31.8571, 20.2857, -31.5714, 32.5714, -25.4286, 39, -18.2857, 43.5714, -8.85714, 45.2857, 2.14286, 42.4286, 13.7143, 35.8571, 24.1429, 21.4286, 32.4286, 7.85714, 33.1429, 8, 26.8571, 5.71429, 21.1429, 0.857143, 22, -5.57143, 26, -9.14286, 26.1429, -18.2857, 10.4286, -23.2857, 7.71428, -42.2857, -11.1429)
 
 [node name="Area2D2" type="Area2D" parent="StaticBody2D6"]
@@ -74,7 +73,6 @@ shape = SubResource("RectangleShape2D_cwr61")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D6/Area2D2"]
 position = Vector2(67.8095, 235.721)
 rotation = 0.105154
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_35eoi")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D6"]

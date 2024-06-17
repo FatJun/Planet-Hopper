@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3k75h8ra2rxq"]
+[gd_scene load_steps=17 format=3 uid="uid://d3k75h8ra2rxq"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_4uymx"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_xdtnp"]
@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://4psfx8ndmrho" path="res://scenes/Planet shapes/planet_s4_h4.tscn" id="4_xwa1j"]
 [ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="5_ydvi5"]
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="6_e7uvd"]
+[ext_resource type="Texture2D" uid="uid://cmixu337rexls" path="res://assets/sprites/planets/lvl7.png" id="6_x1qfm"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="7_1iqmf"]
+[ext_resource type="Texture2D" uid="uid://bwqt006w56y6y" path="res://assets/sprites/planets/1lvl.png" id="7_85no2"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_8dyhu"]
+[ext_resource type="Texture2D" uid="uid://doik51taa428f" path="res://assets/sprites/planets/lvl12_2.png" id="8_ucc6h"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="9_pxqqf"]
+[ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="13_dqx2i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etba5"]
 radius = 32.0
@@ -21,10 +25,11 @@ radius = 32.0
 
 [node name="lvl_12_d2s4_2" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_4uymx")]
-position = Vector2(319, 118)
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_4uymx")]
+position = Vector2(319, 113)
 _current_fuel_units = 4
 max_mission_progress = 3
+space_ship = NodePath("../SpaceShip")
 mass = 640.0
 jump_force = 1500
 
@@ -47,6 +52,10 @@ mass = 100000.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource("CircleShape2D_etba5")
 
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(-0.285714, -0.285714)
+texture = ExtResource("6_x1qfm")
+
 [node name="StaticBody2D3" parent="." instance=ExtResource("5_ydvi5")]
 position = Vector2(673, -42)
 scale = Vector2(3.5, 3.5)
@@ -54,6 +63,10 @@ mass = 100000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 shape = SubResource("CircleShape2D_ixhca")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(0, -0.571429)
+texture = ExtResource("7_85no2")
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("5_ydvi5")]
 position = Vector2(682, 741)
@@ -63,23 +76,27 @@ mass = 100000.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 shape = SubResource("CircleShape2D_gyway")
 
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
+position = Vector2(-0.857143, -0.571429)
+texture = ExtResource("8_ucc6h")
+
 [node name="Fuel" parent="." instance=ExtResource("6_e7uvd")]
-position = Vector2(255, 125)
+position = Vector2(254, 120)
 rotation = -0.287572
 lifetime = 32.0
 
 [node name="Fuel2" parent="." instance=ExtResource("6_e7uvd")]
-position = Vector2(515, 219)
+position = Vector2(524, 215)
 rotation = 1.00614
 lifetime = 32.0
 
 [node name="Fuel3" parent="." instance=ExtResource("6_e7uvd")]
-position = Vector2(90, 296)
+position = Vector2(85, 292)
 rotation = -1.20492
 lifetime = 32.0
 
 [node name="Fuel4" parent="." instance=ExtResource("6_e7uvd")]
-position = Vector2(460, 538)
+position = Vector2(466, 546)
 rotation = 2.51199
 lifetime = 32.0
 
@@ -133,3 +150,7 @@ position = Vector2(543, 750)
 rotation = -1.6068
 scale = Vector2(0.25, 0.25)
 lifetime = 110.0
+
+[node name="SpaceShip" parent="." instance=ExtResource("13_dqx2i")]
+position = Vector2(364, 587)
+rotation = -3.36843

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dahf103pr4k4n"
-path="res://.godot/imported/3926019653 (18).png-142ca7b98c3ec85ba35472f28049f039.ctex"
+uid="uid://bqskd3fejmvrq"
+path="res://.godot/imported/Cursor-export.png-4a06b35121fa498ecb91315e6574a697.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Planet sprites/3926019653 (18).png"
-dest_files=["res://.godot/imported/3926019653 (18).png-142ca7b98c3ec85ba35472f28049f039.ctex"]
+source_file="res://assets/sprites/ui/Cursor-export.png"
+dest_files=["res://.godot/imported/Cursor-export.png-4a06b35121fa498ecb91315e6574a697.ctex"]
 
 [params]
 

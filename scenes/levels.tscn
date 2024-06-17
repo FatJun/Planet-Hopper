@@ -1,14 +1,14 @@
-[gd_scene load_steps=91 format=3 uid="uid://d0r7qcpfxbg8c"]
+[gd_scene load_steps=103 format=3 uid="uid://d0r7qcpfxbg8c"]
 
 [ext_resource type="PackedScene" uid="uid://d2eibehh1cd3j" path="res://scenes/ui/parallax/cosmic.tscn" id="1_386gf"]
 [ext_resource type="Script" path="res://scripts/shared/mouse_camera.gd" id="2_ujcle"]
 [ext_resource type="PackedScene" uid="uid://dat404i8a0bel" path="res://scenes/ui/levels/space_ship.tscn" id="3_splxg"]
 [ext_resource type="Shader" path="res://shaders/levels.gdshader" id="4_ijk0p"]
 [ext_resource type="Material" uid="uid://da1p07aqyy7j0" path="res://scenes/materials/outline_shader.tres" id="5_a1uwv"]
-[ext_resource type="Texture2D" uid="uid://bwqt006w56y6y" path="res://assets/sprites/planets/1lvl.png" id="5_cbwi8"]
 [ext_resource type="Texture2D" uid="uid://eutiin0786hw" path="res://assets/sprites/planets/sun.png" id="5_trqyt"]
 [ext_resource type="PackedScene" uid="uid://c3ijawvvwowjc" path="res://scenes/Levels/lvl_1_d1s1_1.tscn" id="6_yrs24"]
 [ext_resource type="PackedScene" uid="uid://clb3iqfq7uyry" path="res://scenes/ui/levels/level.tscn" id="7_mokxf"]
+[ext_resource type="Texture2D" uid="uid://bwqt006w56y6y" path="res://assets/sprites/planets/lvl1.png" id="10_ddtxu"]
 [ext_resource type="PackedScene" uid="uid://b5ehbok4s1knu" path="res://scenes/Levels/lvl_2_d1s1_2.tscn" id="11_8233e"]
 [ext_resource type="Texture2D" uid="uid://7bdyvw7oeeyi" path="res://assets/sprites/planets/lvl2.png" id="11_cieay"]
 [ext_resource type="Texture2D" uid="uid://dt2lvji23fygv" path="res://assets/sprites/planets/lvl3.png" id="12_wtsp3"]
@@ -33,6 +33,18 @@
 [ext_resource type="Texture2D" uid="uid://b4di6ulxie615" path="res://assets/sprites/planets/lvl10_2.png" id="31_ir7mv"]
 [ext_resource type="PackedScene" uid="uid://ckrn2dqcmr7i1" path="res://scenes/Levels/lvl_11_d2s4_1.tscn" id="32_s5y2w"]
 [ext_resource type="Texture2D" uid="uid://cnoi4samy3alk" path="res://assets/sprites/planets/lvl11.png" id="33_k7hks"]
+[ext_resource type="PackedScene" uid="uid://d3k75h8ra2rxq" path="res://scenes/Levels/lvl_12_d2s4_2.tscn" id="34_olwsv"]
+[ext_resource type="Texture2D" uid="uid://562oj2kuvodl" path="res://assets/sprites/planets/lvl12.png" id="35_tdyta"]
+[ext_resource type="PackedScene" uid="uid://d22nrnha1ytv4" path="res://scenes/Levels/lvl_13_d2s5_!.tscn" id="35_wv88y"]
+[ext_resource type="PackedScene" uid="uid://w1haeqaicn8" path="res://scenes/Levels/lvl_14_d3s3_1.tscn" id="36_dqflx"]
+[ext_resource type="Texture2D" uid="uid://doik51taa428f" path="res://assets/sprites/planets/lvl12_2.png" id="36_ljmix"]
+[ext_resource type="PackedScene" uid="uid://4xh4poa076eo" path="res://scenes/Levels/lvl_15_d3s3_2.tscn" id="37_t6vwm"]
+[ext_resource type="PackedScene" uid="uid://bfe48i4yicrim" path="res://scenes/Levels/lvl_16_d3s3_3.tscn" id="38_k4pir"]
+[ext_resource type="Texture2D" uid="uid://bf5ya4vc3ahfi" path="res://assets/sprites/planets/lvl13.png" id="38_llyrf"]
+[ext_resource type="Texture2D" uid="uid://cvwmqqtk61ve0" path="res://assets/sprites/planets/lvl14.png" id="40_py3y0"]
+[ext_resource type="Texture2D" uid="uid://knpc75wecx3m" path="res://assets/sprites/planets/lvl15.png" id="42_awgd1"]
+[ext_resource type="Texture2D" uid="uid://dc0x70m15hl3v" path="res://assets/sprites/planets/lvl16.png" id="44_mblht"]
+[ext_resource type="Texture2D" uid="uid://dahf103pr4k4n" path="res://assets/sprites/planets/lvl16_1.png" id="45_n4eat"]
 
 [sub_resource type="Environment" id="Environment_7nsd2"]
 background_mode = 3
@@ -503,7 +515,7 @@ scene = ExtResource("6_yrs24")
 
 [node name="Sprite2D" type="Sprite2D" parent="LVL1"]
 material = ExtResource("5_a1uwv")
-texture = ExtResource("5_cbwi8")
+texture = ExtResource("10_ddtxu")
 
 [node name="LVL2" parent="." instance=ExtResource("7_mokxf")]
 position = Vector2(977, 216)
@@ -548,7 +560,7 @@ texture = ExtResource("17_r1n3j")
 material = ExtResource("5_a1uwv")
 position = Vector2(-49.1809, 42.7928)
 rotation = 1.49575
-scale = Vector2(0.324849, 0.324849)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("12_wtsp3")
 
 [node name="LVL6" parent="." instance=ExtResource("7_mokxf")]
@@ -658,4 +670,125 @@ texture = ExtResource("27_877ir")
 material = ExtResource("5_a1uwv")
 position = Vector2(-36, -52)
 scale = Vector2(0.32, 0.32)
-texture = ExtResource("5_cbwi8")
+texture = ExtResource("10_ddtxu")
+
+[node name="LVL12" parent="." instance=ExtResource("7_mokxf")]
+position = Vector2(2040, 95)
+id = 12
+scene = ExtResource("34_olwsv")
+
+[node name="Sprite2D" type="Sprite2D" parent="LVL12"]
+material = ExtResource("5_a1uwv")
+texture = ExtResource("35_tdyta")
+
+[node name="Sprite2D" type="Sprite2D" parent="LVL12/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(62, 40)
+scale = Vector2(0.427473, 0.427473)
+texture = ExtResource("36_ljmix")
+
+[node name="Sprite2D2" type="Sprite2D" parent="LVL12/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(-53, -50)
+scale = Vector2(0.359999, 0.359999)
+texture = ExtResource("27_877ir")
+
+[node name="Sprite2D3" type="Sprite2D" parent="LVL12/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(51, -58)
+scale = Vector2(0.399999, 0.399999)
+texture = ExtResource("10_ddtxu")
+
+[node name="LVL13" parent="." instance=ExtResource("7_mokxf")]
+position = Vector2(2238, 217)
+id = 13
+scene = ExtResource("35_wv88y")
+
+[node name="Sprite2D" type="Sprite2D" parent="LVL13"]
+material = ExtResource("5_a1uwv")
+texture = ExtResource("38_llyrf")
+
+[node name="Sprite2D" type="Sprite2D" parent="LVL13/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(-68.4, -24.2731)
+scale = Vector2(0.519997, 0.519997)
+texture = ExtResource("11_cieay")
+
+[node name="Sprite2D2" type="Sprite2D" parent="LVL13/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(-55, -61)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("27_877ir")
+
+[node name="Sprite2D3" type="Sprite2D" parent="LVL13/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(-95, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("36_ljmix")
+
+[node name="LVL14" parent="." instance=ExtResource("7_mokxf")]
+position = Vector2(2329, 79)
+id = 14
+scene = ExtResource("36_dqflx")
+
+[node name="Sprite2D" type="Sprite2D" parent="LVL14"]
+material = ExtResource("5_a1uwv")
+texture = ExtResource("40_py3y0")
+
+[node name="Sprite2D" type="Sprite2D" parent="LVL14/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(57, -35)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_wtsp3")
+
+[node name="LVL15" parent="." instance=ExtResource("7_mokxf")]
+position = Vector2(2486, 164)
+id = 15
+scene = ExtResource("37_t6vwm")
+
+[node name="Sprite2D" type="Sprite2D" parent="LVL15"]
+material = ExtResource("5_a1uwv")
+texture = ExtResource("42_awgd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="LVL15/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(-63, 49)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("31_ir7mv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="LVL15/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(-96, 20)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("28_ebh1q")
+
+[node name="LVL16" parent="." instance=ExtResource("7_mokxf")]
+position = Vector2(2637, 101)
+id = 16
+scene = ExtResource("38_k4pir")
+
+[node name="Sprite2D" type="Sprite2D" parent="LVL16"]
+material = ExtResource("5_a1uwv")
+rotation = -2.97003
+texture = ExtResource("44_mblht")
+
+[node name="Sprite2D" type="Sprite2D" parent="LVL16/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(60.7727, 16.8725)
+rotation = 2.97196
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("45_n4eat")
+
+[node name="Sprite2D2" type="Sprite2D" parent="LVL16/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(-68.3327, -10.4521)
+rotation = 1.93507
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_ddtxu")
+
+[node name="Sprite2D3" type="Sprite2D" parent="LVL16/Sprite2D"]
+material = ExtResource("5_a1uwv")
+position = Vector2(-82.537, 30.5752)
+rotation = 2.50594
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("27_877ir")

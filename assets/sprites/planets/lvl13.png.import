@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc0x70m15hl3v"
-path="res://.godot/imported/Diff 2 Size 3.png-1484fc893c519ab1b9607fe2c0a46e89.ctex"
+uid="uid://bf5ya4vc3ahfi"
+path="res://.godot/imported/lvl13.png-e038167b9de5a9198eceee3bdb653dc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Planet sprites/Diff 2 Size 3.png"
-dest_files=["res://.godot/imported/Diff 2 Size 3.png-1484fc893c519ab1b9607fe2c0a46e89.ctex"]
+source_file="res://assets/sprites/planets/lvl13.png"
+dest_files=["res://.godot/imported/lvl13.png-e038167b9de5a9198eceee3bdb653dc0.ctex"]
 
 [params]
 

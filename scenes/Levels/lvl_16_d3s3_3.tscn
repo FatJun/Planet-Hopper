@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_20jnd"]
 [ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_af8np"]
 [ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="4_ms35c"]
-[ext_resource type="Texture2D" uid="uid://dc0x70m15hl3v" path="res://assets/sprites/Planet sprites/Diff 2 Size 3.png" id="5_cg1cm"]
-[ext_resource type="Texture2D" uid="uid://dahf103pr4k4n" path="res://assets/sprites/Planet sprites/3926019653 (18).png" id="6_e6s6f"]
+[ext_resource type="Texture2D" uid="uid://dc0x70m15hl3v" path="res://assets/sprites/planets/lvl16.png" id="5_7qikx"]
+[ext_resource type="Texture2D" uid="uid://dahf103pr4k4n" path="res://assets/sprites/planets/lvl16_1.png" id="6_aja60"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="6_g1wvv"]
-[ext_resource type="Texture2D" uid="uid://cw1fd1o0mo8au" path="res://assets/sprites/Planet sprites/3926019653 (12).png" id="7_l2hck"]
-[ext_resource type="Texture2D" uid="uid://bc6a1l28dc762" path="res://assets/sprites/Planet sprites/3926019653 (9).png" id="8_467wu"]
+[ext_resource type="Texture2D" uid="uid://bwqt006w56y6y" path="res://assets/sprites/planets/lvl1.png" id="7_wluh7"]
+[ext_resource type="Texture2D" uid="uid://3aa8ns8ugwls" path="res://assets/sprites/planets/lvl9_2.png" id="8_yms6f"]
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="10_ivx7y"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="11_tupso"]
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="12_28ain"]
@@ -52,7 +52,7 @@ shape = SubResource("CircleShape2D_p8jjv")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(-4, -10.4762)
 rotation = -2.8017
-texture = ExtResource("5_cg1cm")
+texture = ExtResource("5_7qikx")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-26.8571, -17.5238, -32.1905, -47.619, -28.5714, -48.9524, -3.42857, -31.2381)
@@ -66,7 +66,8 @@ mass = 50000.0
 shape = SubResource("CircleShape2D_08ued")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
-texture = ExtResource("6_e6s6f")
+position = Vector2(-0.571429, -1.14286)
+texture = ExtResource("6_aja60")
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("4_ms35c")]
 position = Vector2(682, 470)
@@ -77,7 +78,8 @@ mass = 50000.0
 shape = SubResource("CircleShape2D_l6uwv")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
-texture = ExtResource("7_l2hck")
+position = Vector2(0.571429, -0.571429)
+texture = ExtResource("7_wluh7")
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("4_ms35c")]
 position = Vector2(894, 270)
@@ -88,7 +90,7 @@ mass = 50000.0
 shape = SubResource("CircleShape2D_elvso")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
-texture = ExtResource("8_467wu")
+texture = ExtResource("8_yms6f")
 
 [node name="SpaceShip" parent="." instance=ExtResource("6_g1wvv")]
 position = Vector2(326, 482)

@@ -1,11 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckrn2dqcmr7i1"]
+[gd_scene load_steps=21 format=3 uid="uid://ckrn2dqcmr7i1"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_kvqik"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_qrtt6"]
 [ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_u56dn"]
 [ext_resource type="PackedScene" uid="uid://mhgtmxrr11vw" path="res://scenes/Planet shapes/planet_s4_h1.tscn" id="4_ddgyk"]
 [ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="5_0qlox"]
-[ext_resource type="Texture2D" uid="uid://bwqt006w56y6y" path="res://assets/sprites/planets/1lvl.png" id="6_rb0t1"]
+[ext_resource type="Texture2D" uid="uid://bwqt006w56y6y" path="res://assets/sprites/planets/lvl1.png" id="6_rb0t1"]
 [ext_resource type="Texture2D" uid="uid://cmixu337rexls" path="res://assets/sprites/planets/lvl7.png" id="7_6d2rq"]
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="7_27gtr"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="8_cldtv"]
@@ -13,14 +13,17 @@
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="10_5ccw7"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="12_h5oia"]
 [ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="13_o2mu7"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/mine.tscn" id="14_k5xyl"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="15_c1p22"]
+[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="14_k5xyl"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="15_c1p22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p07eu"]
 size = Vector2(208.963, 170.272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwq1n"]
 size = Vector2(126.736, 150.121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vloaw"]
+size = Vector2(142.217, 142.3)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8wm57"]
 radius = 32.0
@@ -64,6 +67,11 @@ position = Vector2(158.849, -175.915)
 rotation = -0.79246
 shape = SubResource("RectangleShape2D_wwq1n")
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
+position = Vector2(-130.811, -260.644)
+rotation = -0.433017
+shape = SubResource("RectangleShape2D_vloaw")
+
 [node name="StaticBody2D2" parent="." instance=ExtResource("5_0qlox")]
 position = Vector2(-59, 101)
 scale = Vector2(1.75, 1.75)
@@ -88,7 +96,7 @@ position = Vector2(-0.571429, -0.571429)
 texture = ExtResource("7_6d2rq")
 
 [node name="Fuel" parent="." instance=ExtResource("7_27gtr")]
-position = Vector2(101, 220)
+position = Vector2(102, 220)
 rotation = -1.06785
 lifetime = 25.0
 
@@ -103,12 +111,12 @@ rotation = 1.9146
 lifetime = 25.0
 
 [node name="Fuel4" parent="." instance=ExtResource("7_27gtr")]
-position = Vector2(-16, 46)
+position = Vector2(-17, 49)
 rotation = 0.607028
 lifetime = 25.0
 
 [node name="Fuel5" parent="." instance=ExtResource("7_27gtr")]
-position = Vector2(704, 519)
+position = Vector2(708, 516)
 rotation = 4.01459
 lifetime = 25.0
 
@@ -123,7 +131,7 @@ rotation = -3.56752
 lifetime = 25.0
 
 [node name="Timer" parent="." instance=ExtResource("9_2iedx")]
-position = Vector2(525, 518)
+position = Vector2(529, 516)
 rotation = 2.5079
 lifetime = 25.0
 
@@ -133,14 +141,14 @@ rotation = -5.01239
 lifetime = 25.0
 
 [node name="Scientist" parent="." instance=ExtResource("10_5ccw7")]
-position = Vector2(-126, 104)
+position = Vector2(-123, 103)
 rotation = -1.53227
 lifetime = 70.0
 
 [node name="Heart3" parent="." instance=ExtResource("8_cldtv")]
-position = Vector2(-149, 104)
+position = Vector2(-140, 104)
 rotation = -1.53227
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.25, 0.25)
 lifetime = 80.0
 
 [node name="SpaceShip" parent="." instance=ExtResource("12_h5oia")]

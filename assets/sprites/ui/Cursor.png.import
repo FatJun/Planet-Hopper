@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf5ya4vc3ahfi"
-path="res://.godot/imported/13lvl.png-1c17bd57cf8231f6ae07deb1a5f17685.ctex"
+uid="uid://bo3ac27xr3vlf"
+path="res://.godot/imported/Cursor.png-d2c4ee4a6099ee0c47e9c5a4f23f31f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/planets/13lvl.png"
-dest_files=["res://.godot/imported/13lvl.png-1c17bd57cf8231f6ae07deb1a5f17685.ctex"]
+source_file="res://assets/sprites/ui/Cursor.png"
+dest_files=["res://.godot/imported/Cursor.png-d2c4ee4a6099ee0c47e9c5a4f23f31f2.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/shared/gravity_object.gd" id="1_jgesb"]
 [ext_resource type="Script" path="res://scripts/shared/gravity_zone.gd" id="2_kpd03"]
-[ext_resource type="Texture2D" uid="uid://bf5ya4vc3ahfi" path="res://assets/sprites/planets/13lvl.png" id="3_yryfu"]
+[ext_resource type="Texture2D" uid="uid://bf5ya4vc3ahfi" path="res://assets/sprites/planets/lvl13.png" id="3_yryfu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlp1t"]
 radius = 1024.0

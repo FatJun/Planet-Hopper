@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="9_p62l8"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="12_mqt65"]
 [ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="13_imp5k"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/mine.tscn" id="14_0cssm"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="15_xntj2"]
+[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="14_0cssm"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="15_xntj2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q47t1"]
 size = Vector2(131.059, 138)

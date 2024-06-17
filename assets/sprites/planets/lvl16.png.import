@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwqt006w56y6y"
-path="res://.godot/imported/1lvl.png-7252a76ed7f7081ecb6ba4ff199f660e.ctex"
+uid="uid://dc0x70m15hl3v"
+path="res://.godot/imported/lvl16.png-303be61696add04f8d85d43c18472880.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/planets/1lvl.png"
-dest_files=["res://.godot/imported/1lvl.png-7252a76ed7f7081ecb6ba4ff199f660e.ctex"]
+source_file="res://assets/sprites/planets/lvl16.png"
+dest_files=["res://.godot/imported/lvl16.png-303be61696add04f8d85d43c18472880.ctex"]
 
 [params]
 

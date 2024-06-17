@@ -102,6 +102,7 @@ radius = 9.0
 
 [node name="Lizard" type="CharacterBody2D" node_paths=PackedStringArray("vision_zone", "collision_ray", "gravity_zone", "collision", "sprite")]
 rotation = -0.00485879
+scale = Vector2(1.5, 1.5)
 collision_layer = 8194
 collision_mask = 2
 script = ExtResource("1_12u02")

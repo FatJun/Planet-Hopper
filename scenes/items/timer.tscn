@@ -14,7 +14,7 @@ region = Rect2(1088, 512, 120, 128)
 radius = 18.0278
 
 [node name="Timer" type="Node2D" node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player")]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_4xbnr")
 lifetime_bar = NodePath("PrimaryBar")
 pickable_zone = NodePath("Area2D")

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_wdg7s"]
 [ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="8_8vhoe"]
 [ext_resource type="PackedScene" uid="uid://dygn61qy17tgh" path="res://scenes/planet_s3_h2.tscn" id="8_o4i0w"]
-[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="9_4g6ux"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/mine.tscn" id="9_4g6ux"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="10_07y7n"]
 
 [node name="lvl_6_d1s3_2" type="Node2D"]
@@ -28,39 +28,39 @@ player = NodePath("..")
 player = NodePath("../Player")
 
 [node name="Fuel" parent="." instance=ExtResource("5_4v4ei")]
-position = Vector2(229, 141)
+position = Vector2(226, 136)
 rotation = -0.463327
 lifetime = 12.0
 
 [node name="Fuel2" parent="." instance=ExtResource("5_4v4ei")]
-position = Vector2(453, 170)
+position = Vector2(456, 164)
 rotation = 0.751712
 lifetime = 12.0
 
 [node name="Fuel3" parent="." instance=ExtResource("5_4v4ei")]
-position = Vector2(480, 407)
+position = Vector2(483, 411)
 rotation = 2.10447
 lifetime = 12.0
 
 [node name="Fuel4" parent="." instance=ExtResource("5_4v4ei")]
-position = Vector2(262, 480)
+position = Vector2(258, 484)
 rotation = -2.80795
 lifetime = 12.0
 
 [node name="Heart" parent="." instance=ExtResource("6_rfdcb")]
-position = Vector2(140, 310)
-rotation = -1.47548
+position = Vector2(138, 310)
+rotation = -1.60177
 lifetime = 12.0
 
 [node name="Scientist" parent="." instance=ExtResource("7_wdg7s")]
-position = Vector2(385, 475)
+position = Vector2(386, 478)
 rotation = 2.78771
 lifetime = 40.0
 
-[node name="Heart2" parent="Scientist" instance=ExtResource("6_rfdcb")]
-position = Vector2(-0.573425, -21.5331)
-rotation = -0.10855
-scale = Vector2(0.333333, 0.333333)
+[node name="Heart2" parent="." instance=ExtResource("6_rfdcb")]
+position = Vector2(394.8, 500)
+rotation = 2.67916
+scale = Vector2(0.4, 0.4)
 lifetime = 50.0
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("8_o4i0w")]

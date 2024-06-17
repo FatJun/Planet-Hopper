@@ -102,7 +102,7 @@ rotation = 2.37446
 lifetime = 25.0
 
 [node name="Fuel4" parent="." instance=ExtResource("7_53yno")]
-position = Vector2(718, 182)
+position = Vector2(719, 185)
 rotation = 3.0951
 lifetime = 25.0
 
@@ -112,39 +112,40 @@ rotation = -0.726935
 lifetime = 25.0
 
 [node name="Heart2" parent="." instance=ExtResource("8_o0pxv")]
-position = Vector2(232, 470)
+position = Vector2(256, 476)
 rotation = -2.63443
 lifetime = 25.0
 
 [node name="Heart3" parent="." instance=ExtResource("8_o0pxv")]
 position = Vector2(92, 195)
-rotation = -2.09219
+rotation = -1.11444
 lifetime = 25.0
 
 [node name="Timer" parent="." instance=ExtResource("9_kuo6n")]
-position = Vector2(485, 233)
-rotation = 1.07855
+position = Vector2(490, 238)
+rotation = 1.25807
 lifetime = 25.0
 
 [node name="Scientist" parent="." instance=ExtResource("10_yt7fy")]
-position = Vector2(775, 87)
+position = Vector2(776, 87.0001)
 rotation = 1.15639
 lifetime = 60.0
 
 [node name="Timer2" parent="." instance=ExtResource("9_kuo6n")]
-position = Vector2(791, 80)
+position = Vector2(797, 76)
 rotation = 1.15639
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 lifetime = 70.0
 
 [node name="Scientist2" parent="." instance=ExtResource("10_yt7fy")]
-position = Vector2(139, 319)
+position = Vector2(138, 320)
 rotation = -1.80341
 lifetime = 60.0
 
-[node name="Fuel5" parent="Scientist2" instance=ExtResource("7_53yno")]
-position = Vector2(-1.52194, -25.3227)
-scale = Vector2(0.333333, 0.333333)
+[node name="Fuel5" parent="." instance=ExtResource("7_53yno")]
+position = Vector2(113, 327)
+rotation = -1.80341
+scale = Vector2(0.4, 0.4)
 lifetime = 70.0
 
 [node name="SpaceShip" parent="." instance=ExtResource("11_5taai")]
@@ -152,13 +153,13 @@ position = Vector2(354, 480)
 rotation = 2.85633
 
 [node name="Lizard" parent="." instance=ExtResource("12_gjiqm")]
-position = Vector2(484, 202)
+position = Vector2(489, 197)
 rotation = 1.21465
 x_axis = -1.0
 
 [node name="Lizard2" parent="." instance=ExtResource("12_gjiqm")]
-position = Vector2(184, 435)
-rotation = -2.32044
+position = Vector2(183, 443)
+rotation = -2.52114
 
 [node name="FlyEye" parent="." instance=ExtResource("13_gquai")]
 position = Vector2(522, 395)

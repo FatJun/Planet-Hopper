@@ -42,6 +42,9 @@ var _current_health = self.max_health
 var current_health: int:
 	get = get_current_health,
 	set = set_current_health
+var is_can_use_jetpack: bool:
+	get:
+		return current_fuel_units > 0 and not jetpack_is_reloading
 
 
 var knockback_velocity := Vector2.ZERO
@@ -94,12 +97,6 @@ func get_current_health() -> int:
 	return _current_health
 
 
-func get_is_can_jump() -> bool:
-	var is_enough_jumps := max_jumps_in_row > jumps_in_row
-	var is_jetpack := current_fuel_units > 0 and not jetpack_is_reloading
-	return is_enough_jumps or is_jetpack
-
-
 func reset_jumps():
 	super.reset_jumps()
 	jetpack_is_reloading = false
@@ -130,6 +127,7 @@ func get_current_fuel_units() -> int:
 
 
 func apply_jetpack() -> void:
+	assert(is_can_use_jetpack)
 	current_fuel_units -= 1
 	jetpack_is_reloading = true
 	jetpack_particles.emitting = true
@@ -140,15 +138,6 @@ func cancel_jetpack() -> void:
 	jetpack_velocity = Vector2.ZERO
 	jetpack_particles.emitting = false
 	jetpack_timer.stop()
-
-
-func apply_jump() -> void:
-	assert(is_can_jump)
-	if jumps_in_row >= max_jumps_in_row:
-		apply_jetpack()
-	else:
-		jumps_in_row += 1
-		jump_velocity += up_direction * jump_force
 
 
 func take_damage(obj: Node2D, value: int, knockback_force: float):

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://clb3iqfq7uyry"]
+
+[ext_resource type="Shader" path="res://shaders/levels.gdshader" id="1_hpy1o"]
+[ext_resource type="Texture2D" uid="uid://bwqt006w56y6y" path="res://assets/sprites/planets/1lvl.png" id="1_iesyf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wkdfq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3prtl"]
+shader = ExtResource("1_hpy1o")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[node name="Level1" type="Node2D"]
+material = SubResource("ShaderMaterial_wkdfq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_3prtl")
+texture = ExtResource("1_iesyf")

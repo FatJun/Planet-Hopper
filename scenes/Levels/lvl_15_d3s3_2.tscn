@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://4xh4poa076eo"]
+[gd_scene load_steps=20 format=3 uid="uid://4xh4poa076eo"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_xpaf8"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_iry2e"]
@@ -13,8 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="9_8jgr4"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="12_td5vh"]
 [ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="13_ggykg"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/mine.tscn" id="14_qq3lw"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="15_jyjdj"]
+[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="14_qq3lw"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="15_jyjdj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uquxq"]
+size = Vector2(95.4396, 71.8519)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vuq7"]
+size = Vector2(109.695, 72.3597)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cd1el"]
 radius = 32.0
@@ -41,6 +47,19 @@ player = NodePath("../Player")
 [node name="StaticBody2D" parent="." instance=ExtResource("4_u042y")]
 position = Vector2(320, 300)
 rotation = -0.349066
+
+[node name="Area2D2" type="Area2D" parent="StaticBody2D"]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
+position = Vector2(158.525, -8.79584)
+rotation = -0.0512581
+shape = SubResource("RectangleShape2D_uquxq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
+position = Vector2(-150.282, 2.73453)
+shape = SubResource("RectangleShape2D_6vuq7")
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("5_icu07")]
 position = Vector2(-37, 643)

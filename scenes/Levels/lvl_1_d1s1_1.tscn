@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3ijawvvwowjc"]
+[gd_scene load_steps=13 format=3 uid="uid://c3ijawvvwowjc"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_xw0iv"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_sxghj"]
@@ -13,6 +13,18 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ibcw"]
 radius = 32.0
+
+[sub_resource type="Environment" id="Environment_xln4k"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 0.3
+glow_levels/2 = 0.1
+glow_levels/3 = 1.2
+glow_levels/5 = 0.5
+glow_levels/7 = 0.2
+glow_blend_mode = 1
+glow_hdr_threshold = 0.2
+glow_hdr_scale = 1.0
 
 [node name="Lvl 1_D1S1_1" type="Node2D"]
 
@@ -68,3 +80,6 @@ rotation = 1.57134
 [node name="SpaceShip" parent="." instance=ExtResource("9_gq70c")]
 position = Vector2(319, 249)
 rotation = -3.06117
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xln4k")

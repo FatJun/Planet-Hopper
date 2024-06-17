@@ -81,7 +81,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_fwhb3"]
 resource_name = "new_animation"
-length = 2.0
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

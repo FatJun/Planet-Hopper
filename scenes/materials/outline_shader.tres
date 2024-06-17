@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://da1p07aqyy7j0"]
+
+[ext_resource type="Shader" path="res://shaders/levels.gdshader" id="1_ue7cl"]
+
+[resource]
+shader = ExtResource("1_ue7cl")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0

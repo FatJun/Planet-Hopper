@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://d0r7qcpfxbg8c"]
+[gd_scene load_steps=79 format=3 uid="uid://d0r7qcpfxbg8c"]
 
 [ext_resource type="PackedScene" uid="uid://d2eibehh1cd3j" path="res://scenes/ui/parallax/cosmic.tscn" id="1_386gf"]
 [ext_resource type="Script" path="res://scripts/shared/mouse_camera.gd" id="2_ujcle"]
@@ -9,30 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://eutiin0786hw" path="res://assets/sprites/planets/sun.png" id="5_trqyt"]
 [ext_resource type="PackedScene" uid="uid://c3ijawvvwowjc" path="res://scenes/Levels/lvl_1_d1s1_1.tscn" id="6_yrs24"]
 [ext_resource type="PackedScene" uid="uid://clb3iqfq7uyry" path="res://scenes/ui/levels/level.tscn" id="7_mokxf"]
-[ext_resource type="PackedScene" uid="uid://b5ehbok4s1knu" path="res://scenes/Levels/lvl_2_d1s1_2.tscn" id="11_8233e"]
-[ext_resource type="Texture2D" uid="uid://7bdyvw7oeeyi" path="res://assets/sprites/planets/lvl2.png" id="11_cieay"]
-[ext_resource type="Texture2D" uid="uid://dt2lvji23fygv" path="res://assets/sprites/planets/lvl3.png" id="12_wtsp3"]
-[ext_resource type="PackedScene" uid="uid://2hpf35q181mo" path="res://scenes/Levels/lvl_3_d1s2_1.tscn" id="13_kd5u0"]
-[ext_resource type="PackedScene" uid="uid://c8ftjk5axjcrx" path="res://scenes/Levels/lvl_4_d1s2_2.tscn" id="15_e0uhy"]
-[ext_resource type="Texture2D" uid="uid://bvod5lj742jgo" path="res://assets/sprites/planets/lvl4.png" id="16_so4aw"]
+[ext_resource type="Texture2D" uid="uid://b1g5c2gsrhbn3" path="res://assets/sprites/ui/chooser/chooser000.png" id="12_osxb0"]
+[ext_resource type="Texture2D" uid="uid://6mv8acbwh8go" path="res://assets/sprites/ui/keyboard_letters.png" id="13_jc3sr"]
+[ext_resource type="Texture2D" uid="uid://b2m8infr5fony" path="res://assets/sprites/ui/chooser/chooser001.png" id="13_wljjp"]
+[ext_resource type="Texture2D" uid="uid://v6jrss1m1gyf" path="res://assets/sprites/ui/chooser/chooser002.png" id="14_lvfry"]
+[ext_resource type="Texture2D" uid="uid://dnsofl21ipyqh" path="res://assets/sprites/ui/chooser/chooser003.png" id="15_2jqvh"]
 [ext_resource type="Script" path="res://scripts/shared/mouse_zone.gd" id="17_2tr7o"]
-[ext_resource type="Texture2D" uid="uid://bjbobhbkdixyj" path="res://assets/sprites/planets/lvl5_1.png" id="17_r1n3j"]
-[ext_resource type="PackedScene" uid="uid://cpadw07kme1a" path="res://scenes/Levels/lvl_5_d1s3_1.tscn" id="17_raxo3"]
-[ext_resource type="PackedScene" uid="uid://kvk132i3se8u" path="res://scenes/Levels/lvl_6_d1s3_2.tscn" id="19_p13qn"]
-[ext_resource type="Texture2D" uid="uid://qpx2fgktykcp" path="res://assets/sprites/planets/lvl6.png" id="20_3kjtg"]
-[ext_resource type="PackedScene" uid="uid://cevsrli6ltuld" path="res://scenes/Levels/lvl_7_d2s1_1.tscn" id="21_skr5v"]
-[ext_resource type="Texture2D" uid="uid://cmixu337rexls" path="res://assets/sprites/planets/lvl7.png" id="22_tjdnf"]
-[ext_resource type="PackedScene" uid="uid://dcgkxymyvle3r" path="res://scenes/Levels/lvl_8_d2s2_1.tscn" id="23_brsb4"]
-[ext_resource type="Texture2D" uid="uid://dmmielbx7qhn2" path="res://assets/sprites/planets/lvl8.png" id="24_xap4a"]
-[ext_resource type="PackedScene" uid="uid://b2vyameplepav" path="res://scenes/Levels/lvl_9_d2s3_1.tscn" id="25_k3ddm"]
-[ext_resource type="Texture2D" uid="uid://hvdaqfgf2lfk" path="res://assets/sprites/planets/lvl9_1.png" id="26_lfvgu"]
-[ext_resource type="Texture2D" uid="uid://3aa8ns8ugwls" path="res://assets/sprites/planets/lvl9_2.png" id="27_877ir"]
-[ext_resource type="Texture2D" uid="uid://5ilg3vj6n8mv" path="res://assets/sprites/planets/lvl9_3.png" id="28_ebh1q"]
-[ext_resource type="PackedScene" uid="uid://c3d256pwoipm6" path="res://scenes/Levels/lvl_10_d2s3_2.tscn" id="29_36aan"]
-[ext_resource type="Texture2D" uid="uid://dasmkolk1d85o" path="res://assets/sprites/planets/lvl10_1.png" id="30_knmsb"]
-[ext_resource type="Texture2D" uid="uid://b4di6ulxie615" path="res://assets/sprites/planets/lvl10_2.png" id="31_ir7mv"]
-[ext_resource type="PackedScene" uid="uid://ckrn2dqcmr7i1" path="res://scenes/Levels/lvl_11_d2s4_1.tscn" id="32_s5y2w"]
-[ext_resource type="Texture2D" uid="uid://cnoi4samy3alk" path="res://assets/sprites/planets/lvl11.png" id="33_k7hks"]
 
 [sub_resource type="Environment" id="Environment_7nsd2"]
 background_mode = 3
@@ -50,8 +32,91 @@ glow_blend_mode = 1
 glow_hdr_threshold = 0.2
 glow_hdr_scale = 1.8
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fw351"]
-radius = 2.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t38ek"]
+shader = ExtResource("4_ijk0p")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 5.211
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_np1f0"]
+radius = 43.0117
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_d2rae"]
+frames = 4
+pause = true
+frame_0/texture = ExtResource("12_osxb0")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("13_wljjp")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("14_lvfry")
+frame_2/duration = 0.2
+frame_3/texture = ExtResource("15_2jqvh")
+frame_3/duration = 0.2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvdfv"]
+atlas = ExtResource("13_jc3sr")
+region = Rect2(65, 34, 13, 12)
+
+[sub_resource type="Animation" id="Animation_b3cn3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_duuvf"]
+resource_name = "default"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, -0.523599, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ohmo"]
+_data = {
+"RESET": SubResource("Animation_b3cn3"),
+"default": SubResource("Animation_duuvf")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a5254"]
 atlas = ExtResource("5_trqyt")
@@ -449,10 +514,8 @@ _data = {
 "idle": SubResource("Animation_8cjb8")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t38ek"]
-shader = ExtResource("4_ijk0p")
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_thickness = 5.211
+[sub_resource type="CircleShape2D" id="CircleShape2D_fw351"]
+radius = 2.0
 
 [node name="Levels" type="Node2D"]
 
@@ -466,7 +529,7 @@ unique_name_in_owner = true
 position = Vector2(320, 180)
 limit_left = -500
 limit_top = 0
-limit_right = 5000
+limit_right = 2000
 limit_bottom = 2000
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
@@ -474,13 +537,48 @@ script = ExtResource("2_ujcle")
 
 [node name="SpaceShip" parent="." instance=ExtResource("3_splxg")]
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 512
-collision_mask = 512
-script = ExtResource("17_2tr7o")
+[node name="Level1" parent="." node_paths=PackedStringArray("area", "key_sprite", "locked_frame") instance=ExtResource("7_mokxf")]
+material = SubResource("ShaderMaterial_t38ek")
+position = Vector2(900, 197)
+id = 1
+scene = ExtResource("6_yrs24")
+area = NodePath("Area2D")
+key_sprite = NodePath("KeySprite")
+locked_frame = NodePath("NinePatchRect")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_fw351")
+[node name="Sprite2D" type="Sprite2D" parent="Level1"]
+material = ExtResource("5_a1uwv")
+texture = ExtResource("5_cbwi8")
+
+[node name="Area2D" type="Area2D" parent="Level1"]
+collision_layer = 513
+collision_mask = 513
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Area2D"]
+rotation = 0.00458285
+shape = SubResource("CircleShape2D_np1f0")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Level1"]
+offset_left = -43.0
+offset_top = -43.0
+offset_right = 44.0
+offset_bottom = 44.0
+texture = SubResource("AnimatedTexture_d2rae")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="KeySprite" type="Sprite2D" parent="Level1"]
+modulate = Color(1, 1, 1.2, 1)
+position = Vector2(0, -50)
+texture = SubResource("AtlasTexture_uvdfv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level1/KeySprite"]
+libraries = {
+"": SubResource("AnimationLibrary_5ohmo")
+}
+autoplay = "default"
 
 [node name="Sun" type="AnimatedSprite2D" parent="."]
 position = Vector2(301, 180)
@@ -495,167 +593,10 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="LVL1" parent="." instance=ExtResource("7_mokxf")]
-material = SubResource("ShaderMaterial_t38ek")
-position = Vector2(676, 166)
-id = 1
-scene = ExtResource("6_yrs24")
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 512
+script = ExtResource("17_2tr7o")
 
-[node name="Sprite2D" type="Sprite2D" parent="LVL1"]
-material = ExtResource("5_a1uwv")
-texture = ExtResource("5_cbwi8")
-
-[node name="LVL2" parent="." instance=ExtResource("7_mokxf")]
-position = Vector2(977, 216)
-id = 2
-scene = ExtResource("11_8233e")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL2"]
-material = ExtResource("5_a1uwv")
-rotation = -2.50506
-texture = ExtResource("11_cieay")
-
-[node name="LVL3" parent="." instance=ExtResource("7_mokxf")]
-position = Vector2(922, 86)
-id = 3
-scene = ExtResource("13_kd5u0")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL3"]
-material = ExtResource("5_a1uwv")
-rotation = -1.49094
-texture = ExtResource("12_wtsp3")
-
-[node name="LVL4" parent="." instance=ExtResource("7_mokxf")]
-position = Vector2(827, 276)
-id = 4
-scene = ExtResource("15_e0uhy")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL4"]
-material = ExtResource("5_a1uwv")
-texture = ExtResource("16_so4aw")
-
-[node name="LVL5" parent="." instance=ExtResource("7_mokxf")]
-position = Vector2(1101, 101)
-id = 5
-scene = ExtResource("17_raxo3")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL5"]
-material = ExtResource("5_a1uwv")
-rotation = -2.78611
-texture = ExtResource("17_r1n3j")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL5/Sprite2D"]
-material = ExtResource("5_a1uwv")
-position = Vector2(-49.1809, 42.7928)
-rotation = 1.49575
-scale = Vector2(0.324849, 0.324849)
-texture = ExtResource("12_wtsp3")
-
-[node name="LVL6" parent="." instance=ExtResource("7_mokxf")]
-position = Vector2(1212, 237)
-id = 6
-scene = ExtResource("19_p13qn")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL6"]
-material = ExtResource("5_a1uwv")
-rotation = -2.14564
-texture = ExtResource("20_3kjtg")
-
-[node name="LVL7" parent="." instance=ExtResource("7_mokxf")]
-position = Vector2(1303, 120)
-id = 7
-scene = ExtResource("21_skr5v")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL7"]
-material = ExtResource("5_a1uwv")
-texture = ExtResource("22_tjdnf")
-
-[node name="LVL8" parent="." instance=ExtResource("7_mokxf")]
-position = Vector2(1449, 53)
-id = 8
-scene = ExtResource("23_brsb4")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL8"]
-material = ExtResource("5_a1uwv")
-texture = ExtResource("24_xap4a")
-
-[node name="LVL9" parent="." instance=ExtResource("7_mokxf")]
-position = Vector2(1636, 169)
-id = 9
-scene = ExtResource("25_k3ddm")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL9"]
-material = ExtResource("5_a1uwv")
-texture = ExtResource("26_lfvgu")
-
-[node name="Sprite2D2" type="Sprite2D" parent="LVL9/Sprite2D"]
-material = ExtResource("5_a1uwv")
-position = Vector2(-78, -1)
-scale = Vector2(0.279999, 0.279999)
-texture = ExtResource("27_877ir")
-
-[node name="Sprite2D3" type="Sprite2D" parent="LVL9/Sprite2D"]
-material = ExtResource("5_a1uwv")
-position = Vector2(-68, -48)
-scale = Vector2(0.520001, 0.520001)
-texture = ExtResource("28_ebh1q")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL9/Sprite2D"]
-material = ExtResource("5_a1uwv")
-position = Vector2(67, -19)
-scale = Vector2(0.359999, 0.359999)
-texture = ExtResource("17_r1n3j")
-
-[node name="LVL10" parent="." instance=ExtResource("7_mokxf")]
-position = Vector2(1860, 122)
-id = 10
-scene = ExtResource("29_36aan")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL10"]
-material = ExtResource("5_a1uwv")
-texture = ExtResource("30_knmsb")
-
-[node name="Sprite2D2" type="Sprite2D" parent="LVL10/Sprite2D"]
-material = ExtResource("5_a1uwv")
-position = Vector2(-27, 40)
-scale = Vector2(0.320002, 0.320002)
-texture = ExtResource("31_ir7mv")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL10/Sprite2D"]
-material = ExtResource("5_a1uwv")
-position = Vector2(-14, 65)
-scale = Vector2(0.16, 0.16)
-texture = ExtResource("22_tjdnf")
-
-[node name="Sprite2D3" type="Sprite2D" parent="LVL10/Sprite2D"]
-material = ExtResource("5_a1uwv")
-position = Vector2(-52, 62)
-scale = Vector2(0.320001, 0.320001)
-texture = ExtResource("11_cieay")
-
-[node name="Sprite2D4" type="Sprite2D" parent="LVL10/Sprite2D"]
-material = ExtResource("5_a1uwv")
-position = Vector2(-82, 55)
-scale = Vector2(0.159999, 0.159999)
-texture = ExtResource("28_ebh1q")
-
-[node name="LVL11" parent="." instance=ExtResource("7_mokxf")]
-position = Vector2(1965, 227)
-id = 11
-scene = ExtResource("32_s5y2w")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL11"]
-material = ExtResource("5_a1uwv")
-texture = ExtResource("33_k7hks")
-
-[node name="Sprite2D" type="Sprite2D" parent="LVL11/Sprite2D"]
-material = ExtResource("5_a1uwv")
-position = Vector2(60, 26)
-scale = Vector2(0.32, 0.32)
-texture = ExtResource("27_877ir")
-
-[node name="Sprite2D2" type="Sprite2D" parent="LVL11/Sprite2D"]
-material = ExtResource("5_a1uwv")
-position = Vector2(-36, -52)
-scale = Vector2(0.32, 0.32)
-texture = ExtResource("5_cbwi8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fw351")

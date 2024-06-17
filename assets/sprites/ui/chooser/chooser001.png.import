@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sst6g1xdpab1"
-path="res://.godot/imported/idle.png-2cb965df3e6a5f0b5f636e7c2da3ca19.ctex"
+uid="uid://b2m8infr5fony"
+path="res://.godot/imported/chooser001.png-1c8ae52918063e5c6f38097d2a80ba3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/idle.png"
-dest_files=["res://.godot/imported/idle.png-2cb965df3e6a5f0b5f636e7c2da3ca19.ctex"]
+source_file="res://assets/sprites/ui/chooser/chooser001.png"
+dest_files=["res://.godot/imported/chooser001.png-1c8ae52918063e5c6f38097d2a80ba3f.ctex"]
 
 [params]
 

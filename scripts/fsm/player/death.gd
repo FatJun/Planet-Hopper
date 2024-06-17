@@ -5,5 +5,9 @@ extends State
 
 
 func enter() -> void:
+	call_deferred("death")
+
+
+func death():
 	fsm.controller.visible = false
 	fsm.controller.collision.disabled = true

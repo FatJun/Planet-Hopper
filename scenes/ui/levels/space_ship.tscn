@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dat404i8a0bel"]
+
+[ext_resource type="Script" path="res://scenes/ui/levels/space_ship.gd" id="1_tuplg"]
+[ext_resource type="Texture2D" uid="uid://4rs6vrq1yuon" path="res://assets/sprites/spaceship/3.png" id="2_7v2x2"]
+[ext_resource type="Texture2D" uid="uid://bag1ogxoujdxq" path="res://assets/sprites/spaceship/4.png" id="3_6sr6w"]
+[ext_resource type="Texture2D" uid="uid://cqftvatc0yj6s" path="res://assets/sprites/spaceship/5.png" id="4_ryj6f"]
+[ext_resource type="Texture2D" uid="uid://kppkpfclw32v" path="res://assets/sprites/spaceship/6.png" id="5_ctji2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pnfo0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7v2x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6sr6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ryj6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ctji2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="SpaceShip" type="Marker2D"]
+script = ExtResource("1_tuplg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -60)
+scale = Vector2(0.45, 0.45)
+sprite_frames = SubResource("SpriteFrames_pnfo0")
+autoplay = "default"

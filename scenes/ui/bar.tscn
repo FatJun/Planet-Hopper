@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://chlmp0soupngd"]
+
+[ext_resource type="Script" path="res://scripts/ui/bar.gd" id="1_4pu2r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gtvyb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5s31"]
+bg_color = Color(0.568627, 0.52549, 0.992157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xky1x"]
+bg_color = Color(0.0745098, 0.00392157, 0.152941, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_065e7"]
+bg_color = Color(0.270588, 0.0941176, 0.521569, 1)
+
+[node name="PrimaryBar" type="ProgressBar"]
+z_index = 2
+offset_right = 265.0
+offset_bottom = 4.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_gtvyb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k5s31")
+value = 50.0
+show_percentage = false
+script = ExtResource("1_4pu2r")
+
+[node name="SecondaryBar" type="ProgressBar" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_xky1x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_065e7")
+value = 80.0
+show_percentage = false

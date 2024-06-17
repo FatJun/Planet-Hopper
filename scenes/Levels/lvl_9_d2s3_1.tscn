@@ -1,0 +1,223 @@
+[gd_scene load_steps=21 format=3 uid="uid://b2vyameplepav"]
+
+[ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_42n2e"]
+[ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_4o0au"]
+[ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_o1hun"]
+[ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="4_08fbc"]
+[ext_resource type="Texture2D" uid="uid://hvdaqfgf2lfk" path="res://assets/sprites/planets/lvl9_1.png" id="5_abe7i"]
+[ext_resource type="Texture2D" uid="uid://5ilg3vj6n8mv" path="res://assets/sprites/planets/lvl9_3.png" id="6_1oox6"]
+[ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="6_o3st6"]
+[ext_resource type="Texture2D" uid="uid://3aa8ns8ugwls" path="res://assets/sprites/planets/lvl9_2.png" id="6_si2ba"]
+[ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="7_4i7vh"]
+[ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_1g7d0"]
+[ext_resource type="Texture2D" uid="uid://bjbobhbkdixyj" path="res://assets/sprites/planets/lvl5_1.png" id="8_qv1eq"]
+[ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="9_es3dr"]
+[ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="10_fp7ul"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="11_y5u8o"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/mine.tscn" id="12_75k5s"]
+[ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="13_ostyx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yy1vv"]
+size = Vector2(51.8609, 277.456)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a4p5u"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fe3g5"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uh43n"]
+radius = 32.0
+
+[node name="lvl9_d2s3_1" type="Node2D"]
+
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_42n2e")]
+position = Vector2(320, 121)
+_current_fuel_units = 2
+max_mission_progress = 2
+space_ship = NodePath("../SpaceShip")
+mass = 480.0
+jump_force = 1600
+
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("2_4o0au")]
+player = NodePath("..")
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_o1hun")]
+player = NodePath("../Player")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_08fbc")]
+position = Vector2(320, 300)
+scale = Vector2(5.25, 5.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(7.42857, 9.33334)
+texture = ExtResource("5_abe7i")
+
+[node name="Area2D2" type="Area2D" parent="StaticBody2D"]
+position = Vector2(-60.9524, -57.1429)
+scale = Vector2(0.190476, 0.190476)
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
+position = Vector2(483, 427)
+rotation = 0.566602
+scale = Vector2(3.67107, 0.488723)
+shape = SubResource("RectangleShape2D_yy1vv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-26.4762, -17.5238, -31.619, -6.28571, -31.4286, 12, -17.9048, 28.5714, -4.95238, 33.7143, 17.1429, 30.4762, 44, 36.5714, 44.7619, 35.0476, 31.6191, 9.14286, 31.4286, -5.71428, 28.9524, -15.4286, 21.7143, -23.2381, 12.381, -29.7143, 2.28572, -31.0476, -9.71429, -30.0952, -19.2381, -25.7143)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("4_08fbc")]
+position = Vector2(-133, 125)
+scale = Vector2(3.5, 3.5)
+mass = 100000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_a4p5u")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(-0.285714, -0.857143)
+texture = ExtResource("6_1oox6")
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("4_08fbc")]
+position = Vector2(-245, 403)
+scale = Vector2(1.75, 1.75)
+mass = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("CircleShape2D_fe3g5")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+texture = ExtResource("6_si2ba")
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("4_08fbc")]
+position = Vector2(700, 303)
+scale = Vector2(1.75, 1.75)
+mass = 50000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource("CircleShape2D_uh43n")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
+texture = ExtResource("8_qv1eq")
+
+[node name="Fuel" parent="." instance=ExtResource("6_o3st6")]
+position = Vector2(431, 157)
+rotation = 0.645547
+lifetime = 20.0
+
+[node name="Fuel2" parent="." instance=ExtResource("6_o3st6")]
+position = Vector2(224, 144)
+rotation = -0.497151
+lifetime = 20.0
+
+[node name="Fuel3" parent="." instance=ExtResource("6_o3st6")]
+position = Vector2(138, 323)
+rotation = -1.61259
+lifetime = 20.0
+
+[node name="Fuel4" parent="." instance=ExtResource("6_o3st6")]
+position = Vector2(231, 469)
+rotation = -2.6348
+lifetime = 20.0
+
+[node name="Fuel5" parent="." instance=ExtResource("6_o3st6")]
+position = Vector2(667, 367)
+rotation = -2.61295
+lifetime = 20.0
+
+[node name="Fuel6" parent="." instance=ExtResource("6_o3st6")]
+position = Vector2(-44, 216)
+rotation = 2.38728
+lifetime = 20.0
+
+[node name="Fuel7" parent="." instance=ExtResource("6_o3st6")]
+position = Vector2(-256, 155)
+rotation = -1.80995
+lifetime = 20.0
+
+[node name="Fuel8" parent="." instance=ExtResource("6_o3st6")]
+position = Vector2(-314, 388)
+rotation = -1.33982
+lifetime = 20.0
+
+[node name="Heart" parent="." instance=ExtResource("7_4i7vh")]
+position = Vector2(-57, 27)
+rotation = 0.640536
+lifetime = 20.0
+
+[node name="Heart2" parent="." instance=ExtResource("7_4i7vh")]
+position = Vector2(391, 473)
+rotation = 2.51932
+lifetime = 20.0
+
+[node name="Heart3" parent="." instance=ExtResource("7_4i7vh")]
+position = Vector2(764, 320)
+rotation = 1.84231
+lifetime = 20.0
+
+[node name="Timer" parent="." instance=ExtResource("8_1g7d0")]
+position = Vector2(-204, 24)
+rotation = -0.652443
+lifetime = 20.0
+
+[node name="Scientist" parent="." instance=ExtResource("9_es3dr")]
+position = Vector2(736, 246)
+rotation = 0.535604
+lifetime = 60.0
+
+[node name="Timer2" parent="." instance=ExtResource("8_1g7d0")]
+position = Vector2(748, 225)
+rotation = 0.49398
+scale = Vector2(0.3, 0.3)
+lifetime = 70.0
+
+[node name="Scientist2" parent="." instance=ExtResource("9_es3dr")]
+position = Vector2(-196, 447)
+rotation = 2.32912
+lifetime = 60.0
+
+[node name="Heart4" parent="." instance=ExtResource("7_4i7vh")]
+position = Vector2(-178, 463)
+rotation = 2.32912
+scale = Vector2(0.4, 0.4)
+lifetime = 70.0
+
+[node name="FlyEye3" parent="." instance=ExtResource("10_fp7ul")]
+position = Vector2(-280, 218)
+rotation = -1.88301
+
+[node name="FlyEye" parent="." instance=ExtResource("10_fp7ul")]
+position = Vector2(148, 473)
+rotation = -2.28095
+
+[node name="Slime6" parent="." instance=ExtResource("11_y5u8o")]
+position = Vector2(-21, 51)
+rotation = 0.902717
+
+[node name="Slime7" parent="." instance=ExtResource("11_y5u8o")]
+position = Vector2(267, 479)
+rotation = -2.86992
+
+[node name="Slime8" parent="." instance=ExtResource("11_y5u8o")]
+position = Vector2(132, 300)
+rotation = -1.81088
+
+[node name="Slime9" parent="." instance=ExtResource("11_y5u8o")]
+position = Vector2(460, 180)
+rotation = 0.969265
+
+[node name="Slime10" parent="." instance=ExtResource("11_y5u8o")]
+position = Vector2(672, 232)
+rotation = -0.417885
+
+[node name="Mine" parent="." instance=ExtResource("12_75k5s")]
+position = Vector2(517, 281)
+
+[node name="Mine3" parent="." instance=ExtResource("12_75k5s")]
+position = Vector2(133, 236)
+
+[node name="SpaceShip" parent="." instance=ExtResource("13_ostyx")]
+position = Vector2(327, 481)
+rotation = -3.07145

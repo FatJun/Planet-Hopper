@@ -34,6 +34,10 @@ func _ready():
 	gravity_zone.area_exited.connect(_on_area_exited)
 
 
+func reset_jumps():
+	jumps_in_row = 0
+
+
 func update_direction(axis: float = 0.) -> void:
 	direction = Vector2.RIGHT.rotated(rotation) * axis
 
@@ -63,6 +67,8 @@ func process_gravity() -> void:
 
 
 func apply_gravity():
+	if gravity_direction.is_zero_approx():
+		return
 	up_direction = -gravity_direction
 	rotation = gravity_direction.orthogonal().angle()
 	jump_velocity = jump_velocity.lerp(Vector2.ZERO, air_friction)

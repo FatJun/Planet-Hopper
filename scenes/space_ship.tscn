@@ -1,0 +1,250 @@
+[gd_scene load_steps=18 format=3 uid="uid://d0nifx5821pyp"]
+
+[ext_resource type="Script" path="res://scripts/shared/space_ship.gd" id="1_n147v"]
+[ext_resource type="Texture2D" uid="uid://buk4qw6dvgg1b" path="res://assets/sprites/spaceship/1.png" id="1_p4d4g"]
+[ext_resource type="Texture2D" uid="uid://c2ifms0m3ax4f" path="res://assets/sprites/spaceship/2.png" id="2_5xrqt"]
+[ext_resource type="Texture2D" uid="uid://4rs6vrq1yuon" path="res://assets/sprites/spaceship/3.png" id="3_sospv"]
+[ext_resource type="Texture2D" uid="uid://bag1ogxoujdxq" path="res://assets/sprites/spaceship/4.png" id="4_gog64"]
+[ext_resource type="Texture2D" uid="uid://cqftvatc0yj6s" path="res://assets/sprites/spaceship/5.png" id="5_22dm5"]
+[ext_resource type="Texture2D" uid="uid://kppkpfclw32v" path="res://assets/sprites/spaceship/6.png" id="6_4qa24"]
+[ext_resource type="Texture2D" uid="uid://6mv8acbwh8go" path="res://assets/sprites/ui/keyboard_letters.png" id="7_w6es8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6bdgh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_p4d4g")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5xrqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sospv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gog64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_22dm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4qa24")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_gq8bn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fwhb3"]
+resource_name = "new_animation"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30), Vector2(-30, -30), Vector2(680, -60)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, -0.0872665, 0.523599]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yyv2s"]
+_data = {
+"RESET": SubResource("Animation_gq8bn"),
+"fly_away": SubResource("Animation_fwhb3")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7hqt"]
+atlas = ExtResource("7_w6es8")
+region = Rect2(65, 34, 13, 12)
+
+[sub_resource type="Animation" id="Animation_b3cn3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -27)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_duuvf"]
+resource_name = "default"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -27)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, -0.523599, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ohmo"]
+_data = {
+"RESET": SubResource("Animation_b3cn3"),
+"default": SubResource("Animation_duuvf")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ub51g"]
+radius = 48.0937
+
+[node name="SpaceShip" type="Node2D" node_paths=PackedStringArray("landing_zone")]
+script = ExtResource("1_n147v")
+landing_zone = NodePath("Area2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6bdgh")
+animation = &"fly"
+autoplay = "default"
+frame_progress = 0.75598
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_yyv2s")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -27)
+texture = SubResource("AtlasTexture_u7hqt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_5ohmo")
+}
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ub51g")

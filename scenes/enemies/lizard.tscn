@@ -1,0 +1,177 @@
+[gd_scene load_steps=23 format=3 uid="uid://ba22v0ucqx065"]
+
+[ext_resource type="Script" path="res://scripts/controllers/enemies/lizard.gd" id="1_12u02"]
+[ext_resource type="Texture2D" uid="uid://bift2lftptneq" path="res://assets/sprites/enemies/lizard/move.png" id="2_17jce"]
+[ext_resource type="Texture2D" uid="uid://dce7crtbrfru1" path="res://assets/sprites/enemies/lizard/shoot.png" id="3_k2t21"]
+[ext_resource type="Script" path="res://scripts/shared/gravity_zone.gd" id="4_1udih"]
+[ext_resource type="Script" path="res://scripts/fsm/enemies/lizard/fsm.gd" id="5_00lbw"]
+[ext_resource type="Script" path="res://scripts/fsm/enemies/lizard/run_state.gd" id="7_xt440"]
+[ext_resource type="Script" path="res://scripts/fsm/enemies/lizard/attack_state.gd" id="8_sdx3l"]
+[ext_resource type="Script" path="res://scripts/fsm/enemies/lizard/idle_state.gd" id="8_xm6po"]
+[ext_resource type="PackedScene" uid="uid://c7oh8escbrttq" path="res://scenes/projectiles/fireball.tscn" id="9_gn3st"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggsjn"]
+atlas = ExtResource("3_k2t21")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffn5h"]
+atlas = ExtResource("3_k2t21")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4cem"]
+atlas = ExtResource("3_k2t21")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm2vf"]
+atlas = ExtResource("3_k2t21")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5nsu"]
+atlas = ExtResource("2_17jce")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngopu"]
+atlas = ExtResource("2_17jce")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgb0o"]
+atlas = ExtResource("2_17jce")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_penwb"]
+atlas = ExtResource("2_17jce")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihmh8"]
+atlas = ExtResource("2_17jce")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g38ci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggsjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffn5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4cem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm2vf")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5nsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngopu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgb0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_penwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihmh8")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_204ej"]
+size = Vector2(24, 23)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4x3dc"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63w30"]
+radius = 9.0
+
+[node name="Lizard" type="CharacterBody2D" node_paths=PackedStringArray("vision_zone", "collision_ray", "gravity_zone", "collision", "sprite")]
+rotation = -0.00485879
+scale = Vector2(1.5, 1.5)
+collision_layer = 8194
+collision_mask = 2
+script = ExtResource("1_12u02")
+vision_zone = NodePath("VisionZone")
+collision_ray = NodePath("RayCast2D")
+gravity_zone = NodePath("GravityZone")
+speed = 100.0
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g38ci")
+animation = &"attack"
+autoplay = "idle"
+frame = 3
+frame_progress = 1.0
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 4.5)
+shape = SubResource("RectangleShape2D_204ej")
+
+[node name="VisionZone" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionZone"]
+position = Vector2(13.8019, 0.00485877)
+scale = Vector2(1.18938, 1)
+polygon = PackedVector2Array(0, -4, 221, -140, 220, 140, -1, 10)
+
+[node name="GravityZone" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("4_1udih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityZone"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_4x3dc")
+debug_color = Color(0.730096, 0.292463, 0.922115, 0.42)
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("controller", "cur_state")]
+script = ExtResource("5_00lbw")
+controller = NodePath("..")
+cur_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="FSM"]
+script = ExtResource("8_xm6po")
+
+[node name="RUN" type="Node" parent="FSM"]
+script = ExtResource("7_xt440")
+
+[node name="ATTACK" type="Node" parent="FSM" node_paths=PackedStringArray("muzzle")]
+script = ExtResource("8_sdx3l")
+muzzle = NodePath("../../Marker2D")
+Projectile = ExtResource("9_gn3st")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-0.0242939, 4.99994)
+target_position = Vector2(24.9997, 0.121469)
+collision_mask = 8192
+collide_with_areas = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(13.9998, 0.0680227)
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(3.97566, 5.01938)
+shape = SubResource("CircleShape2D_63w30")
+
+[connection signal="body_entered" from="VisionZone" to="." method="_on_vision_zone_body_entered"]
+[connection signal="body_exited" from="VisionZone" to="." method="_on_vision_zone_body_exited"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

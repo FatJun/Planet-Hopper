@@ -1,0 +1,128 @@
+[gd_scene load_steps=13 format=3 uid="uid://clb3iqfq7uyry"]
+
+[ext_resource type="Script" path="res://scripts/shared/level.gd" id="1_whom5"]
+[ext_resource type="Texture2D" uid="uid://6mv8acbwh8go" path="res://assets/sprites/ui/keyboard_letters.png" id="2_h8du2"]
+[ext_resource type="Texture2D" uid="uid://b1g5c2gsrhbn3" path="res://assets/sprites/ui/chooser/chooser000.png" id="3_ab2dd"]
+[ext_resource type="Texture2D" uid="uid://b2m8infr5fony" path="res://assets/sprites/ui/chooser/chooser001.png" id="4_0pug1"]
+[ext_resource type="Texture2D" uid="uid://v6jrss1m1gyf" path="res://assets/sprites/ui/chooser/chooser002.png" id="5_ooen0"]
+[ext_resource type="Texture2D" uid="uid://dnsofl21ipyqh" path="res://assets/sprites/ui/chooser/chooser003.png" id="6_mwgoo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kgho"]
+atlas = ExtResource("2_h8du2")
+region = Rect2(65, 34, 13, 12)
+
+[sub_resource type="Animation" id="Animation_b3cn3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_duuvf"]
+resource_name = "default"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, -0.523599, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ohmo"]
+_data = {
+"RESET": SubResource("Animation_b3cn3"),
+"default": SubResource("Animation_duuvf")
+}
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_vyfmg"]
+frames = 4
+pause = true
+frame_0/texture = ExtResource("3_ab2dd")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("4_0pug1")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("5_ooen0")
+frame_2/duration = 0.2
+frame_3/texture = ExtResource("6_mwgoo")
+frame_3/duration = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ms52x"]
+radius = 43.0117
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("area", "key_sprite", "locked_frame")]
+script = ExtResource("1_whom5")
+id = 26
+area = NodePath("Area2D")
+key_sprite = NodePath("KeySprite")
+locked_frame = NodePath("NinePatchRect")
+
+[node name="KeySprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1.2, 1)
+z_index = 1
+position = Vector2(0, -50)
+texture = SubResource("AtlasTexture_1kgho")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KeySprite"]
+libraries = {
+"": SubResource("AnimationLibrary_5ohmo")
+}
+autoplay = "default"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+z_index = 1
+offset_left = -43.0
+offset_top = -43.0
+offset_right = 44.0
+offset_bottom = 44.0
+texture = SubResource("AnimatedTexture_vyfmg")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 513
+collision_mask = 513
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 0.00458285
+shape = SubResource("CircleShape2D_ms52x")

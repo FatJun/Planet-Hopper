@@ -9,13 +9,20 @@ func enter() -> void:
 	fsm.play_anim(fsm.JUMP)
 
 
-func pr_update(delta: float) -> void:
+func pr_update(_delta: float) -> void:
 	fsm.controller.update_x_axis()
 
 
-func ph_update(delta: float) -> void:
-	if Input.is_action_just_pressed("jump") and fsm.controller.is_can_jump:
-		fsm.change_state(fsm.states[fsm.JUMP])
+func ph_update(_delta: float) -> void:
+	if Input.is_action_just_pressed("jump"):
+		if fsm.controller.is_can_jump:
+			fsm.change_state(fsm.states[fsm.JUMP])
+		elif fsm.controller.is_can_use_jetpack:
+			fsm.change_state(fsm.states[fsm.JETPACK])
+	elif fsm.is_falling:
+		fsm.change_state(fsm.states[fsm.FALL])
+	elif fsm.is_entering_in_spaceship:
+		fsm.change_state(fsm.states[fsm.ENTER_IN_SPACESHIP])
 	elif fsm.is_moving:
 		fsm.change_state(fsm.states[fsm.RUN])
 	elif fsm.is_idle:

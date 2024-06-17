@@ -1,0 +1,145 @@
+[gd_scene load_steps=20 format=3 uid="uid://cxt0k4hm8k5p5"]
+
+[ext_resource type="Script" path="res://scripts/ui/player_ui.gd" id="1_8p4eg"]
+[ext_resource type="Texture2D" uid="uid://caudf02d6w40h" path="res://assets/sprites/ui/06.png" id="1_nvioo"]
+[ext_resource type="Script" path="res://scripts/ui/fuel_units_bar.gd" id="3_d5k5b"]
+[ext_resource type="AnimationLibrary" uid="uid://bv7cqi37hwevq" path="res://assets/animations/player_ui.res" id="4_8pyun"]
+[ext_resource type="Texture2D" uid="uid://uf1di6ou23by" path="res://assets/sprites/ui/hearts.png" id="4_al1w7"]
+[ext_resource type="Script" path="res://scripts/ui/health.gd" id="5_1xhg2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkkrl"]
+atlas = ExtResource("1_nvioo")
+region = Rect2(192, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3dey"]
+atlas = ExtResource("1_nvioo")
+region = Rect2(144, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jsvm"]
+atlas = ExtResource("1_nvioo")
+region = Rect2(96, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08u8d"]
+atlas = ExtResource("1_nvioo")
+region = Rect2(48, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhmjq"]
+atlas = ExtResource("1_nvioo")
+region = Rect2(0, 64, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mt4b7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkkrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3dey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jsvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08u8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhmjq")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uy8gu"]
+atlas = ExtResource("4_al1w7")
+region = Rect2(0, 0, 93, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn1os"]
+atlas = ExtResource("4_al1w7")
+region = Rect2(0, 17, 93, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dldp7"]
+atlas = ExtResource("4_al1w7")
+region = Rect2(0, 34, 93, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajlrc"]
+atlas = ExtResource("4_al1w7")
+region = Rect2(0, 51, 93, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkwgd"]
+atlas = ExtResource("4_al1w7")
+region = Rect2(0, 68, 93, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6h52"]
+atlas = ExtResource("4_al1w7")
+region = Rect2(0, 85, 93, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ms5lp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uy8gu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn1os")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dldp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajlrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkwgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6h52")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="PlayerUI" type="CanvasLayer"]
+script = ExtResource("1_8p4eg")
+
+[node name="Fuel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 149.0
+offset_bottom = 50.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fuel" node_paths=PackedStringArray("player_ui")]
+position = Vector2(72, 23)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_mt4b7")
+script = ExtResource("3_d5k5b")
+player_ui = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fuel/AnimatedSprite2D"]
+libraries = {
+"player_ui": ExtResource("4_8pyun")
+}
+
+[node name="hearts" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -122.0
+offset_top = 15.0
+offset_right = -10.0
+offset_bottom = 36.0
+grow_horizontal = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="hearts" node_paths=PackedStringArray("player_ui")]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ms5lp")
+centered = false
+script = ExtResource("5_1xhg2")
+player_ui = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hearts/AnimatedSprite2D"]
+libraries = {
+"player_ui": ExtResource("4_8pyun")
+}

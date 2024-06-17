@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxjrlfhf6xyej"]
+
+[ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_scqom"]
+[ext_resource type="Script" path="res://scripts/shared/player_camera.gd" id="2_teub5"]
+[ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="3_d6mjg"]
+
+[node name="Main" type="Node2D"]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_d6mjg")]
+position = Vector2(162, 411)
+scale = Vector2(12.12, 12.12)
+mass = 5e+06
+
+[node name="Player" parent="." instance=ExtResource("1_scqom")]
+position = Vector2(559, 216)
+
+[node name="PlayerCamera" type="Camera2D" parent="Player" node_paths=PackedStringArray("player")]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+script = ExtResource("2_teub5")
+player = NodePath("..")
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("3_d6mjg")]
+position = Vector2(-335, -105)
+scale = Vector2(5.4, 5.4)
+mass = 2e+06
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("3_d6mjg")]
+position = Vector2(-610, 769)
+scale = Vector2(4.92, 4.92)
+mass = 4e+06
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("3_d6mjg")]
+position = Vector2(597, 1057)
+scale = Vector2(2.44643, 2.44643)
+mass = 2e+06

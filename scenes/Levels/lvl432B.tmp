@@ -1,0 +1,214 @@
+[gd_scene load_steps=20 format=3 uid="uid://d3k75h8ra2rxq"]
+
+[ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_4uymx"]
+[ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_xdtnp"]
+[ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_cicii"]
+[ext_resource type="PackedScene" uid="uid://4psfx8ndmrho" path="res://scenes/Planet shapes/planet_s4_h4.tscn" id="4_xwa1j"]
+[ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="5_ydvi5"]
+[ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="6_e7uvd"]
+[ext_resource type="Texture2D" uid="uid://cmixu337rexls" path="res://assets/sprites/planets/lvl7.png" id="6_x1qfm"]
+[ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="7_1iqmf"]
+[ext_resource type="Texture2D" uid="uid://bwqt006w56y6y" path="res://assets/sprites/planets/1lvl.png" id="7_85no2"]
+[ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="8_8dyhu"]
+[ext_resource type="Texture2D" uid="uid://doik51taa428f" path="res://assets/sprites/planets/lvl12_2.png" id="8_ucc6h"]
+[ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="9_pxqqf"]
+[ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="13_dqx2i"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="14_i76v7"]
+[ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="15_bnigr"]
+[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="16_tb81a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_etba5"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ixhca"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gyway"]
+radius = 32.0
+
+[node name="lvl_12_d2s4_2" type="Node2D"]
+
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_4uymx")]
+position = Vector2(319, 113)
+_current_fuel_units = 2
+max_mission_progress = 3
+space_ship = NodePath("../SpaceShip")
+mass = 640.0
+jump_force = 1500
+
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("2_xdtnp")]
+player = NodePath("..")
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_cicii")]
+player = NodePath("../Player")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_xwa1j")]
+position = Vector2(320, 350)
+rotation = -0.523599
+mass = 250000.0
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("5_ydvi5")]
+position = Vector2(-147, 71)
+scale = Vector2(3.5, 3.5)
+mass = 100000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_etba5")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(-0.285714, -0.285714)
+texture = ExtResource("6_x1qfm")
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("5_ydvi5")]
+position = Vector2(673, -42)
+scale = Vector2(3.5, 3.5)
+mass = 100000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("CircleShape2D_ixhca")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(0, -0.571429)
+texture = ExtResource("7_85no2")
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("5_ydvi5")]
+position = Vector2(682, 741)
+scale = Vector2(3.5, 3.5)
+mass = 100000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource("CircleShape2D_gyway")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
+position = Vector2(-0.857143, -0.571429)
+texture = ExtResource("8_ucc6h")
+
+[node name="Fuel" parent="." instance=ExtResource("6_e7uvd")]
+position = Vector2(254, 120)
+rotation = -0.287572
+lifetime = 30.0
+
+[node name="Fuel2" parent="." instance=ExtResource("6_e7uvd")]
+position = Vector2(524, 215)
+rotation = 1.00614
+lifetime = 30.0
+
+[node name="Fuel3" parent="." instance=ExtResource("6_e7uvd")]
+position = Vector2(85, 292)
+rotation = -1.20492
+lifetime = 30.0
+
+[node name="Fuel4" parent="." instance=ExtResource("6_e7uvd")]
+position = Vector2(466, 546)
+rotation = 2.51199
+lifetime = 30.0
+
+[node name="Heart" parent="." instance=ExtResource("7_1iqmf")]
+position = Vector2(-241, -10)
+rotation = -0.730833
+lifetime = 30.0
+
+[node name="Heart2" parent="." instance=ExtResource("7_1iqmf")]
+position = Vector2(667, 82)
+rotation = -3.04998
+lifetime = 30.0
+
+[node name="Heart3" parent="." instance=ExtResource("7_1iqmf")]
+position = Vector2(807, 741)
+rotation = 1.52651
+lifetime = 30.0
+
+[node name="Timer" parent="." instance=ExtResource("8_8dyhu")]
+position = Vector2(133, 488)
+rotation = -2.18454
+lifetime = 30.0
+
+[node name="Scientist" parent="." instance=ExtResource("9_pxqqf")]
+position = Vector2(-72, 166)
+rotation = 2.46553
+lifetime = 70.0
+
+[node name="Fuel5" parent="." instance=ExtResource("6_e7uvd")]
+position = Vector2(-60, 180)
+rotation = 2.46553
+scale = Vector2(0.25, 0.25)
+lifetime = 80.0
+
+[node name="Scientist2" parent="." instance=ExtResource("9_pxqqf")]
+position = Vector2(671, -163)
+lifetime = 70.0
+
+[node name="Fuel6" parent="." instance=ExtResource("6_e7uvd")]
+position = Vector2(670, -181)
+scale = Vector2(0.25, 0.25)
+lifetime = 80.0
+
+[node name="Scientist3" parent="." instance=ExtResource("9_pxqqf")]
+position = Vector2(561, 749)
+rotation = -1.6068
+lifetime = 70.0
+
+[node name="Fuel7" parent="." instance=ExtResource("6_e7uvd")]
+position = Vector2(543, 750)
+rotation = -1.6068
+scale = Vector2(0.25, 0.25)
+lifetime = 80.0
+
+[node name="SpaceShip" parent="." instance=ExtResource("13_dqx2i")]
+position = Vector2(364, 587)
+rotation = -3.36843
+
+[node name="Slime" parent="." instance=ExtResource("14_i76v7")]
+position = Vector2(-70, -37)
+rotation = 0.718577
+
+[node name="Slime2" parent="." instance=ExtResource("14_i76v7")]
+position = Vector2(-246, 158)
+rotation = -2.10299
+x_axis = -1.0
+
+[node name="Slime3" parent="." instance=ExtResource("14_i76v7")]
+position = Vector2(574, -124)
+rotation = -0.85382
+
+[node name="Slime4" parent="." instance=ExtResource("14_i76v7")]
+position = Vector2(776, 36)
+rotation = 2.29807
+x_axis = -1.0
+
+[node name="Slime5" parent="." instance=ExtResource("14_i76v7")]
+position = Vector2(683, 613)
+
+[node name="Slime6" parent="." instance=ExtResource("14_i76v7")]
+position = Vector2(683, 870)
+rotation = -3.13286
+x_axis = -1.0
+
+[node name="Slime7" parent="." instance=ExtResource("14_i76v7")]
+position = Vector2(107, 454)
+rotation = -2.08638
+
+[node name="Slime8" parent="." instance=ExtResource("14_i76v7")]
+position = Vector2(514, 505)
+rotation = 2.18754
+
+[node name="Slime9" parent="." instance=ExtResource("14_i76v7")]
+position = Vector2(475, 154)
+rotation = 0.590776
+
+[node name="Lizard" parent="." instance=ExtResource("15_bnigr")]
+position = Vector2(217, 133)
+rotation = -0.389761
+x_axis = -1.0
+
+[node name="Mine" parent="." instance=ExtResource("16_tb81a")]
+position = Vector2(408, 119)
+
+[node name="Mine2" parent="." instance=ExtResource("16_tb81a")]
+position = Vector2(79, 321)
+
+[node name="Mine3" parent="." instance=ExtResource("16_tb81a")]
+position = Vector2(561, 429)
+
+[node name="Mine4" parent="." instance=ExtResource("16_tb81a")]
+position = Vector2(189, 563)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://clspwvn404dek"]
+
+[ext_resource type="Script" path="res://scripts/shared/gravity_object.gd" id="1_tpalv"]
+[ext_resource type="Script" path="res://scripts/shared/gravity_zone.gd" id="2_iyb0d"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_tpalv")
+mass = 200000.0
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_iyb0d")
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(-24, 2.6)
+scale = Vector2(3.5, 3.5)
+polygon = PackedVector2Array(27.4286, -16.5714, 71.4286, -7.14286, 77.1428, -1.14286, 70.8571, 4.28571, 28, 15.1429)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-293, 1)
+scale = Vector2(3.5, 3.5)
+polygon = PackedVector2Array(154, -0.857143, 148.571, -6.57143, 104.286, -16, 104.857, 15.7143, 148, 4.57143)

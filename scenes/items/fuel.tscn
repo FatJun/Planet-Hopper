@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://q4uphtuiq6o4"]
+
+[ext_resource type="Texture2D" uid="uid://p5m2hysvxls7" path="res://assets/sprites/items/fuel.png" id="1_dx5sc"]
+[ext_resource type="Script" path="res://scripts/items/fuel.gd" id="1_vfiew"]
+[ext_resource type="AnimationLibrary" uid="uid://bew00b36810k1" path="res://assets/animations/item.res" id="3_6lojv"]
+[ext_resource type="PackedScene" uid="uid://chlmp0soupngd" path="res://scenes/ui/bar.tscn" id="3_ux18p"]
+[ext_resource type="Script" path="res://scripts/ui/expire_time_bar.gd" id="4_37cmd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn154"]
+atlas = ExtResource("1_dx5sc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2lui"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn154")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_raauh"]
+size = Vector2(32, 34)
+
+[node name="Fuel" type="Node2D" node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player")]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_vfiew")
+lifetime_bar = NodePath("PrimaryBar")
+pickable_zone = NodePath("Area2D")
+collision = NodePath("Area2D/CollisionShape2D")
+anim_player = NodePath("AnimatedSprite2D/AnimationPlayer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b2lui")
+autoplay = "default"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"item": ExtResource("3_6lojv")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_raauh")
+
+[node name="PrimaryBar" parent="." node_paths=PackedStringArray("item") instance=ExtResource("3_ux18p")]
+offset_left = -15.0
+offset_top = -22.0
+offset_right = 15.0
+offset_bottom = -21.0
+script = ExtResource("4_37cmd")
+item = NodePath("..")
+min_life_time = 0.5

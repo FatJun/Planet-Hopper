@@ -1,0 +1,149 @@
+[gd_scene load_steps=25 format=3 uid="uid://dkqv8toa4vsi6"]
+
+[ext_resource type="Script" path="res://scripts/controllers/enemies/fly_eye.gd" id="1_1idfd"]
+[ext_resource type="Script" path="res://scripts/shared/gravity_zone.gd" id="2_5m2h8"]
+[ext_resource type="Texture2D" uid="uid://pjtc1vpyuf1x" path="res://assets/sprites/enemies/fly_eye/fly-eye.png" id="2_vybux"]
+[ext_resource type="Texture2D" uid="uid://bcwa6mdfd83eg" path="res://assets/sprites/fx/explosion/1.png" id="3_1uo26"]
+[ext_resource type="Script" path="res://scripts/fsm/enemies/fly_eye/fsm.gd" id="3_d88vl"]
+[ext_resource type="Script" path="res://scripts/fsm/enemies/fly_eye/idle_state.gd" id="4_oiw7r"]
+[ext_resource type="Texture2D" uid="uid://x15biu6s3kel" path="res://assets/sprites/fx/explosion/2.png" id="4_r31bh"]
+[ext_resource type="Script" path="res://scripts/fsm/enemies/fly_eye/chase_state.gd" id="5_d12pc"]
+[ext_resource type="Texture2D" uid="uid://b1ja5xrntceki" path="res://assets/sprites/fx/explosion/3.png" id="5_i6yc2"]
+[ext_resource type="Texture2D" uid="uid://dd33733r5xkwo" path="res://assets/sprites/fx/explosion/4.png" id="6_btexv"]
+[ext_resource type="Script" path="res://scripts/fsm/enemies/fly_eye/explosion_state.gd" id="6_nkl1k"]
+[ext_resource type="Texture2D" uid="uid://c5078ydgjhroo" path="res://assets/sprites/fx/explosion/5.png" id="7_mndw8"]
+[ext_resource type="Texture2D" uid="uid://dfbchlubk3e0b" path="res://assets/sprites/fx/explosion/6.png" id="8_5lt1w"]
+[ext_resource type="Texture2D" uid="uid://dxygibe7a13vb" path="res://assets/sprites/fx/explosion/7.png" id="9_es8tq"]
+[ext_resource type="Texture2D" uid="uid://d3isxpgyra6ac" path="res://assets/sprites/fx/explosion/8.png" id="10_lnnck"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pk15k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln7nk"]
+atlas = ExtResource("2_vybux")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_828rt"]
+atlas = ExtResource("2_vybux")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tedom"]
+atlas = ExtResource("2_vybux")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bknc3"]
+atlas = ExtResource("2_vybux")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kho7a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln7nk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_828rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tedom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bknc3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1uo26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r31bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i6yc2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_btexv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mndw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5lt1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_es8tq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lnnck")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sriye"]
+radius = 9.05539
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0wn5o"]
+radius = 84.1487
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kulgn"]
+radius = 19.0263
+
+[node name="FlyEye" type="CharacterBody2D" node_paths=PackedStringArray("gravity_zone", "collision", "sprite")]
+collision_layer = 2
+script = ExtResource("1_1idfd")
+gravity_zone = NodePath("GravityZone")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="GravityZone" type="Area2D" parent="."]
+script = ExtResource("2_5m2h8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityZone"]
+shape = SubResource("CircleShape2D_pk15k")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kho7a")
+autoplay = "default"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_sriye")
+
+[node name="AgressionZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AgressionZone"]
+shape = SubResource("CircleShape2D_0wn5o")
+
+[node name="BurstZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BurstZone"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_kulgn")
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("controller", "cur_state")]
+script = ExtResource("3_d88vl")
+time_till_exposion = 3.0
+controller = NodePath("..")
+cur_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="FSM"]
+script = ExtResource("4_oiw7r")
+
+[node name="CHASE" type="Node" parent="FSM"]
+script = ExtResource("5_d12pc")
+
+[node name="EXPLOSION" type="Node" parent="FSM"]
+script = ExtResource("6_nkl1k")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(19, 0)
+collision_mask = 3
+
+[connection signal="body_entered" from="AgressionZone" to="FSM" method="_on_agression_zone_body_entered"]
+[connection signal="body_entered" from="BurstZone" to="FSM" method="_on_burst_zone_body_entered"]

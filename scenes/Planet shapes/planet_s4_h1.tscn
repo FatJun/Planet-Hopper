@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://mhgtmxrr11vw"]
+
+[ext_resource type="Script" path="res://scripts/shared/gravity_object.gd" id="1_y2qiv"]
+[ext_resource type="Script" path="res://scripts/shared/gravity_zone.gd" id="2_lm7kd"]
+[ext_resource type="Texture2D" uid="uid://cnoi4samy3alk" path="res://assets/sprites/planets/lvl11.png" id="3_l0s6p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlp1t"]
+radius = 1024.0
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_y2qiv")
+mass = 200000.0
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_lm7kd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_jlp1t")
+debug_color = Color(0.776223, 0.152811, 0.99117, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-91, 88)
+scale = Vector2(7.6, 7.6)
+texture = ExtResource("3_l0s6p")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.92818
+polygon = PackedVector2Array(241.402, -45.3117, 201.984, -148.012, 144.72, -209.889, 83.0854, -243.448, 25.6372, -257.221, -38.2679, -256.842, -140.031, -217.774, -164.75, -201.071, -197.811, -160.972, -196.898, -144.233, -177.734, -121.501, -163.919, -124.525, -152.998, -66.6914, -144.625, -27.1198, -188.62, -36.31, -245.404, -22.5778, -252.098, -6.20125, -247.337, 20.8419, -210.493, 122.368, -154.865, 182.721, -88.9079, 222.138, 2.59174, 241.343, 132.572, 194.94, 181.085, 153.341, 377.235, 161.22, 382.541, 132.552, 240.643, -4.46538)

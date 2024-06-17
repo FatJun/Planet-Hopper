@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://ij7pk4caq6un"]
+
+[ext_resource type="PackedScene" uid="uid://chlmp0soupngd" path="res://scenes/ui/bar.tscn" id="1_bsgf2"]
+[ext_resource type="Script" path="res://scripts/items/heart.gd" id="1_qjkne"]
+[ext_resource type="Texture2D" uid="uid://drysbn8r2ps12" path="res://assets/sprites/items/items.png" id="2_ibjnu"]
+[ext_resource type="Script" path="res://scripts/ui/expire_time_bar.gd" id="2_lww71"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n3ie"]
+atlas = ExtResource("2_ibjnu")
+region = Rect2(1280, 137, 120, 103)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4jmof"]
+
+[sub_resource type="Animation" id="Animation_c0ln5"]
+resource_name = "destroy"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_xb73n"]
+resource_name = "pickup"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2n8fr"]
+_data = {
+"destroy": SubResource("Animation_c0ln5"),
+"pickup": SubResource("Animation_xb73n")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_51a2s"]
+radius = 14.0357
+
+[node name="Heart" type="Node2D" node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player")]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_qjkne")
+lifetime_bar = NodePath("PrimaryBar")
+pickable_zone = NodePath("Area2D")
+collision = NodePath("Area2D/CollisionShape2D")
+anim_player = NodePath("Sprite2D/AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = SubResource("AtlasTexture_2n3ie")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_4jmof"),
+"item": SubResource("AnimationLibrary_2n8fr")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_51a2s")
+
+[node name="PrimaryBar" parent="." node_paths=PackedStringArray("item") instance=ExtResource("1_bsgf2")]
+offset_left = -12.0
+offset_top = -21.0
+offset_right = 13.0
+offset_bottom = -20.0
+script = ExtResource("2_lww71")
+item = NodePath("..")
+min_life_time = 0.5

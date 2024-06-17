@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://c8ftjk5axjcrx"]
+
+[ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_38cww"]
+[ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_4euhq"]
+[ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_f2qw4"]
+[ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="4_x5g6t"]
+[ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="5_ai11k"]
+[ext_resource type="Texture2D" uid="uid://bvod5lj742jgo" path="res://assets/sprites/planets/lvl4.png" id="5_l3fbx"]
+[ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_4waev"]
+[ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_hctls"]
+[ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="8_c6udi"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="9_ps7qf"]
+[ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="10_l2ngm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfsb2"]
+size = Vector2(177.004, 154.568)
+
+[node name="lvl_4_d1s2_2" type="Node2D"]
+
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_38cww")]
+position = Vector2(321, 59)
+_current_fuel_units = 2
+max_mission_progress = 1
+space_ship = NodePath("../SpaceShip")
+mass = 320.0
+jump_force = 1800
+
+[node name="PlayerCamera" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("2_4euhq")]
+player = NodePath("..")
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_f2qw4")]
+player = NodePath("../Player")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_x5g6t")]
+position = Vector2(320, 180)
+scale = Vector2(3.5, 3.5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-19.1429, -25.1429, -8, -30.8571, 5.14286, -32.2857, 17.1429, -28.8571, 27.7143, -18.5714, 34.2857, -10.5714, 67.1429, 2.28571, 67.7143, 5.71428, 19.7143, 26.5714, 12.8571, 29.1429, -2, 32, -15.4286, 28, -25.4286, 19.1429, -30, 8.57143, -30.2857, -3.71429, -27.4286, -15.1429)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(20, -0.571429)
+texture = ExtResource("5_l3fbx")
+
+[node name="Fuel" parent="." instance=ExtResource("5_ai11k")]
+position = Vector2(374, 61)
+rotation = 0.381896
+lifetime = 10.0
+
+[node name="Fuel2" parent="." instance=ExtResource("5_ai11k")]
+position = Vector2(238, 85)
+rotation = -0.646097
+lifetime = 10.0
+
+[node name="Fuel3" parent="." instance=ExtResource("5_ai11k")]
+position = Vector2(246, 282)
+rotation = -2.45761
+lifetime = 10.0
+
+[node name="Heart" parent="." instance=ExtResource("6_4waev")]
+position = Vector2(396, 284)
+rotation = 2.33682
+lifetime = 10.0
+
+[node name="Scientist" parent="." instance=ExtResource("7_hctls")]
+position = Vector2(208, 224)
+rotation = -1.96414
+lifetime = 30.0
+
+[node name="Heart2" parent="." instance=ExtResource("6_4waev")]
+position = Vector2(187, 234)
+rotation = -1.98094
+scale = Vector2(0.4, 0.4)
+lifetime = 40.0
+
+[node name="FlyEye" parent="." instance=ExtResource("8_c6udi")]
+position = Vector2(180, 145)
+rotation = -1.04974
+
+[node name="Slime" parent="." instance=ExtResource("9_ps7qf")]
+position = Vector2(411, 90)
+rotation = 0.838278
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(458.946, 196.509)
+rotation = -0.0169203
+scale = Vector2(1.14176, 0.756732)
+shape = SubResource("RectangleShape2D_qfsb2")
+
+[node name="SpaceShip" parent="." instance=ExtResource("10_l2ngm")]
+position = Vector2(304, 300)
+rotation = -3.12712

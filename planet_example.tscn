@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbmwxmhte0uuv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jgyx"]
+radius = 23.2594
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gl3yg"]
+
+[node name="Planet example" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4jgyx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gl3yg")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://boloyopdf8ju6"]
+
+[ext_resource type="Script" path="res://scripts/shared/player_camera.gd" id="1_klojs"]
+
+[node name="PlayerCamera" type="Camera2D" node_paths=PackedStringArray("anim_player")]
+position = Vector2(-15, -6)
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("1_klojs")
+max_camera_offset = 50.0
+anim_player = NodePath("")

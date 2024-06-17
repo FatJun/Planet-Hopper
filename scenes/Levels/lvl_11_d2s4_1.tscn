@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckrn2dqcmr7i1"]
+[gd_scene load_steps=18 format=3 uid="uid://ckrn2dqcmr7i1"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_kvqik"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_qrtt6"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://2onmu5kxwvs7" path="res://scenes/items/timer.tscn" id="9_2iedx"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="10_5ccw7"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="12_h5oia"]
+[ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="13_o2mu7"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/mine.tscn" id="14_k5xyl"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="15_c1p22"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8wm57"]
 radius = 32.0
@@ -24,7 +27,7 @@ radius = 32.0
 [node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_kvqik")]
 position = Vector2(317, 91)
 rotation = -0.203865
-_current_fuel_units = 4
+_current_fuel_units = 2
 max_mission_progress = 1
 space_ship = NodePath("../SpaceShip")
 mass = 640.0
@@ -67,59 +70,97 @@ texture = ExtResource("7_6d2rq")
 [node name="Fuel" parent="." instance=ExtResource("7_27gtr")]
 position = Vector2(102, 220)
 rotation = -1.06785
-lifetime = 26.0
+lifetime = 25.0
 
 [node name="Fuel2" parent="." instance=ExtResource("7_27gtr")]
 position = Vector2(543, 188)
 rotation = 1.00017
-lifetime = 26.0
+lifetime = 25.0
 
 [node name="Fuel3" parent="." instance=ExtResource("7_27gtr")]
 position = Vector2(580, 425)
 rotation = 1.9146
-lifetime = 26.0
+lifetime = 25.0
 
 [node name="Fuel4" parent="." instance=ExtResource("7_27gtr")]
 position = Vector2(-17, 49)
 rotation = 0.607028
-lifetime = 26.0
+lifetime = 25.0
 
 [node name="Fuel5" parent="." instance=ExtResource("7_27gtr")]
-position = Vector2(814, 430)
-rotation = 0.93363
-lifetime = 26.0
+position = Vector2(708, 516)
+rotation = 4.01459
+lifetime = 25.0
 
 [node name="Heart" parent="." instance=ExtResource("8_cldtv")]
 position = Vector2(89, 422)
 rotation = -1.84931
-lifetime = 26.0
+lifetime = 25.0
 
 [node name="Heart2" parent="." instance=ExtResource("8_cldtv")]
-position = Vector2(319, 601)
-rotation = -2.9381
-lifetime = 26.0
+position = Vector2(416, 585)
+rotation = -3.56752
+lifetime = 25.0
 
 [node name="Timer" parent="." instance=ExtResource("9_2iedx")]
-position = Vector2(466, 567)
+position = Vector2(529, 516)
 rotation = 2.5079
-lifetime = 26.0
+lifetime = 25.0
 
 [node name="Timer2" parent="." instance=ExtResource("9_2iedx")]
-position = Vector2(720, 527)
-rotation = -2.46349
-lifetime = 26.0
+position = Vector2(824, 454)
+rotation = -5.01239
+lifetime = 25.0
 
 [node name="Scientist" parent="." instance=ExtResource("10_5ccw7")]
 position = Vector2(-123, 103)
 rotation = -1.53227
-lifetime = 100.0
+lifetime = 70.0
 
 [node name="Heart3" parent="." instance=ExtResource("8_cldtv")]
 position = Vector2(-140, 104)
 rotation = -1.53227
 scale = Vector2(0.25, 0.25)
-lifetime = 110.0
+lifetime = 80.0
 
 [node name="SpaceShip" parent="." instance=ExtResource("12_h5oia")]
-position = Vector2(129, 507)
-rotation = 4.00336
+position = Vector2(345, 613)
+rotation = 3.22317
+
+[node name="FlyEye" parent="." instance=ExtResource("13_o2mu7")]
+position = Vector2(129, 117)
+rotation = -0.670794
+
+[node name="FlyEye2" parent="." instance=ExtResource("13_o2mu7")]
+position = Vector2(755, 360)
+
+[node name="FlyEye3" parent="." instance=ExtResource("13_o2mu7")]
+position = Vector2(514, 599)
+rotation = 2.66058
+
+[node name="FlyEye4" parent="." instance=ExtResource("13_o2mu7")]
+position = Vector2(625, 225)
+rotation = 1.16381
+
+[node name="Mine" parent="." instance=ExtResource("14_k5xyl")]
+position = Vector2(493, 139)
+
+[node name="Mine2" parent="." instance=ExtResource("14_k5xyl")]
+position = Vector2(-9, 166)
+
+[node name="Slime" parent="." instance=ExtResource("15_c1p22")]
+position = Vector2(-67, 29)
+rotation = -0.140718
+
+[node name="Slime2" parent="." instance=ExtResource("15_c1p22")]
+position = Vector2(76, 270)
+rotation = -1.19869
+
+[node name="Slime3" parent="." instance=ExtResource("15_c1p22")]
+position = Vector2(389, 602)
+rotation = 2.81264
+x_axis = -1.0
+
+[node name="Slime4" parent="." instance=ExtResource("15_c1p22")]
+position = Vector2(763, 545)
+rotation = 3.04191

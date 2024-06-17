@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d22nrnha1ytv4"]
+[gd_scene load_steps=22 format=3 uid="uid://d22nrnha1ytv4"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_y88aa"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_w02rl"]
@@ -13,8 +13,17 @@
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="9_p62l8"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="12_mqt65"]
 [ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="13_imp5k"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/mine.tscn" id="14_0cssm"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="15_xntj2"]
+[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="14_0cssm"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="15_xntj2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q47t1"]
+size = Vector2(131.059, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7g65"]
+size = Vector2(149.471, 330.224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eguv7"]
+size = Vector2(122.458, 140.911)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_erds4"]
 radius = 32.0
@@ -44,6 +53,25 @@ player = NodePath("../Player")
 [node name="StaticBody2D" parent="." instance=ExtResource("4_wmt0g")]
 position = Vector2(320, 400)
 mass = 250000.0
+
+[node name="Area2D2" type="Area2D" parent="StaticBody2D"]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
+position = Vector2(266, -69)
+rotation = -0.32886
+shape = SubResource("RectangleShape2D_q47t1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
+position = Vector2(-233.42, -224.626)
+rotation = -0.35711
+shape = SubResource("RectangleShape2D_t7g65")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
+position = Vector2(-105.264, 263.17)
+rotation = 0.564893
+shape = SubResource("RectangleShape2D_eguv7")
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("5_pbma2")]
 position = Vector2(-239, 229)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckrn2dqcmr7i1"]
+[gd_scene load_steps=21 format=3 uid="uid://ckrn2dqcmr7i1"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_kvqik"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_qrtt6"]
@@ -21,6 +21,9 @@ size = Vector2(208.963, 170.272)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwq1n"]
 size = Vector2(126.736, 150.121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vloaw"]
+size = Vector2(142.217, 142.3)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8wm57"]
 radius = 32.0
@@ -57,14 +60,17 @@ collision_mask = 8192
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
 position = Vector2(-209.666, 248.874)
 rotation = -0.889148
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_p07eu")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
 position = Vector2(158.849, -175.915)
 rotation = -0.79246
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wwq1n")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
+position = Vector2(-130.811, -260.644)
+rotation = -0.433017
+shape = SubResource("RectangleShape2D_vloaw")
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("5_0qlox")]
 position = Vector2(-59, 101)

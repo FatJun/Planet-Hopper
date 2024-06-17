@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d3k75h8ra2rxq"]
+[gd_scene load_steps=20 format=3 uid="uid://d3k75h8ra2rxq"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_4uymx"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_xdtnp"]
@@ -16,18 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="14_i76v7"]
 [ext_resource type="PackedScene" uid="uid://ba22v0ucqx065" path="res://scenes/enemies/lizard.tscn" id="15_bnigr"]
 [ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="16_tb81a"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v5c8"]
-size = Vector2(101.951, 82.4416)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_noyv7"]
-size = Vector2(91.2607, 104.257)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xmt0"]
-size = Vector2(115.438, 92.6775)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxifl"]
-size = Vector2(126.428, 111.425)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_etba5"]
 radius = 32.0
@@ -58,32 +46,6 @@ player = NodePath("../Player")
 position = Vector2(320, 350)
 rotation = -0.523599
 mass = 250000.0
-
-[node name="Area2D2" type="Area2D" parent="StaticBody2D"]
-collision_layer = 8192
-collision_mask = 8192
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
-position = Vector2(151.164, 176.131)
-rotation = -0.604307
-shape = SubResource("RectangleShape2D_5v5c8")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
-position = Vector2(-176.118, 118.323)
-rotation = -0.449273
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_noyv7")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
-position = Vector2(-156.804, -131.668)
-rotation = 0.931709
-shape = SubResource("RectangleShape2D_2xmt0")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
-position = Vector2(149.315, -151.033)
-rotation = -0.685699
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_pxifl")
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("5_ydvi5")]
 position = Vector2(-147, 71)

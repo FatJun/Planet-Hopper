@@ -5,6 +5,7 @@ extends Area2D
 @export var max_lifetime := 15.
 @export var damage := 3
 @export var speed := 200
+@export var gravity_force := 60.
 @export var sprite: AnimatedSprite2D
 @export var knockback_force := 800.
 
@@ -30,15 +31,17 @@ func _ready():
 func _physics_process(delta):
 	process_gravity()
 	rotation = gravity_direction_.orthogonal().angle()
-	direction = Vector2.RIGHT.rotated(rotation)
-	position += (direction * axis) * speed * delta
+	direction = Vector2.RIGHT.rotated(rotation) * axis
+	position += direction * speed * delta
 
 
 func process_gravity() -> void:
 	var local_general_gravity_direction_force := Vector2.ZERO
 	for gravity_object in gravity_objects:
+		var distance_to_gravity_object := global_position.distance_to(gravity_object.global_position)
 		var local_gravity_direction := gravity_object.get_direction_to_center_of_mass(self)
-		local_general_gravity_direction_force += local_gravity_direction
+		var local_gravity_force = Gravity.GRAVITY_FORCE * gravity_object.mass / pow(distance_to_gravity_object, 2)
+		local_general_gravity_direction_force += local_gravity_direction * local_gravity_force
 	gravity_direction_ = local_general_gravity_direction_force.normalized()
 
 

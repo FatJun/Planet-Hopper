@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ckrn2dqcmr7i1"]
+[gd_scene load_steps=20 format=3 uid="uid://ckrn2dqcmr7i1"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_kvqik"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_qrtt6"]
@@ -13,8 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="10_5ccw7"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="12_h5oia"]
 [ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="13_o2mu7"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/mine.tscn" id="14_k5xyl"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/slime.tscn" id="15_c1p22"]
+[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="14_k5xyl"]
+[ext_resource type="PackedScene" uid="uid://u558eej8xaid" path="res://scenes/enemies/slime.tscn" id="15_c1p22"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p07eu"]
+size = Vector2(208.963, 170.272)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwq1n"]
+size = Vector2(126.736, 150.121)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8wm57"]
 radius = 32.0
@@ -43,6 +49,22 @@ player = NodePath("../Player")
 position = Vector2(320, 350)
 rotation = -0.279067
 mass = 250000.0
+
+[node name="Area2D2" type="Area2D" parent="StaticBody2D"]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
+position = Vector2(-209.666, 248.874)
+rotation = -0.889148
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_p07eu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/Area2D2"]
+position = Vector2(158.849, -175.915)
+rotation = -0.79246
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_wwq1n")
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("5_0qlox")]
 position = Vector2(-59, 101)

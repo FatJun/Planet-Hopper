@@ -163,7 +163,7 @@ collision_mask = 8192
 collide_with_areas = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(13.5, 7.5)
+position = Vector2(13.9998, 0.0680227)
 
 [node name="DamageArea" type="Area2D" parent="."]
 

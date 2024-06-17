@@ -42,29 +42,29 @@ position = Vector2(-0.571429, -0.571429)
 texture = ExtResource("5_lomnu")
 
 [node name="Fuel" parent="." instance=ExtResource("5_84m4w")]
-position = Vector2(273, 134)
+position = Vector2(269, 131)
 rotation = -0.716839
 lifetime = 7.0
 
 [node name="Fuel2" parent="." instance=ExtResource("5_84m4w")]
-position = Vector2(266, 218)
+position = Vector2(262, 221)
 rotation = -2.21121
 lifetime = 7.0
 
 [node name="Heart" parent="." instance=ExtResource("6_0lnni")]
-position = Vector2(365, 136)
+position = Vector2(371, 135)
 rotation = 0.772745
 lifetime = 7.0
 
 [node name="Scientist" parent="." instance=ExtResource("7_nrcwy")]
-position = Vector2(372, 217)
+position = Vector2(375, 219)
 rotation = 2.28127
 lifetime = 30.0
 
 [node name="Heart2" parent="." instance=ExtResource("6_0lnni")]
-position = Vector2(385, 226)
+position = Vector2(394, 233)
 rotation = 2.22266
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.4, 0.4)
 lifetime = 40.0
 
 [node name="FlyEye" parent="." instance=ExtResource("8_11vtr")]

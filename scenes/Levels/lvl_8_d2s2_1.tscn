@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="5_x4su0"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="6_1w17v"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="7_72dek"]
-[ext_resource type="PackedScene" uid="uid://cdpqhv7u47ngk" path="res://scenes/enemies/mine.tscn" id="8_ol0oh"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/mine.tscn" id="8_ol0oh"]
 [ext_resource type="PackedScene" uid="uid://dkqv8toa4vsi6" path="res://scenes/enemies/fly_eye.tscn" id="9_b5ynv"]
 [ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="10_s1wnj"]
 
@@ -32,26 +32,26 @@ position = Vector2(320, 180)
 scale = Vector2(-1, 1)
 
 [node name="Fuel" parent="." instance=ExtResource("5_x4su0")]
-position = Vector2(382, 72)
+position = Vector2(380, 68)
 rotation = 0.45957
 
 [node name="Fuel2" parent="." instance=ExtResource("5_x4su0")]
-position = Vector2(200, 156)
+position = Vector2(195, 156)
 rotation = -1.36911
 
 [node name="Fuel3" parent="." instance=ExtResource("5_x4su0")]
-position = Vector2(268, 292)
-rotation = -2.69316
+position = Vector2(259, 290)
+rotation = -2.87617
 
 [node name="Scientist" parent="." instance=ExtResource("7_72dek")]
-position = Vector2(213, 237)
+position = Vector2(211, 240)
 rotation = -2.13016
 lifetime = 25.0
 
 [node name="Heart2" parent="." instance=ExtResource("6_1w17v")]
-position = Vector2(199, 246)
+position = Vector2(191, 253)
 rotation = -2.12783
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.4, 0.4)
 lifetime = 35.0
 
 [node name="Mine3" parent="." instance=ExtResource("8_ol0oh")]

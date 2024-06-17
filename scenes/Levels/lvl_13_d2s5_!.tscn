@@ -1,14 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://d22nrnha1ytv4"]
+[gd_scene load_steps=16 format=3 uid="uid://d22nrnha1ytv4"]
 
 [ext_resource type="PackedScene" uid="uid://cma0cw2jdshwc" path="res://scenes/player.tscn" id="1_y88aa"]
 [ext_resource type="PackedScene" uid="uid://boloyopdf8ju6" path="res://scenes/ui/player_camera.tscn" id="2_w02rl"]
 [ext_resource type="PackedScene" uid="uid://cxt0k4hm8k5p5" path="res://scenes/ui/player_ui.tscn" id="3_6ip86"]
 [ext_resource type="PackedScene" uid="uid://dtupphbjf2nvi" path="res://scenes/Planet shapes/planet_s5_h2.tscn" id="4_wmt0g"]
 [ext_resource type="PackedScene" uid="uid://m4l6q7djtdkm" path="res://scenes/planet.tscn" id="5_pbma2"]
-[ext_resource type="PackedScene" uid="uid://clspwvn404dek" path="res://scenes/Planet shapes/mountain.tscn" id="6_e710e"]
+[ext_resource type="Texture2D" uid="uid://7bdyvw7oeeyi" path="res://assets/sprites/planets/lvl2.png" id="6_3atot"]
 [ext_resource type="PackedScene" uid="uid://q4uphtuiq6o4" path="res://scenes/items/fuel.tscn" id="7_5lg0u"]
+[ext_resource type="Texture2D" uid="uid://3aa8ns8ugwls" path="res://assets/sprites/planets/lvl9_2.png" id="7_nnrop"]
+[ext_resource type="Texture2D" uid="uid://doik51taa428f" path="res://assets/sprites/planets/lvl12_2.png" id="8_ep0tt"]
 [ext_resource type="PackedScene" uid="uid://ij7pk4caq6un" path="res://scenes/items/heart.tscn" id="8_w8p53"]
 [ext_resource type="PackedScene" uid="uid://c4j7e6i6ik6bi" path="res://scenes/items/scientist.tscn" id="9_p62l8"]
+[ext_resource type="PackedScene" uid="uid://d0nifx5821pyp" path="res://scenes/space_ship.tscn" id="12_mqt65"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_erds4"]
 radius = 32.0
@@ -21,10 +24,11 @@ radius = 32.0
 
 [node name="lvl_13_d2s5_!" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_y88aa")]
+[node name="Player" parent="." node_paths=PackedStringArray("space_ship") instance=ExtResource("1_y88aa")]
 position = Vector2(320, 112)
 _current_fuel_units = 4
 max_mission_progress = 3
+space_ship = NodePath("../SpaceShip")
 mass = 800.0
 jump_force = 1400
 
@@ -46,6 +50,10 @@ mass = 90000.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource("CircleShape2D_erds4")
 
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(-0.285714, -0.571429)
+texture = ExtResource("6_3atot")
+
 [node name="StaticBody2D3" parent="." instance=ExtResource("5_pbma2")]
 position = Vector2(-144, -50)
 scale = Vector2(1.75, 1.75)
@@ -53,6 +61,10 @@ mass = 40000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 shape = SubResource("CircleShape2D_mhl50")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(-0.571429, -0.571429)
+texture = ExtResource("7_nnrop")
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("5_pbma2")]
 position = Vector2(-429, 473)
@@ -62,9 +74,9 @@ mass = 40000.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 shape = SubResource("CircleShape2D_b8ws4")
 
-[node name="StaticBody2D5" parent="." instance=ExtResource("6_e710e")]
-position = Vector2(207, 242)
-rotation = -2.18126
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
+position = Vector2(-0.571429, -0.571429)
+texture = ExtResource("8_ep0tt")
 
 [node name="Fuel" parent="." instance=ExtResource("7_5lg0u")]
 position = Vector2(242, 119)
@@ -77,7 +89,7 @@ rotation = 0.676576
 lifetime = 36.0
 
 [node name="Fuel3" parent="." instance=ExtResource("7_5lg0u")]
-position = Vector2(604, 337)
+position = Vector2(626, 336)
 rotation = 1.46664
 lifetime = 36.0
 
@@ -87,8 +99,8 @@ rotation = 2.51024
 lifetime = 36.0
 
 [node name="Fuel5" parent="." instance=ExtResource("7_5lg0u")]
-position = Vector2(66, 253)
-rotation = -0.878443
+position = Vector2(32, 362)
+rotation = -1.53873
 lifetime = 36.0
 
 [node name="Fuel6" parent="." instance=ExtResource("7_5lg0u")]
@@ -143,3 +155,7 @@ position = Vector2(-486, 534)
 rotation = -2.34368
 scale = Vector2(0.25, 0.25)
 lifetime = 130.0
+
+[node name="SpaceShip" parent="." instance=ExtResource("12_mqt65")]
+position = Vector2(286, 687)
+rotation = -3.14423

@@ -34,28 +34,25 @@ scale = Vector2(-1, 1)
 [node name="Fuel" parent="." instance=ExtResource("5_x4su0")]
 position = Vector2(382, 72)
 rotation = 0.45957
-lifetime = 12.0
 
 [node name="Fuel2" parent="." instance=ExtResource("5_x4su0")]
 position = Vector2(200, 156)
 rotation = -1.36911
-lifetime = 12.0
 
 [node name="Fuel3" parent="." instance=ExtResource("5_x4su0")]
 position = Vector2(268, 292)
 rotation = -2.69316
-lifetime = 12.0
 
 [node name="Scientist" parent="." instance=ExtResource("7_72dek")]
 position = Vector2(213, 237)
 rotation = -2.13016
-lifetime = 60.0
+lifetime = 25.0
 
 [node name="Heart2" parent="." instance=ExtResource("6_1w17v")]
 position = Vector2(199, 246)
 rotation = -2.12783
 scale = Vector2(0.25, 0.25)
-lifetime = 70.0
+lifetime = 35.0
 
 [node name="Mine3" parent="." instance=ExtResource("8_ol0oh")]
 position = Vector2(429, 83)

@@ -28,7 +28,7 @@ signal dead
 @export var anim_player: AnimationPlayer
 @export var take_damage_sound: AudioStreamPlayer
 
-var in_landing_zone := true
+var in_landing_zone := false
 var jetpack_timer: Timer
 var jetpack_is_reloading := false
 var jetpack_velocity := Vector2.ZERO

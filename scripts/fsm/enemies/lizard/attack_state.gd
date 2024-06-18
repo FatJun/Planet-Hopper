@@ -4,6 +4,7 @@ extends State
 @export var attack_speed := 2.
 @export var muzzle: Marker2D
 @export var Projectile: PackedScene
+@export var attack_sound: AudioStreamPlayer2D
 
 @onready var fsm: LizardFSM = get_parent()
 
@@ -20,6 +21,7 @@ func enter() -> void:
 	prev_axis = fsm.controller.x_axis
 	fsm.controller.x_axis = 0.
 	
+	attack_sound.play()
 	fsm.play_anim(fsm.ATTACK)
 	fsm.controller.sprite.animation_finished.connect(_on_animation_finished)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
@@ -46,10 +48,12 @@ func _on_animation_finished():
 
 
 func _on_attack_timer_timeout():
+	attack_sound.play()
 	fsm.play_anim(fsm.ATTACK)
 
 
 func exit() -> void:
+	attack_sound.stop()
 	attack_timer.timeout.disconnect(_on_attack_timer_timeout)
 	fsm.controller.sprite.animation_finished.disconnect(_on_animation_finished)
 	remove_child(attack_timer)

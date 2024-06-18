@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4j7e6i6ik6bi"]
+[gd_scene load_steps=14 format=3 uid="uid://c4j7e6i6ik6bi"]
 
 [ext_resource type="PackedScene" uid="uid://chlmp0soupngd" path="res://scenes/ui/bar.tscn" id="1_0ebvb"]
 [ext_resource type="Script" path="res://scripts/items/scientist.gd" id="1_02g7k"]
 [ext_resource type="Script" path="res://scripts/ui/expire_time_bar.gd" id="2_edhus"]
 [ext_resource type="Texture2D" uid="uid://ddl0bepdyiyw0" path="res://assets/sprites/items/scientist.png" id="3_fd2py"]
 [ext_resource type="AnimationLibrary" uid="uid://bew00b36810k1" path="res://assets/animations/item.res" id="3_mvtap"]
+[ext_resource type="PackedScene" uid="uid://bg54ohf6wa6n2" path="res://scenes/items/item_sounds.tscn" id="6_2la6i"]
+[ext_resource type="AudioStream" uid="uid://3hghea7swy3l" path="res://assets/audio/SFX/scientist_pickup.wav" id="7_hbwqs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ev0x"]
 atlas = ExtResource("3_fd2py")
@@ -45,13 +47,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qoko3"]
 size = Vector2(17, 19)
 
-[node name="Scientist" type="Node2D" node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player")]
+[node name="Scientist" type="Node2D" node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player", "pickup_sound", "destroy_sound")]
 scale = Vector2(1.1, 1.1)
 script = ExtResource("1_02g7k")
 lifetime_bar = NodePath("PrimaryBar")
 pickable_zone = NodePath("Area2D")
 collision = NodePath("Area2D/CollisionShape2D")
 anim_player = NodePath("AnimatedSprite2D/AnimationPlayer")
+pickup_sound = NodePath("ItemSounds/pickup")
+destroy_sound = NodePath("ItemSounds/destroy")
 
 [node name="PrimaryBar" parent="." node_paths=PackedStringArray("item") instance=ExtResource("1_0ebvb")]
 offset_left = -9.0
@@ -77,3 +81,11 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_qoko3")
+
+[node name="ItemSounds" parent="." instance=ExtResource("6_2la6i")]
+
+[node name="pickup" parent="ItemSounds" index="0"]
+stream = ExtResource("7_hbwqs")
+pitch_scale = 0.7
+
+[editable path="ItemSounds"]

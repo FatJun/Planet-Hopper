@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg54ohf6wa6n2"]
+
+[ext_resource type="AudioStream" uid="uid://del6jw7d5i4fe" path="res://assets/audio/SFX/Player/pickup (2).wav" id="1_u2fo7"]
+[ext_resource type="AudioStream" uid="uid://cb5345telrdeg" path="res://assets/audio/SFX/Player/destory.wav" id="2_ierop"]
+
+[node name="ItemSounds" type="Node2D"]
+
+[node name="pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_u2fo7")
+volume_db = -15.0
+max_distance = 100.0
+
+[node name="destroy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ierop")
+volume_db = -30.0
+pitch_scale = 1.3
+max_distance = 100.0

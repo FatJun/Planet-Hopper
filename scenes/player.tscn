@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cma0cw2jdshwc"]
+[gd_scene load_steps=55 format=3 uid="uid://cma0cw2jdshwc"]
 
 [ext_resource type="Script" path="res://scripts/controllers/player.gd" id="1_kryjb"]
 [ext_resource type="PackedScene" uid="uid://dqgk6vt1w3022" path="res://scenes/particles/burst.tscn" id="2_2rxey"]
@@ -13,6 +13,17 @@
 [ext_resource type="Script" path="res://scripts/fsm/player/fall_state.gd" id="12_yygai"]
 [ext_resource type="Script" path="res://scripts/fsm/player/jetpack_state.gd" id="13_6apf2"]
 [ext_resource type="Script" path="res://scripts/fsm/player/death.gd" id="13_otw3b"]
+[ext_resource type="AudioStream" uid="uid://be186b7qosb50" path="res://assets/audio/SFX/Player/Footstep_1.wav" id="14_cmygb"]
+[ext_resource type="AudioStream" uid="uid://bbho4m5jn6ow5" path="res://assets/audio/SFX/Player/Footstep_3.wav" id="16_12ukx"]
+[ext_resource type="AudioStream" uid="uid://x7ghnpamrd16" path="res://assets/audio/SFX/Player/Footstep_5.wav" id="18_soeym"]
+[ext_resource type="AudioStream" uid="uid://jigecymm0iti" path="res://assets/audio/SFX/Player/jump_1.wav" id="19_4p4b0"]
+[ext_resource type="AudioStream" uid="uid://bi8m2q1px7741" path="res://assets/audio/SFX/Player/jump_landing.wav" id="20_d6th1"]
+[ext_resource type="AudioStream" uid="uid://cac1pidee70er" path="res://assets/audio/SFX/Player/jectpack_2_2.wav" id="20_egmoa"]
+[ext_resource type="AudioStream" uid="uid://cms16xf03g8gu" path="res://assets/audio/SFX/Player/Footstep_7.wav" id="20_smr88"]
+[ext_resource type="AudioStream" uid="uid://mleurebs1q0y" path="res://assets/audio/SFX/Player/Footstep_9.wav" id="22_n6py5"]
+[ext_resource type="AudioStream" uid="uid://5oxajww1m6sx" path="res://assets/audio/SFX/Player/damaged.wav" id="22_q0mse"]
+[ext_resource type="AudioStream" uid="uid://cknwefvwxom7e" path="res://assets/audio/music/gameplay_loop.wav" id="23_nsmta"]
+[ext_resource type="Script" path="res://scenes/ui/infinite.gd" id="24_4bgi2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlhuc"]
 size = Vector2(13, 23.1)
@@ -209,9 +220,110 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jetpack_particles", "gravity_zone", "collision", "sprite") groups=["player"]]
+[sub_resource type="Animation" id="Animation_5ehgc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Steps:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ct2tn"]
+resource_name = "run"
+length = 0.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Steps:playing")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgp11"]
+_data = {
+"RESET": SubResource("Animation_5ehgc"),
+"run": SubResource("Animation_ct2tn")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_di7i3"]
+streams_count = 5
+stream_0/stream = ExtResource("18_soeym")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("20_smr88")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("22_n6py5")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("16_12ukx")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("14_cmygb")
+stream_4/weight = 1.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jetpack_particles", "anim_player", "take_damage_sound", "gravity_zone", "collision", "sprite") groups=["player"]]
 script = ExtResource("1_kryjb")
 jetpack_particles = NodePath("GPUParticles2D")
+anim_player = NodePath("AnimatedSprite2D/AnimationPlayer")
+take_damage_sound = NodePath("TakeDamage")
 mass = 35.0
 gravity_zone = NodePath("GravityZone")
 collision = NodePath("CollisionShape2D")
@@ -240,6 +352,11 @@ sprite_frames = SubResource("SpriteFrames_cqtns")
 animation = &"idle"
 autoplay = "idle"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_rgp11")
+}
+
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("controller", "cur_state")]
 script = ExtResource("4_ocfqr")
 controller = NodePath("..")
@@ -248,8 +365,9 @@ cur_state = NodePath("IDLE")
 [node name="IDLE" type="Node" parent="FSM"]
 script = ExtResource("5_1eu08")
 
-[node name="JUMP" type="Node" parent="FSM"]
+[node name="JUMP" type="Node" parent="FSM" node_paths=PackedStringArray("sound")]
 script = ExtResource("6_fvtck")
+sound = NodePath("../../Jump")
 
 [node name="RUN" type="Node" parent="FSM"]
 script = ExtResource("7_o4v2f")
@@ -260,10 +378,41 @@ script = ExtResource("12_qmxtl")
 [node name="DEATH" type="Node" parent="FSM"]
 script = ExtResource("13_otw3b")
 
-[node name="FALL" type="Node" parent="FSM"]
+[node name="FALL" type="Node" parent="FSM" node_paths=PackedStringArray("sound")]
 script = ExtResource("12_yygai")
+sound = NodePath("../../Land")
 
-[node name="JETPACK" type="Node" parent="FSM"]
+[node name="JETPACK" type="Node" parent="FSM" node_paths=PackedStringArray("sound")]
 script = ExtResource("13_6apf2")
+sound = NodePath("../../Jetpack")
+
+[node name="Steps" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_di7i3")
+volume_db = -25.0
+pitch_scale = 0.5
+bus = &"Cosmic"
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_4p4b0")
+volume_db = -20.0
+
+[node name="Jetpack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_egmoa")
+volume_db = -25.0
+bus = &"Cosmic"
+
+[node name="Land" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_d6th1")
+volume_db = -20.0
+bus = &"Cosmic"
+
+[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_q0mse")
+volume_db = -20.0
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_nsmta")
+autoplay = true
+script = ExtResource("24_4bgi2")
 
 [connection signal="dead" from="." to="FSM" method="_on_player_dead"]

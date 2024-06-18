@@ -6,7 +6,7 @@ extends State
 
 func enter() -> void:
 	fsm.controller.reset_jumps()
-	fsm.play_anim(fsm.RUN)
+	fsm.play_anim_player(fsm.RUN)
 
 
 func pr_update(_delta: float) -> void:
@@ -28,3 +28,7 @@ func ph_update(_delta: float) -> void:
 	fsm.controller.update_to_face_direction()
 	fsm.controller.update_all_physics()
 	fsm.controller.move_and_slide()
+
+
+func exit():
+	fsm.controller.anim_player.stop()

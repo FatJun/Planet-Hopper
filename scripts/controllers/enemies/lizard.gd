@@ -25,7 +25,6 @@ func flip(axis: float = 0.) -> void:
 	sprite.flip_h = axis > 0
 	vision_zone.scale.x = -vision_zone.scale.y if axis < 0 else vision_zone.scale.y
 	collision_ray.scale.x = -collision_ray.scale.y if axis < 0 else collision_ray.scale.y
-	$Marker2D.scale.x = -$Marker2D.scale.y if axis < 0 else $Marker2D.scale.y
 
 
 func _on_vision_zone_body_entered(body):

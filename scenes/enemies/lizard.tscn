@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ba22v0ucqx065"]
+[gd_scene load_steps=24 format=3 uid="uid://ba22v0ucqx065"]
 
 [ext_resource type="Script" path="res://scripts/controllers/enemies/lizard.gd" id="1_12u02"]
 [ext_resource type="Texture2D" uid="uid://bift2lftptneq" path="res://assets/sprites/enemies/lizard/move.png" id="2_17jce"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/fsm/enemies/lizard/attack_state.gd" id="8_sdx3l"]
 [ext_resource type="Script" path="res://scripts/fsm/enemies/lizard/idle_state.gd" id="8_xm6po"]
 [ext_resource type="PackedScene" uid="uid://c7oh8escbrttq" path="res://scenes/projectiles/fireball.tscn" id="9_gn3st"]
+[ext_resource type="AudioStream" uid="uid://dcfo5573rbxdq" path="res://assets/audio/SFX/Enemies/lizardattack.wav" id="10_g420m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ggsjn"]
 atlas = ExtResource("3_k2t21")
@@ -152,10 +153,11 @@ script = ExtResource("8_xm6po")
 [node name="RUN" type="Node" parent="FSM"]
 script = ExtResource("7_xt440")
 
-[node name="ATTACK" type="Node" parent="FSM" node_paths=PackedStringArray("muzzle")]
+[node name="ATTACK" type="Node" parent="FSM" node_paths=PackedStringArray("muzzle", "attack_sound")]
 script = ExtResource("8_sdx3l")
-muzzle = NodePath("../../Marker2D")
+muzzle = NodePath("../../RayCast2D/Marker2D")
 Projectile = ExtResource("9_gn3st")
+attack_sound = NodePath("../../Shoot")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-0.0242939, 4.99994)
@@ -163,14 +165,19 @@ target_position = Vector2(24.9997, 0.121469)
 collision_mask = 8192
 collide_with_areas = true
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(13.9998, 0.0680227)
+[node name="Marker2D" type="Marker2D" parent="RayCast2D"]
+position = Vector2(14.0241, -4.93192)
 
 [node name="DamageArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2(3.97566, 5.01938)
 shape = SubResource("CircleShape2D_63w30")
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_g420m")
+volume_db = -5.0
+max_distance = 350.0
 
 [connection signal="body_entered" from="VisionZone" to="." method="_on_vision_zone_body_entered"]
 [connection signal="body_exited" from="VisionZone" to="." method="_on_vision_zone_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dkqv8toa4vsi6"]
+[gd_scene load_steps=28 format=3 uid="uid://dkqv8toa4vsi6"]
 
 [ext_resource type="Script" path="res://scripts/controllers/enemies/fly_eye.gd" id="1_1idfd"]
 [ext_resource type="Script" path="res://scripts/shared/gravity_zone.gd" id="2_5m2h8"]
@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://dfbchlubk3e0b" path="res://assets/sprites/fx/explosion/6.png" id="8_5lt1w"]
 [ext_resource type="Texture2D" uid="uid://dxygibe7a13vb" path="res://assets/sprites/fx/explosion/7.png" id="9_es8tq"]
 [ext_resource type="Texture2D" uid="uid://d3isxpgyra6ac" path="res://assets/sprites/fx/explosion/8.png" id="10_lnnck"]
+[ext_resource type="AudioStream" uid="uid://c3w2iltneyk60" path="res://assets/audio/SFX/Enemies/FlyEye.wav" id="16_4y3yd"]
+[ext_resource type="AudioStream" uid="uid://4d5ytdwa48j3" path="res://assets/audio/SFX/Enemies/FlyEyeFly.wav" id="16_7bw30"]
+[ext_resource type="AudioStream" uid="uid://1ok0iyv64ftq" path="res://assets/audio/SFX/explosion.mp3" id="18_ogec2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pk15k"]
 
@@ -87,7 +90,7 @@ animations = [{
 radius = 9.05539
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wn5o"]
-radius = 84.1487
+radius = 80.0062
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kulgn"]
 radius = 19.0263
@@ -96,6 +99,7 @@ radius = 19.0263
 collision_layer = 2
 script = ExtResource("1_1idfd")
 gravity_zone = NodePath("GravityZone")
+speed = 160.0
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("AnimatedSprite2D")
 
@@ -128,22 +132,40 @@ shape = SubResource("CircleShape2D_kulgn")
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("controller", "cur_state")]
 script = ExtResource("3_d88vl")
-time_till_exposion = 3.0
+time_till_exposion = 4.0
 controller = NodePath("..")
 cur_state = NodePath("IDLE")
 
 [node name="IDLE" type="Node" parent="FSM"]
 script = ExtResource("4_oiw7r")
 
-[node name="CHASE" type="Node" parent="FSM"]
+[node name="CHASE" type="Node" parent="FSM" node_paths=PackedStringArray("scream_sound", "fly_sound")]
 script = ExtResource("5_d12pc")
+scream_sound = NodePath("../../Scream")
+fly_sound = NodePath("../../Fly")
 
-[node name="EXPLOSION" type="Node" parent="FSM"]
+[node name="EXPLOSION" type="Node" parent="FSM" node_paths=PackedStringArray("sound")]
 script = ExtResource("6_nkl1k")
+sound = NodePath("../../Explosion")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(19, 0)
 collision_mask = 3
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_4y3yd")
+volume_db = -5.0
+max_distance = 300.0
+
+[node name="Fly" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_7bw30")
+volume_db = -5.0
+pitch_scale = 0.6
+max_distance = 200.0
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_ogec2")
+volume_db = -12.0
 
 [connection signal="body_entered" from="AgressionZone" to="FSM" method="_on_agression_zone_body_entered"]
 [connection signal="body_entered" from="BurstZone" to="FSM" method="_on_burst_zone_body_entered"]

@@ -1,10 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://u558eej8xaid"]
+[gd_scene load_steps=22 format=3 uid="uid://u558eej8xaid"]
 
 [ext_resource type="Script" path="res://scripts/controllers/enemies/slime.gd" id="1_5kdcl"]
 [ext_resource type="Texture2D" uid="uid://4aoxo400rkr3" path="res://assets/sprites/enemies/slime/slime.png" id="2_procg"]
 [ext_resource type="Script" path="res://scripts/fsm/enemies/slime/fsm.gd" id="3_0p3bd"]
 [ext_resource type="Script" path="res://scripts/fsm/enemies/slime/run_state.gd" id="4_48ftx"]
 [ext_resource type="Script" path="res://scripts/shared/gravity_zone.gd" id="5_b4slp"]
+[ext_resource type="AudioStream" uid="uid://3xu031flqshy" path="res://assets/audio/SFX/Enemies/blob_walk_1.wav" id="6_qq6lr"]
+[ext_resource type="AudioStream" uid="uid://bcwmdk02x4p71" path="res://assets/audio/SFX/Enemies/blob_walk_2.wav" id="7_5ii15"]
+[ext_resource type="AudioStream" uid="uid://bx81ug0hpi4xm" path="res://assets/audio/SFX/Enemies/blob_walk_3.wav" id="8_mg8h2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nb4q"]
 atlas = ExtResource("2_procg")
@@ -49,6 +52,92 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_6u2dx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Walk:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rhm78"]
+resource_name = "default"
+length = 0.50001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Walk:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ry0x"]
+_data = {
+"RESET": SubResource("Animation_6u2dx"),
+"default": SubResource("Animation_rhm78")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6seo"]
 size = Vector2(21, 20)
 
@@ -56,6 +145,17 @@ size = Vector2(21, 20)
 radius = 21.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2crsk"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cyjai"]
+random_pitch = 2.0
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("6_qq6lr")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_5ii15")
+stream_1/weight = 0.3
+stream_2/stream = ExtResource("8_mg8h2")
+stream_2/weight = 1.0
 
 [node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("collision_ray", "gravity_zone", "collision", "sprite")]
 collision_layer = 8194
@@ -69,10 +169,13 @@ sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_55u1p")
-autoplay = "default"
-frame = 2
-frame_progress = 0.452122
 flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_5ry0x")
+}
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 6)
@@ -106,5 +209,11 @@ collide_with_areas = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2(-1, 6)
 shape = SubResource("CircleShape2D_2crsk")
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_cyjai")
+volume_db = -15.0
+pitch_scale = 0.8
+max_distance = 150.0
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

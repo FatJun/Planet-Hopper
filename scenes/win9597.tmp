@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=3 uid="uid://ifh0ovkq0v4f"]
+
+[ext_resource type="Texture2D" uid="uid://4rs6vrq1yuon" path="res://assets/sprites/spaceship/3.png" id="1_l3s83"]
+[ext_resource type="Texture2D" uid="uid://bag1ogxoujdxq" path="res://assets/sprites/spaceship/4.png" id="2_fqyg2"]
+[ext_resource type="Texture2D" uid="uid://cqftvatc0yj6s" path="res://assets/sprites/spaceship/5.png" id="3_fpc55"]
+[ext_resource type="Texture2D" uid="uid://kppkpfclw32v" path="res://assets/sprites/spaceship/6.png" id="4_u2pab"]
+[ext_resource type="PackedScene" uid="uid://d2eibehh1cd3j" path="res://scenes/ui/parallax/cosmic.tscn" id="5_43tmm"]
+[ext_resource type="Script" path="res://scenes/winning_scene_camera.gd" id="5_tgr8g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a8ff3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l3s83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fqyg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fpc55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u2pab")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_nin3q"]
+resource_name = "main"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vqqka"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8y8cp"]
+_data = {
+"RESET": SubResource("Animation_vqqka"),
+"main": SubResource("Animation_nin3q")
+}
+
+[node name="WinningScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 639.0
+offset_bottom = 361.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(319, 183)
+sprite_frames = SubResource("SpriteFrames_a8ff3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8y8cp")
+}
+autoplay = "main"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("5_tgr8g")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("5_43tmm")]

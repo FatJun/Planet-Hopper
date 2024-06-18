@@ -1,0 +1,373 @@
+[gd_scene load_steps=15 format=3 uid="uid://brln0ec4c3g1m"]
+
+[ext_resource type="Script" path="res://scenes/first_scene.gd" id="1_3rbo7"]
+[ext_resource type="Texture2D" uid="uid://w4lv5a4mxj3w" path="res://assets/sprites/cutscenes/1.jpg" id="1_iylke"]
+[ext_resource type="Texture2D" uid="uid://b8e63rs0t4v11" path="res://assets/sprites/cutscenes/2.jpg" id="2_dq3v4"]
+[ext_resource type="Texture2D" uid="uid://dsdm51dkgp7nk" path="res://assets/sprites/cutscenes/3.jpg" id="3_x86m2"]
+[ext_resource type="Texture2D" uid="uid://kshqrjmto2wx" path="res://assets/sprites/cutscenes/4.jpg" id="4_d075t"]
+[ext_resource type="Texture2D" uid="uid://cnxt3v3ut3rc" path="res://assets/sprites/cutscenes/5.jpg" id="5_o2mkg"]
+[ext_resource type="Texture2D" uid="uid://cawwk8y8uxba6" path="res://assets/sprites/cutscenes/6.jpg" id="6_marx2"]
+[ext_resource type="FontFile" uid="uid://bhd41gmmivax7" path="res://assets/fonts/Abaddon Bold.ttf" id="7_2uxih"]
+[ext_resource type="FontFile" uid="uid://c2owlc73vyb47" path="res://assets/fonts/Abaddon Light.ttf" id="9_ytldm"]
+[ext_resource type="AudioStream" uid="uid://ecwwujwujj3f" path="res://assets/audio/music/menu.wav" id="10_q2wqb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jdm3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iylke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dq3v4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x86m2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_marx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d075t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o2mkg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_c533a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.632084, 0.628433)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 236)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RichTextLabel5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RichTextLabel6:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RichTextLabel2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mp6jf"]
+resource_name = "main"
+length = 50.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 13, 15, 20, 31),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 13, 20, 31),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0.632084, 0.628433), Vector2(0.649253, 0.645503), Vector2(0.832937, 0.828125), Vector2(0.687797, 0.683824), Vector2(0.742814, 0.738523)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 13, 20, 31),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(320, 236), Vector2(332, 180), Vector2(320, 181), Vector2(320, 181), Vector2(300, 181)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RichTextLabel5:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 31),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RichTextLabel6:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 20, 31),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RichTextLabel2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3, 13),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect:color")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.5, 3, 3.5, 12.5, 13, 13.5, 14.5, 15, 15.5, 19.5, 20, 20.5, 30.5, 31, 31.5, 48.5, 49),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(49.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_the_game"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xdgkj"]
+_data = {
+"RESET": SubResource("Animation_c533a"),
+"main": SubResource("Animation_mp6jf")
+}
+
+[node name="FirstScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3rbo7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 236)
+scale = Vector2(0.632084, 0.628433)
+sprite_frames = SubResource("SpriteFrames_1jdm3")
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -199.5
+offset_top = -146.0
+offset_right = 199.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.542239, 0.454573, 0.991124, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("7_2uxih")
+text = "We understand your vessel isn't designed for rapid interplanetary travel, but it should suffice for short hops between planets. Ensure you refill its fuel deposits at each stop.
+A skeleton crew of scientists is stationed in the system. Make sure to pick them up on your way out.
+Good luck, and stay safe. Stellar winds be with you!"
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -194.5
+offset_top = -75.0
+offset_right = 194.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.542239, 0.454573, 0.991124, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("7_2uxih")
+text = "Vanguard, what is your location? NR1? That's the closest planet to the star! You must evacuate immediately!"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -206.5
+offset_top = -76.0
+offset_right = 206.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.542239, 0.454573, 0.991124, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("7_2uxih")
+text = "The Galactic Federation has received troubling reports from the fringe system of Nova's Rift. We need you to investigate and report back."
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = -40.0
+offset_right = 108.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.542239, 0.454573, 0.991124, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("7_2uxih")
+text = "Welcome, Sentinel Vanguard 48,"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xdgkj")
+}
+autoplay = "main"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 9.0
+offset_right = 659.0
+offset_bottom = 49.0
+theme_override_fonts/normal_font = ExtResource("9_ytldm")
+text = "ENTER to skip"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_q2wqb")
+autoplay = true

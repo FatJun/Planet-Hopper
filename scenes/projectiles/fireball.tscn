@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7oh8escbrttq"]
+[gd_scene load_steps=18 format=3 uid="uid://c7oh8escbrttq"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/fireball.gd" id="1_lvsde"]
 [ext_resource type="Texture2D" uid="uid://byxe8d65kselh" path="res://assets/sprites/enemies/lizard/fireball.png" id="1_w6drc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dfbchlubk3e0b" path="res://assets/sprites/fx/explosion/6.png" id="8_4qyo3"]
 [ext_resource type="Texture2D" uid="uid://dxygibe7a13vb" path="res://assets/sprites/fx/explosion/7.png" id="9_7608o"]
 [ext_resource type="Texture2D" uid="uid://d3isxpgyra6ac" path="res://assets/sprites/fx/explosion/8.png" id="10_1eq3s"]
+[ext_resource type="AudioStream" uid="uid://1ok0iyv64ftq" path="res://assets/audio/SFX/explosion.mp3" id="11_wyv8i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mr7fo"]
 radius = 4.0
@@ -79,9 +80,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Area2D" type="Area2D" node_paths=PackedStringArray("sprite")]
+[node name="Area2D" type="Area2D" node_paths=PackedStringArray("sprite", "collision", "explode_sound")]
 script = ExtResource("1_lvsde")
 sprite = NodePath("AnimatedSprite2D")
+collision = NodePath("CollisionShape2D")
+explode_sound = NodePath("Explode")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mr7fo")
@@ -89,3 +92,8 @@ shape = SubResource("CircleShape2D_mr7fo")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c15pl")
 autoplay = "default"
+
+[node name="Explode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_wyv8i")
+volume_db = -15.0
+pitch_scale = 0.8

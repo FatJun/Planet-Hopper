@@ -24,6 +24,7 @@ func lock_on(viewport, event: InputEvent, shape_idx):
 		%LevelsCamera.set_target(self)
 
 func _process(delta):
+	global_rotation = 0
 	if %LevelsCamera.target == self:
 		if not Levels.is_finished(id):
 			focus()

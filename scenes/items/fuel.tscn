@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://q4uphtuiq6o4"]
+[gd_scene load_steps=10 format=3 uid="uid://q4uphtuiq6o4"]
 
 [ext_resource type="Texture2D" uid="uid://p5m2hysvxls7" path="res://assets/sprites/items/fuel.png" id="1_dx5sc"]
 [ext_resource type="Script" path="res://scripts/items/fuel.gd" id="1_vfiew"]
 [ext_resource type="AnimationLibrary" uid="uid://bew00b36810k1" path="res://assets/animations/item.res" id="3_6lojv"]
 [ext_resource type="PackedScene" uid="uid://chlmp0soupngd" path="res://scenes/ui/bar.tscn" id="3_ux18p"]
 [ext_resource type="Script" path="res://scripts/ui/expire_time_bar.gd" id="4_37cmd"]
+[ext_resource type="PackedScene" uid="uid://bg54ohf6wa6n2" path="res://scenes/items/item_sounds.tscn" id="6_3fika"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sn154"]
 atlas = ExtResource("1_dx5sc")
@@ -24,13 +25,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_raauh"]
 size = Vector2(32, 34)
 
-[node name="Fuel" type="Node2D" node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player")]
+[node name="Fuel" type="Node2D" node_paths=PackedStringArray("lifetime_bar", "pickable_zone", "collision", "anim_player", "pickup_sound", "destroy_sound")]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_vfiew")
 lifetime_bar = NodePath("PrimaryBar")
 pickable_zone = NodePath("Area2D")
 collision = NodePath("Area2D/CollisionShape2D")
 anim_player = NodePath("AnimatedSprite2D/AnimationPlayer")
+pickup_sound = NodePath("ItemSounds/pickup")
+destroy_sound = NodePath("ItemSounds/destroy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b2lui")
@@ -55,3 +58,7 @@ offset_bottom = -21.0
 script = ExtResource("4_37cmd")
 item = NodePath("..")
 min_life_time = 0.5
+
+[node name="ItemSounds" parent="." instance=ExtResource("6_3fika")]
+
+[editable path="ItemSounds"]

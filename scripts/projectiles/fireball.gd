@@ -8,6 +8,8 @@ extends Area2D
 @export var gravity_force := 60.
 @export var sprite: AnimatedSprite2D
 @export var knockback_force := 800.
+@export var collision: CollisionShape2D
+@export var explode_sound: AudioStreamPlayer2D
 
 var gravity_objects: Array[GravityObject] = []
 var gravity_direction_ := Vector2.ZERO
@@ -47,6 +49,8 @@ func process_gravity() -> void:
 
 func destroy():
 	set_physics_process(false)
+	collision.disabled = true
+	explode_sound.play()
 	sprite.play("explosion")
 	await sprite.animation_finished
 	queue_free()

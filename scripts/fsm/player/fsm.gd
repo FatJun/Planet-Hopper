@@ -56,6 +56,10 @@ var is_entering_in_spaceship: bool:
 		)
 
 
+func play_anim_player(animation: int) -> void:
+	controller.anim_player.play(ANIMATIONS[animation])
+
+
 func play_anim(animation: int) -> void:
 	controller.sprite.play(ANIMATIONS[animation])
 

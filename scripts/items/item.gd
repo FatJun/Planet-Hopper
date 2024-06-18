@@ -7,6 +7,8 @@ extends Node2D
 @export var pickable_zone: Area2D
 @export var collision: CollisionShape2D
 @export var anim_player: AnimationPlayer
+@export var pickup_sound: AudioStreamPlayer2D
+@export var destroy_sound: AudioStreamPlayer2D
 
 
 func _ready():
@@ -19,6 +21,7 @@ func apply_effect(_player: PlayerController):
 
 
 func destroy():
+	destroy_sound.play()
 	anim_player.play("item/destroy")
 	lifetime_bar.queue_free()
 	collision.disabled = true
@@ -31,6 +34,7 @@ func _on_lifetime_timeout():
 
 
 func pickup(player: PlayerController):
+	pickup_sound.play()
 	anim_player.play("item/pickup")
 	lifetime_bar.queue_free()
 	collision.disabled = true

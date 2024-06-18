@@ -1,6 +1,7 @@
 extends State
 
 @onready var fsm: FlyEyeFSM = get_parent()
+@export var sound: AudioStreamPlayer2D
 
 
 func enter():
@@ -14,6 +15,7 @@ func enter():
 
 
 func explode():
+	sound.play()
 	fsm.controller.sprite.play("explosion")
 	await fsm.controller.sprite.animation_finished
 	fsm.controller.queue_free()

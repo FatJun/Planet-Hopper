@@ -2,9 +2,11 @@ extends State
 
 
 @onready var fsm: PlayerFSM = get_parent()
+@export var sound: AudioStreamPlayer
 
 
 func enter() -> void:
+	sound.play()
 	fsm.controller.apply_jump()
 	fsm.play_anim(fsm.JUMP)
 

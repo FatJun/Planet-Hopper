@@ -47,7 +47,7 @@ func play_anim(animation: int) -> void:
 
 
 func _on_agression_zone_body_entered(body):
-	if body.is_in_group("player") and cur_state != states[EXPLOSION]:
+	if body.is_in_group("player") and cur_state == states[IDLE]:
 		controller.target = body
 		change_state(states[CHASE])
 

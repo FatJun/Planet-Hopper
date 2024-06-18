@@ -92,22 +92,24 @@ radius = 43.0117
 script = ExtResource("1_whom5")
 id = 26
 area = NodePath("Area2D")
-key_sprite = NodePath("KeySprite")
-locked_frame = NodePath("NinePatchRect")
+key_sprite = NodePath("FreezeRotation/KeySprite")
+locked_frame = NodePath("FreezeRotation/NinePatchRect")
 
-[node name="KeySprite" type="Sprite2D" parent="."]
+[node name="FreezeRotation" type="Node2D" parent="."]
+
+[node name="KeySprite" type="Sprite2D" parent="FreezeRotation"]
 modulate = Color(1, 1, 1.2, 1)
 z_index = 1
 position = Vector2(0, -50)
 texture = SubResource("AtlasTexture_1kgho")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="KeySprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FreezeRotation/KeySprite"]
 libraries = {
 "": SubResource("AnimationLibrary_5ohmo")
 }
 autoplay = "default"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="FreezeRotation"]
 z_index = 1
 offset_left = -43.0
 offset_top = -43.0

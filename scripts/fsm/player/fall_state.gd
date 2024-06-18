@@ -2,6 +2,7 @@ extends State
 
 
 @onready var fsm: PlayerFSM = get_parent()
+@export var sound: AudioStreamPlayer
 
 
 func enter() -> void:
@@ -27,3 +28,8 @@ func ph_update(_delta: float) -> void:
 	fsm.controller.update_to_face_direction()
 	fsm.controller.update_all_physics()
 	fsm.controller.move_and_slide()
+
+
+func exit():
+	if fsm.controller.is_on_floor():
+		sound.play()

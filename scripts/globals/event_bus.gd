@@ -4,6 +4,7 @@ extends Node
 signal time_freezed
 signal time_unfreezed
 signal started_fly_away
+signal start_the_game
 
 var freeze_timer: Timer
 

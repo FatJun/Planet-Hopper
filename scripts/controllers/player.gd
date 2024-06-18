@@ -25,6 +25,9 @@ signal dead
 @export var max_health := 5
 @export var min_health := 0
 
+@export var anim_player: AnimationPlayer
+@export var take_damage_sound: AudioStreamPlayer
+
 var in_landing_zone := true
 var jetpack_timer: Timer
 var jetpack_is_reloading := false
@@ -144,6 +147,7 @@ func take_damage(obj: Node2D, value: int, knockback_force: float):
 	var knockback_direction = -global_position.direction_to(obj.global_position)
 	knockback_velocity = knockback_direction * knockback_force
 	current_health -= value
+	take_damage_sound.play()
 
 
 func update_x_axis():

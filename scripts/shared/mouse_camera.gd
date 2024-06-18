@@ -12,7 +12,6 @@ var camera_speed := 5000.
 var lerp_speed := .1
 var zoom_multiply := 1.5
 var target: Variant = null
-@onready var default_y = self.global_position.y
 
 
 func _ready():
@@ -40,12 +39,9 @@ func _process(delta):
 		zoom = zoom.lerp(Vector2.ONE * zoom_multiply, lerp_speed)
 		global_position = global_position.lerp(target.global_position, lerp_speed)
 		return 
-	if global_position.y != default_y:
-		global_position.y = lerpf(global_position.y, default_y, lerp_speed)
 	if zoom != Vector2.ONE:
 		zoom = zoom.lerp(Vector2.ONE, lerp_speed)
-	var x_axis = Input.get_axis("left", "right")
-	if x_axis:
-		var velocity: float = camera_speed * x_axis * delta
-		global_position.x = lerpf(global_position.x, global_position.x + velocity, lerp_speed)
-		return
+	var axis = Input.get_vector("left", "right", "up", "down")
+	if axis:
+		var velocity: Vector2 = camera_speed * axis * delta
+		global_position = global_position.lerp(global_position + velocity, lerp_speed)
